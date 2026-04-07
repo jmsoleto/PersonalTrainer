@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "dev",
-      "runtimeExecutable": "/Users/josemanuelsoletoaranguez/.nvm/versions/node/v18.20.5/bin/node",
-      "runtimeArgs": ["./node_modules/.bin/quasar", "dev", "-p", "9000"],
-      "port": 9000
+      "runtimeExecutable": "/Users/josemanuelsoletoaranguez/.nvm/versions/node/v22.22.2/bin/node",
+      "runtimeArgs": ["./node_modules/.bin/quasar", "dev", "-p", "9004"],
+      "port": 9004,
+      "autoPort": false
     }
   ]
 }
