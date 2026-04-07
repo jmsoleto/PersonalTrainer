@@ -1,0 +1,42 @@
+// App-wide custom styles
+
+:root {
+  --pt-primary: #e94560;
+  --pt-secondary: #0f3460;
+  --pt-accent: #16213e;
+  --pt-background: #1a1a2e;
+  --pt-surface: #252545;
+  --pt-success: #4caf50;
+  --pt-warning: #ff9800;
+  --pt-error: #f44336;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+// Smooth page transitions
+.q-page {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+// Dark mode override for fitness app feel
+body.body--dark {
+  background-color: var(--pt-background);
+
+  .q-card {
+    background-color: var(--pt-surface);
+  }
+}
+
+// Utility classes
+.text-gradient {
+  background: linear-gradient(135deg, var(--pt-primary), #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rounded-xl {
+  border-radius: 16px;
+}
