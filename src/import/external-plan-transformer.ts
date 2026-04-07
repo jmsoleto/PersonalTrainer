@@ -182,7 +182,9 @@ function buildSession(
   dayNumber: number,
   exercises: ExerciseLookup,
 ): PlannedSession {
-  const mainRestSec = extractRestSeconds(ext.main.rest_between_sets_sec)
+  const mainRestSec = extractRestSeconds(
+    ext.main.rest_between_sets_sec ?? ext.main.rest_between_exercises_sec ?? 0,
+  )
   const isCircuit = ext.circuit === true
   const rounds = ext.main.rounds ?? 1
 
