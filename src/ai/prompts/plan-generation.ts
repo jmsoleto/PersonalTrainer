@@ -42,6 +42,140 @@ REGLAS ESTRICTAS:
 - Cada sesion debe tener entre 4-8 ejercicios principales (sin contar calentamiento/vuelta a la calma).`
 }
 
+export function buildChunkedSystemPrompt(): string {
+  return `Eres un entrenador personal experto y fisiologo del ejercicio. Creas programas de entrenamiento estructurados de 12 semanas.
+
+REGLAS ESTRICTAS:
+- Responde UNICAMENTE con JSON valido. Sin texto adicional, sin markdown, sin explicaciones.
+- El JSON debe cumplir EXACTAMENTE el schema proporcionado.
+- Usa solo los IDs de ejercicio proporcionados en la lista de ejercicios disponibles.
+- Incluye calentamiento (5-8 min) y vuelta a la calma (5 min) en cada sesion de entrenamiento.
+- Aplica sobrecarga progresiva: incrementa volumen/intensidad a lo largo de las semanas.
+- Periodizacion: semanas de descarga (reduccion de volumen) en las semanas 4 y 8.
+- Los dias de descanso activo deben incluir estiramientos y movilidad.
+- Cada sesion debe tener entre 4-8 ejercicios principales (sin contar calentamiento/vuelta a la calma).
+- Genera UNICAMENTE las semanas que se te indiquen. No generes semanas adicionales.`
+}
+
+export interface ChunkRange {
+  start: number
+  end: number
+}
+
+export function buildChunkUserPrompt(
+  profile: UserProfile,
+  availableExercises: Exercise[],
+  chunk: ChunkRange,
+  previousSummary?: string,
+): string {
+  const goals = profile.goals.map(g => GOAL_LABELS[g]).join(', ')
+  const equipment = profile.equipment.map(e => EQUIPMENT_LABELS[e]).join(', ')
+  const trainingDays = DAYS_PER_WEEK[profile.fitnessLevel]
+
+  const injuries = profile.injuries.length > 0
+    ? profile.injuries.map(i => `${i.muscleGroup} (${i.severity}${i.notes ? ': ' + i.notes : ''})`).join(', ')
+    : 'Ninguna'
+
+  const exerciseList = availableExercises
+    .map(e => `${e.id}|${e.name}|${e.primaryMuscle}|${e.category}`)
+    .join('\n')
+
+  const isFirstChunk = chunk.start === 1
+  const deloadWeeks = [4, 8].filter(w => w >= chunk.start && w <= chunk.end)
+  const deloadNote = deloadWeeks.length > 0
+    ? `\n- Semanas de descarga en este bloque: ${deloadWeeks.join(' y ')} (reducir volumen un 40%)`
+    : ''
+
+  let progressionSection = ''
+  if (previousSummary) {
+    progressionSection = `\n## Progresion Anterior\n${previousSummary}\n\nContinua la progresion desde donde termino el bloque anterior. Mantén la coherencia en la seleccion de ejercicios y el patron de entrenamiento.\n`
+  }
+
+  return `${isFirstChunk ? 'Crea' : 'Genera'} las semanas ${chunk.start}-${chunk.end} de un plan de entrenamiento de 12 semanas para el siguiente cliente:
+
+## Perfil del Cliente
+- Genero: ${profile.gender}
+- Edad: ${profile.age} anos
+- Peso: ${profile.weightKg} kg
+- Altura: ${profile.heightCm} cm
+- Nivel: ${profile.fitnessLevel}
+- Objetivos: ${goals}
+- Equipamiento disponible: ${equipment}
+- Lesiones/Restricciones: ${injuries}
+
+## Estructura del Plan
+- ${trainingDays} dias de entrenamiento por semana
+- 1-2 dias de descanso activo (estiramientos/movilidad)
+- Resto dias de descanso completo${deloadNote}
+- Duracion por sesion: 30-60 minutos segun nivel
+- Este es el bloque ${Math.ceil(chunk.start / 4)} de 3 (semanas ${chunk.start}-${chunk.end} de 12 totales)
+${progressionSection}
+## Ejercicios Disponibles (ID|Nombre|Musculo|Categoria)
+${exerciseList}
+
+## Schema JSON Requerido
+{
+  "weeks": [
+    {
+      "weekNumber": ${chunk.start},
+      "theme": "string descriptivo del enfoque de la semana",
+      "days": [
+        {
+          "dayNumber": 1,
+          "dayType": "training|active_rest|rest",
+          "session": {
+            "id": "uuid-string",
+            "title": "string descriptivo",
+            "targetMuscleGroups": ["chest", "triceps"],
+            "estimatedDurationMinutes": 45,
+            "warmup": {
+              "exercises": [
+                {
+                  "exerciseId": "ex_id",
+                  "exerciseName": "nombre",
+                  "sets": 1,
+                  "reps": null,
+                  "durationSeconds": 60,
+                  "restSeconds": 0,
+                  "notes": null,
+                  "targetWeightKg": null
+                }
+              ],
+              "durationMinutes": 5
+            },
+            "mainWorkout": [
+              {
+                "exerciseId": "ex_id",
+                "exerciseName": "nombre",
+                "sets": 3,
+                "reps": 12,
+                "durationSeconds": null,
+                "restSeconds": 60,
+                "notes": "indicaciones opcionales",
+                "targetWeightKg": null
+              }
+            ],
+            "cooldown": {
+              "exercises": [...],
+              "durationMinutes": 5
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+IMPORTANTE:
+- "session" es null para dias de tipo "rest"
+- Para ejercicios con tiempo (plancha, estiramientos), usa durationSeconds en vez de reps
+- Cada semana tiene exactamente 7 dias (dayNumber 1-7)
+- Genera SOLO las semanas ${chunk.start} a ${chunk.end} (${chunk.end - chunk.start + 1} semanas)
+- weekNumber debe ir de ${chunk.start} a ${chunk.end}
+- Usa UUIDs unicos para cada session.id (formato: "s-weekN-dayN")
+- Los ejercicios de calentamiento y vuelta a la calma deben ser de categoria "warmup" y "cooldown" respectivamente`
+}
+
 export function buildUserPrompt(
   profile: UserProfile,
   availableExercises: Exercise[],

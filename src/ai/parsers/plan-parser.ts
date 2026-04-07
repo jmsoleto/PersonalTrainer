@@ -1,6 +1,11 @@
 import type { Week } from '../../types/plan'
 
-export function parsePlanResponse(raw: string): Week[] {
+export interface WeekRange {
+  start: number
+  end: number
+}
+
+export function parsePlanResponse(raw: string, expectedWeekRange?: WeekRange): Week[] {
   // Strip markdown code fences if present
   let jsonStr = raw.trim()
   if (jsonStr.startsWith('```')) {
@@ -14,9 +19,15 @@ export function parsePlanResponse(raw: string): Week[] {
     // Try to extract JSON from surrounding text
     const match = jsonStr.match(/\{[\s\S]*\}/)
     if (!match) {
-      throw new Error('No valid JSON found in AI response')
+      const preview = raw.substring(0, 200)
+      throw new Error(`No valid JSON found in AI response. Preview: ${preview}`)
     }
-    parsed = JSON.parse(match[0])
+    try {
+      parsed = JSON.parse(match[0])
+    } catch {
+      const preview = raw.substring(0, 200)
+      throw new Error(`Invalid JSON in AI response. Preview: ${preview}`)
+    }
   }
 
   const data = parsed as Record<string, unknown>
@@ -27,10 +38,30 @@ export function parsePlanResponse(raw: string): Week[] {
 
   const weeks = data.weeks as Week[]
 
+  // Validate expected week count if range provided
+  if (expectedWeekRange) {
+    const expectedCount = expectedWeekRange.end - expectedWeekRange.start + 1
+    if (weeks.length !== expectedCount) {
+      throw new Error(
+        `Expected ${expectedCount} weeks (${expectedWeekRange.start}-${expectedWeekRange.end}), got ${weeks.length}`,
+      )
+    }
+  }
+
   // Validate basic structure
-  for (const week of weeks) {
+  for (let i = 0; i < weeks.length; i++) {
+    const week = weeks[i]
+
     if (typeof week.weekNumber !== 'number' || !week.theme || !Array.isArray(week.days)) {
       throw new Error(`Invalid week structure at week ${week.weekNumber}`)
+    }
+
+    // Renumber weeks if they don't match expected range
+    if (expectedWeekRange) {
+      const expectedWeekNum = expectedWeekRange.start + i
+      if (week.weekNumber !== expectedWeekNum) {
+        week.weekNumber = expectedWeekNum
+      }
     }
 
     if (week.days.length !== 7) {

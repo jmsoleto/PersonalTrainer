@@ -32,6 +32,29 @@
               @click="generatePlan"
             />
           </div>
+
+          <!-- Generation progress -->
+          <div v-if="planStore.generating && planStore.generationProgress" class="q-mt-md">
+            <q-linear-progress
+              :value="planStore.generationProgress.currentChunk / planStore.generationProgress.totalChunks"
+              color="primary"
+              rounded
+              class="q-mb-sm"
+              style="height: 8px"
+            />
+            <p class="text-caption text-grey-6 text-center q-mb-none">
+              <template v-if="planStore.generationProgress.status === 'merging'">
+                Finalizando plan...
+              </template>
+              <template v-else-if="planStore.generationProgress.status === 'retrying'">
+                Reintentando semanas {{ (planStore.generationProgress.currentChunk - 1) * 4 + 1 }}-{{ planStore.generationProgress.currentChunk * 4 }}...
+              </template>
+              <template v-else>
+                Generando semanas {{ (planStore.generationProgress.currentChunk - 1) * 4 + 1 }}-{{ planStore.generationProgress.currentChunk * 4 }}...
+                ({{ planStore.generationProgress.currentChunk }}/{{ planStore.generationProgress.totalChunks }})
+              </template>
+            </p>
+          </div>
         </q-card-section>
       </q-card>
     </template>
