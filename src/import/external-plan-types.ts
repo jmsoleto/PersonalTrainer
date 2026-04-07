@@ -41,7 +41,7 @@ export interface ExternalSegment {
 }
 
 export interface ExternalMainSegment extends ExternalSegment {
-  rest_between_sets_sec: number | { min: number; max: number }
+  rest_between_sets_sec?: number | { min: number; max: number }
   rest_between_exercises_sec?: number | { min: number; max: number }
   rest_between_rounds_sec?: number
   rounds?: number
