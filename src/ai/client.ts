@@ -47,6 +47,82 @@ async function fetchWithRetry(
   throw lastError ?? new Error('Request failed after retries')
 }
 
+/**
+ * Reads a streaming SSE response and reconstructs the full text + metadata.
+ * Streaming keeps the connection alive so the browser doesn't timeout on long generations.
+ */
+async function readStream(response: Response): Promise<ClaudeResponse> {
+  const reader = response.body?.getReader()
+  if (!reader) {
+    throw new Error('Response body is not readable')
+  }
+
+  const decoder = new TextDecoder()
+  let fullText = ''
+  let stopReason = 'unknown'
+  let inputTokens = 0
+  let outputTokens = 0
+  let buffer = ''
+
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+
+    buffer += decoder.decode(value, { stream: true })
+
+    // Process complete SSE lines
+    const lines = buffer.split('\n')
+    // Keep the last potentially incomplete line in the buffer
+    buffer = lines.pop() ?? ''
+
+    for (const line of lines) {
+      if (!line.startsWith('data: ')) continue
+
+      const data = line.slice(6).trim()
+      if (data === '[DONE]') continue
+
+      try {
+        const event = JSON.parse(data)
+
+        switch (event.type) {
+          case 'content_block_delta':
+            if (event.delta?.type === 'text_delta') {
+              fullText += event.delta.text
+            }
+            break
+
+          case 'message_delta':
+            if (event.delta?.stop_reason) {
+              stopReason = event.delta.stop_reason
+            }
+            if (event.usage) {
+              outputTokens = event.usage.output_tokens ?? outputTokens
+            }
+            break
+
+          case 'message_start':
+            if (event.message?.usage) {
+              inputTokens = event.message.usage.input_tokens ?? 0
+            }
+            break
+        }
+      } catch {
+        // Skip malformed JSON lines
+      }
+    }
+  }
+
+  if (stopReason === 'max_tokens') {
+    throw new TruncationError(fullText)
+  }
+
+  return {
+    text: fullText,
+    stopReason,
+    usage: { inputTokens, outputTokens },
+  }
+}
+
 export async function callClaude(
   systemPrompt: string,
   userPrompt: string,
@@ -71,6 +147,7 @@ export async function callClaude(
     body: JSON.stringify({
       model,
       max_tokens: maxTokens,
+      stream: true,
       system: systemPrompt,
       messages: [
         { role: 'user', content: userPrompt },
@@ -83,24 +160,5 @@ export async function callClaude(
     throw new Error(`Claude API error (${response.status}): ${error}`)
   }
 
-  const data = await response.json()
-  const content = data.content?.[0]
-
-  if (content?.type !== 'text') {
-    throw new Error('Unexpected response format from Claude API')
-  }
-
-  // Check for truncation
-  if (data.stop_reason === 'max_tokens') {
-    throw new TruncationError(content.text)
-  }
-
-  return {
-    text: content.text,
-    stopReason: data.stop_reason ?? 'unknown',
-    usage: {
-      inputTokens: data.usage?.input_tokens ?? 0,
-      outputTokens: data.usage?.output_tokens ?? 0,
-    },
-  }
+  return readStream(response)
 }
