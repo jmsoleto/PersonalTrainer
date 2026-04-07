@@ -2,12 +2,13 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { db } from '../db'
 import { callClaude } from '../ai/client'
-import { buildSystemPrompt, buildUserPrompt } from '../ai/prompts/plan-generation'
 import {
   buildSystemPrompt as buildRecalcSystemPrompt,
   buildRecalculationPrompt,
 } from '../ai/prompts/plan-recalculation'
 import { parsePlanResponse } from '../ai/parsers/plan-parser'
+import { generatePlanChunked } from '../ai/chunked-generator'
+import type { ChunkProgress } from '../ai/chunked-generator'
 import { useUserStore } from './user'
 import { useExercisesStore } from './exercises'
 import type { TrainingPlan, Week, CompletedSession, PlannedSession } from '../types/plan'
@@ -17,6 +18,7 @@ export const usePlanStore = defineStore('plan', () => {
   const activePlan = ref<TrainingPlan | null>(null)
   const generating = ref(false)
   const error = ref<string | null>(null)
+  const generationProgress = ref<ChunkProgress | null>(null)
 
   async function loadActivePlan(): Promise<void> {
     const plans = await db.trainingPlans.where('status').equals('active').toArray()
@@ -31,6 +33,7 @@ export const usePlanStore = defineStore('plan', () => {
 
     generating.value = true
     error.value = null
+    generationProgress.value = null
 
     try {
       await exercisesStore.loadExercises()
@@ -39,11 +42,13 @@ export const usePlanStore = defineStore('plan', () => {
         userStore.currentUser.equipment,
       )
 
-      const systemPrompt = buildSystemPrompt()
-      const userPrompt = buildUserPrompt(userStore.currentUser, availableExercises)
-
-      const response = await callClaude(systemPrompt, userPrompt)
-      const weeks = parsePlanResponse(response)
+      const weeks = await generatePlanChunked(
+        userStore.currentUser,
+        availableExercises,
+        (progress) => {
+          generationProgress.value = { ...progress }
+        },
+      )
 
       const plan: TrainingPlan = {
         id: crypto.randomUUID(),
@@ -84,6 +89,7 @@ export const usePlanStore = defineStore('plan', () => {
       throw e
     } finally {
       generating.value = false
+      generationProgress.value = null
     }
   }
 
@@ -118,7 +124,7 @@ export const usePlanStore = defineStore('plan', () => {
       )
 
       const response = await callClaude(systemPrompt, userPrompt)
-      const newWeeks = parsePlanResponse(response)
+      const newWeeks = parsePlanResponse(response.text)
 
       // Replace remaining weeks
       const currentWeekNum = getCurrentWeekNumber()
@@ -178,6 +184,7 @@ export const usePlanStore = defineStore('plan', () => {
     activePlan,
     generating,
     error,
+    generationProgress,
     currentWeek,
     loadActivePlan,
     generatePlan,
