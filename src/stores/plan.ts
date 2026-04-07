@@ -9,6 +9,8 @@ import {
 import { parsePlanResponse } from '../ai/parsers/plan-parser'
 import { generatePlanChunked } from '../ai/chunked-generator'
 import type { ChunkProgress } from '../ai/chunked-generator'
+import { transformExternalPlan, validateExternalPlanJson } from '../import/external-plan-transformer'
+import type { ExternalPlanRoot } from '../import/external-plan-types'
 import { useUserStore } from './user'
 import { useExercisesStore } from './exercises'
 import type { TrainingPlan, Week, CompletedSession, PlannedSession } from '../types/plan'
@@ -153,6 +155,42 @@ export const usePlanStore = defineStore('plan', () => {
     }
   }
 
+  async function importExternalPlan(jsonData: unknown): Promise<TrainingPlan> {
+    const userStore = useUserStore()
+    const exercisesStore = useExercisesStore()
+
+    generating.value = true
+    error.value = null
+
+    try {
+      const validation = validateExternalPlanJson(jsonData)
+      if (!validation.valid) {
+        throw new Error(`JSON inválido: ${validation.errors.join(', ')}`)
+      }
+
+      await exercisesStore.loadExercises()
+
+      const userId = userStore.currentUser?.id ?? crypto.randomUUID()
+      const plan = transformExternalPlan(jsonData as ExternalPlanRoot, userId, exercisesStore)
+
+      // Deactivate any existing active plans
+      const existingPlans = await db.trainingPlans.where('status').equals('active').toArray()
+      for (const p of existingPlans) {
+        await db.trainingPlans.update(p.id, { status: 'abandoned' })
+      }
+
+      await db.trainingPlans.add(plan)
+      activePlan.value = plan
+
+      return plan
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Error al importar plan'
+      throw e
+    } finally {
+      generating.value = false
+    }
+  }
+
   function getCurrentWeekNumber(): number {
     if (!activePlan.value) return 1
     const start = new Date(activePlan.value.startDate)
@@ -188,6 +226,7 @@ export const usePlanStore = defineStore('plan', () => {
     currentWeek,
     loadActivePlan,
     generatePlan,
+    importExternalPlan,
     recalculatePlan,
     getCurrentWeekNumber,
     getWeek,

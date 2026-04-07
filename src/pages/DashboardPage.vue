@@ -31,6 +31,21 @@
               :disable="!settingsStore.settings.apiKey"
               @click="generatePlan"
             />
+            <q-btn
+              outline
+              color="primary"
+              label="Importar Plan"
+              icon="upload_file"
+              :loading="importingPlan"
+              @click="triggerPlanImport"
+            />
+            <input
+              ref="planFileInput"
+              type="file"
+              accept=".json"
+              style="display: none"
+              @change="handlePlanImport"
+            />
           </div>
 
           <!-- Generation progress -->
@@ -221,6 +236,8 @@ const weekProgress = computed(() => {
   return Math.round((completedCount / trainingDays) * 100)
 })
 
+const importingPlan = ref(false)
+const planFileInput = ref<HTMLInputElement | null>(null)
 const completedThisWeek = ref(0)
 
 async function loadWeekProgress() {
@@ -228,6 +245,38 @@ async function loadWeekProgress() {
   const weekNum = planStore.getCurrentWeekNumber()
   const sessions = await sessionStore.getCompletedSessions(planStore.activePlan.id)
   completedThisWeek.value = sessions.filter(s => s.weekNumber === weekNum).length
+}
+
+function triggerPlanImport(): void {
+  planFileInput.value?.click()
+}
+
+async function handlePlanImport(event: Event): Promise<void> {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (!file) return
+
+  importingPlan.value = true
+  try {
+    const text = await file.text()
+    const data = JSON.parse(text)
+    await planStore.importExternalPlan(data)
+    await loadWeekProgress()
+    Notify.create({
+      message: 'Plan importado correctamente',
+      color: 'positive',
+      icon: 'check_circle',
+    })
+  } catch (e) {
+    Notify.create({
+      message: e instanceof Error ? e.message : 'Error al importar el plan',
+      color: 'negative',
+      icon: 'error',
+    })
+  } finally {
+    importingPlan.value = false
+    target.value = ''
+  }
 }
 
 async function generatePlan() {
