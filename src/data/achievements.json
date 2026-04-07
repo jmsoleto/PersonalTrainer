@@ -1,0 +1,170 @@
+[
+  {
+    "id": "ach_first_session",
+    "name": "Primer Paso",
+    "description": "Completa tu primera sesion de entrenamiento",
+    "icon": "directions_run",
+    "category": "milestone",
+    "condition": { "type": "sessions_completed", "threshold": 1 }
+  },
+  {
+    "id": "ach_5_sessions",
+    "name": "En Marcha",
+    "description": "Completa 5 sesiones de entrenamiento",
+    "icon": "trending_up",
+    "category": "milestone",
+    "condition": { "type": "sessions_completed", "threshold": 5 }
+  },
+  {
+    "id": "ach_10_sessions",
+    "name": "Constante",
+    "description": "Completa 10 sesiones de entrenamiento",
+    "icon": "star",
+    "category": "milestone",
+    "condition": { "type": "sessions_completed", "threshold": 10 }
+  },
+  {
+    "id": "ach_25_sessions",
+    "name": "Veterano",
+    "description": "Completa 25 sesiones de entrenamiento",
+    "icon": "military_tech",
+    "category": "milestone",
+    "condition": { "type": "sessions_completed", "threshold": 25 }
+  },
+  {
+    "id": "ach_50_sessions",
+    "name": "Maquina Imparable",
+    "description": "Completa 50 sesiones de entrenamiento",
+    "icon": "whatshot",
+    "category": "milestone",
+    "condition": { "type": "sessions_completed", "threshold": 50 }
+  },
+  {
+    "id": "ach_streak_3",
+    "name": "Triple Combo",
+    "description": "Entrena 3 dias consecutivos",
+    "icon": "local_fire_department",
+    "category": "streak",
+    "condition": { "type": "streak_days", "threshold": 3 }
+  },
+  {
+    "id": "ach_streak_7",
+    "name": "Semana Perfecta",
+    "description": "Entrena 7 dias consecutivos",
+    "icon": "local_fire_department",
+    "category": "streak",
+    "condition": { "type": "streak_days", "threshold": 7 }
+  },
+  {
+    "id": "ach_streak_14",
+    "name": "Dos Semanas de Fuego",
+    "description": "Entrena 14 dias consecutivos",
+    "icon": "local_fire_department",
+    "category": "streak",
+    "condition": { "type": "streak_days", "threshold": 14 }
+  },
+  {
+    "id": "ach_streak_30",
+    "name": "Habito Forjado",
+    "description": "Entrena 30 dias consecutivos",
+    "icon": "diamond",
+    "category": "streak",
+    "condition": { "type": "streak_days", "threshold": 30 }
+  },
+  {
+    "id": "ach_100_reps",
+    "name": "Centenario",
+    "description": "Acumula 100 repeticiones totales",
+    "icon": "fitness_center",
+    "category": "volume",
+    "condition": { "type": "total_reps", "threshold": 100 }
+  },
+  {
+    "id": "ach_500_reps",
+    "name": "Medio Millar",
+    "description": "Acumula 500 repeticiones totales",
+    "icon": "fitness_center",
+    "category": "volume",
+    "condition": { "type": "total_reps", "threshold": 500 }
+  },
+  {
+    "id": "ach_1000_reps",
+    "name": "Millar de Hierro",
+    "description": "Acumula 1000 repeticiones totales",
+    "icon": "fitness_center",
+    "category": "volume",
+    "condition": { "type": "total_reps", "threshold": 1000 }
+  },
+  {
+    "id": "ach_5000_reps",
+    "name": "Leyenda del Gimnasio",
+    "description": "Acumula 5000 repeticiones totales",
+    "icon": "emoji_events",
+    "category": "volume",
+    "condition": { "type": "total_reps", "threshold": 5000 }
+  },
+  {
+    "id": "ach_1000kg",
+    "name": "Tonelada",
+    "description": "Levanta un total acumulado de 1000 kg",
+    "icon": "fitness_center",
+    "category": "volume",
+    "condition": { "type": "total_weight", "threshold": 1000 }
+  },
+  {
+    "id": "ach_10000kg",
+    "name": "Diez Toneladas",
+    "description": "Levanta un total acumulado de 10000 kg",
+    "icon": "rocket_launch",
+    "category": "volume",
+    "condition": { "type": "total_weight", "threshold": 10000 }
+  },
+  {
+    "id": "ach_week_1",
+    "name": "Primera Semana",
+    "description": "Completa la primera semana del plan",
+    "icon": "looks_one",
+    "category": "consistency",
+    "condition": { "type": "weeks_completed", "threshold": 1 }
+  },
+  {
+    "id": "ach_week_4",
+    "name": "Primer Mes",
+    "description": "Completa 4 semanas del plan",
+    "icon": "looks_4",
+    "category": "consistency",
+    "condition": { "type": "weeks_completed", "threshold": 4 }
+  },
+  {
+    "id": "ach_week_8",
+    "name": "Dos Meses",
+    "description": "Completa 8 semanas del plan",
+    "icon": "workspace_premium",
+    "category": "consistency",
+    "condition": { "type": "weeks_completed", "threshold": 8 }
+  },
+  {
+    "id": "ach_week_12",
+    "name": "Plan Completado",
+    "description": "Completa las 12 semanas del plan",
+    "icon": "emoji_events",
+    "category": "consistency",
+    "condition": { "type": "weeks_completed", "threshold": 12 }
+  },
+  {
+    "id": "ach_first_measurement",
+    "name": "Control de Progreso",
+    "description": "Registra tu primera medida corporal",
+    "icon": "straighten",
+    "category": "milestone",
+    "condition": { "type": "measurements_logged", "threshold": 1 }
+  },
+  {
+    "id": "ach_5_measurements",
+    "name": "Seguimiento Constante",
+    "description": "Registra 5 medidas corporales",
+    "icon": "straighten",
+    "category": "consistency",
+    "condition": { "type": "measurements_logged", "threshold": 5 }
+  }
+]

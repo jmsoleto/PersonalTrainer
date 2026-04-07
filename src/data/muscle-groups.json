@@ -1,0 +1,14 @@
+[
+  { "id": "chest", "name": "Pecho", "icon": "favorite" },
+  { "id": "back", "name": "Espalda", "icon": "accessibility" },
+  { "id": "shoulders", "name": "Hombros", "icon": "person" },
+  { "id": "biceps", "name": "Biceps", "icon": "fitness_center" },
+  { "id": "triceps", "name": "Triceps", "icon": "fitness_center" },
+  { "id": "forearms", "name": "Antebrazos", "icon": "front_hand" },
+  { "id": "core", "name": "Core", "icon": "shield" },
+  { "id": "quads", "name": "Cuadriceps", "icon": "directions_walk" },
+  { "id": "hamstrings", "name": "Isquiotibiales", "icon": "directions_walk" },
+  { "id": "glutes", "name": "Gluteos", "icon": "airline_seat_recline_normal" },
+  { "id": "calves", "name": "Gemelos", "icon": "directions_walk" },
+  { "id": "full_body", "name": "Cuerpo completo", "icon": "accessibility_new" }
+]

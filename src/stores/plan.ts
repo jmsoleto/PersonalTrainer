@@ -1,0 +1,189 @@
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import { db } from '../db'
+import { callClaude } from '../ai/client'
+import { buildSystemPrompt, buildUserPrompt } from '../ai/prompts/plan-generation'
+import {
+  buildSystemPrompt as buildRecalcSystemPrompt,
+  buildRecalculationPrompt,
+} from '../ai/prompts/plan-recalculation'
+import { parsePlanResponse } from '../ai/parsers/plan-parser'
+import { useUserStore } from './user'
+import { useExercisesStore } from './exercises'
+import type { TrainingPlan, Week, CompletedSession, PlannedSession } from '../types/plan'
+import type { PlanStatus } from '../types/enums'
+
+export const usePlanStore = defineStore('plan', () => {
+  const activePlan = ref<TrainingPlan | null>(null)
+  const generating = ref(false)
+  const error = ref<string | null>(null)
+
+  async function loadActivePlan(): Promise<void> {
+    const plans = await db.trainingPlans.where('status').equals('active').toArray()
+    activePlan.value = plans[0] ?? null
+  }
+
+  async function generatePlan(): Promise<TrainingPlan> {
+    const userStore = useUserStore()
+    const exercisesStore = useExercisesStore()
+
+    if (!userStore.currentUser) throw new Error('No user profile found')
+
+    generating.value = true
+    error.value = null
+
+    try {
+      await exercisesStore.loadExercises()
+
+      const availableExercises = exercisesStore.filterByEquipment(
+        userStore.currentUser.equipment,
+      )
+
+      const systemPrompt = buildSystemPrompt()
+      const userPrompt = buildUserPrompt(userStore.currentUser, availableExercises)
+
+      const response = await callClaude(systemPrompt, userPrompt)
+      const weeks = parsePlanResponse(response)
+
+      const plan: TrainingPlan = {
+        id: crypto.randomUUID(),
+        userId: userStore.currentUser.id,
+        name: `Plan ${new Date().toLocaleDateString('es-ES')}`,
+        totalWeeks: 12,
+        startDate: new Date().toISOString(),
+        status: 'active' as PlanStatus,
+        generatedAt: new Date().toISOString(),
+        basedOn: {
+          profile: {
+            gender: userStore.currentUser.gender,
+            age: userStore.currentUser.age,
+            weightKg: userStore.currentUser.weightKg,
+            heightCm: userStore.currentUser.heightCm,
+            fitnessLevel: userStore.currentUser.fitnessLevel,
+          },
+          goals: [...userStore.currentUser.goals],
+          equipment: [...userStore.currentUser.equipment],
+          injuries: [...userStore.currentUser.injuries],
+          feedbackHistory: [],
+        },
+        weeks,
+      }
+
+      // Deactivate any existing active plans
+      const existingPlans = await db.trainingPlans.where('status').equals('active').toArray()
+      for (const p of existingPlans) {
+        await db.trainingPlans.update(p.id, { status: 'abandoned' })
+      }
+
+      await db.trainingPlans.add(plan)
+      activePlan.value = plan
+
+      return plan
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Error generating plan'
+      throw e
+    } finally {
+      generating.value = false
+    }
+  }
+
+  async function recalculatePlan(reason: string): Promise<void> {
+    const userStore = useUserStore()
+    const exercisesStore = useExercisesStore()
+
+    if (!activePlan.value || !userStore.currentUser) return
+
+    generating.value = true
+    error.value = null
+
+    try {
+      await exercisesStore.loadExercises()
+
+      const availableExercises = exercisesStore.filterByEquipment(
+        userStore.currentUser.equipment,
+      )
+
+      const completedSessions = await db.completedSessions
+        .where('planId')
+        .equals(activePlan.value.id)
+        .toArray()
+
+      const systemPrompt = buildRecalcSystemPrompt()
+      const userPrompt = buildRecalculationPrompt(
+        userStore.currentUser,
+        activePlan.value,
+        completedSessions,
+        availableExercises,
+        reason,
+      )
+
+      const response = await callClaude(systemPrompt, userPrompt)
+      const newWeeks = parsePlanResponse(response)
+
+      // Replace remaining weeks
+      const currentWeekNum = getCurrentWeekNumber()
+      const updatedWeeks = [
+        ...activePlan.value.weeks.filter(w => w.weekNumber <= currentWeekNum),
+        ...newWeeks,
+      ]
+
+      const updated: TrainingPlan = {
+        ...activePlan.value,
+        weeks: updatedWeeks,
+        basedOn: {
+          ...activePlan.value.basedOn,
+          equipment: [...userStore.currentUser.equipment],
+          injuries: [...userStore.currentUser.injuries],
+        },
+      }
+
+      await db.trainingPlans.put(updated)
+      activePlan.value = updated
+    } catch (e) {
+      error.value = e instanceof Error ? e.message : 'Error recalculating plan'
+      throw e
+    } finally {
+      generating.value = false
+    }
+  }
+
+  function getCurrentWeekNumber(): number {
+    if (!activePlan.value) return 1
+    const start = new Date(activePlan.value.startDate)
+    const now = new Date()
+    const diffMs = now.getTime() - start.getTime()
+    const week = Math.floor(diffMs / (7 * 24 * 60 * 60 * 1000)) + 1
+    return Math.min(Math.max(week, 1), 12)
+  }
+
+  function getWeek(weekNumber: number): Week | undefined {
+    return activePlan.value?.weeks.find(w => w.weekNumber === weekNumber)
+  }
+
+  function getSession(sessionId: string): PlannedSession | undefined {
+    if (!activePlan.value) return undefined
+    for (const week of activePlan.value.weeks) {
+      for (const day of week.days) {
+        if (day.session?.id === sessionId) {
+          return day.session
+        }
+      }
+    }
+    return undefined
+  }
+
+  const currentWeek = computed(() => getWeek(getCurrentWeekNumber()))
+
+  return {
+    activePlan,
+    generating,
+    error,
+    currentWeek,
+    loadActivePlan,
+    generatePlan,
+    recalculatePlan,
+    getCurrentWeekNumber,
+    getWeek,
+    getSession,
+  }
+})
