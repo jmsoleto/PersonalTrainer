@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { db } from '../db'
+import { useUserStore } from './user'
 import type { AchievementDefinition, UnlockedAchievement } from '../types/achievement'
 import achievementsData from '../data/achievements.json'
 
@@ -17,19 +18,29 @@ export const useAchievementsStore = defineStore('achievements', () => {
   const unseenCount = computed(() => unlocked.value.filter(u => !u.seen).length)
 
   async function loadUnlocked(): Promise<void> {
+    const userStore = useUserStore()
     loading.value = true
     try {
-      unlocked.value = await db.unlockedAchievements.toArray()
+      if (!userStore.currentUser) {
+        unlocked.value = []
+        return
+      }
+      unlocked.value = await db.unlockedAchievements
+        .where('userId').equals(userStore.currentUser.id)
+        .toArray()
     } finally {
       loading.value = false
     }
   }
 
   async function unlock(achievementId: string): Promise<UnlockedAchievement | null> {
+    const userStore = useUserStore()
+    if (!userStore.currentUser) return null
     if (unlockedIds.value.has(achievementId)) return null
 
     const achievement: UnlockedAchievement = {
       achievementId,
+      userId: userStore.currentUser.id,
       unlockedAt: new Date().toISOString(),
       seen: false,
     }
@@ -39,16 +50,16 @@ export const useAchievementsStore = defineStore('achievements', () => {
   }
 
   async function markSeen(achievementId: string): Promise<void> {
-    await db.unlockedAchievements.update(achievementId, { seen: true })
     const item = unlocked.value.find(u => u.achievementId === achievementId)
-    if (item) item.seen = true
+    if (!item || !item.id) return
+    await db.unlockedAchievements.update(item.id, { seen: true })
+    item.seen = true
   }
 
   async function markAllSeen(): Promise<void> {
     const unseen = unlocked.value.filter(u => !u.seen)
     for (const item of unseen) {
-      await db.unlockedAchievements.update(item.achievementId, { seen: true })
-      item.seen = true
+      await markSeen(item.achievementId)
     }
   }
 

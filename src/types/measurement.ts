@@ -1,5 +1,6 @@
 export interface BodyMeasurement {
   id: string
+  userId: string
   date: string
   weightKg?: number
   bodyFatPercent?: number

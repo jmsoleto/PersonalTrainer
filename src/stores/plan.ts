@@ -23,7 +23,15 @@ export const usePlanStore = defineStore('plan', () => {
   const generationProgress = ref<ChunkProgress | null>(null)
 
   async function loadActivePlan(): Promise<void> {
-    const plans = await db.trainingPlans.where('status').equals('active').toArray()
+    const userStore = useUserStore()
+    if (!userStore.currentUser) {
+      activePlan.value = null
+      return
+    }
+    const plans = await db.trainingPlans
+      .where('userId').equals(userStore.currentUser.id)
+      .filter(p => p.status === 'active')
+      .toArray()
     activePlan.value = plans[0] ?? null
   }
 

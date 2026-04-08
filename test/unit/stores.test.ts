@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { useUserStore } from '../../src/stores/user'
 import { useMeasurementsStore } from '../../src/stores/measurements'
 import { useAchievementsStore } from '../../src/stores/achievements'
@@ -19,6 +19,7 @@ describe('useUserStore', () => {
     const store = useUserStore()
 
     const profile = await store.createUser({
+      name: 'Test User',
       gender: Gender.Male,
       age: 30,
       weightKg: 80,
@@ -29,6 +30,7 @@ describe('useUserStore', () => {
     })
 
     expect(profile.id).toBeDefined()
+    expect(profile.name).toBe('Test User')
     expect(profile.gender).toBe(Gender.Male)
     expect(profile.age).toBe(30)
     expect(profile.weightKg).toBe(80)
@@ -49,6 +51,7 @@ describe('useUserStore', () => {
     const store = useUserStore()
 
     await store.createUser({
+      name: 'Jane',
       gender: Gender.Female,
       age: 25,
       weightKg: 60,
@@ -65,6 +68,7 @@ describe('useUserStore', () => {
     await store.loadUser()
 
     expect(store.currentUser).not.toBeNull()
+    expect(store.currentUser!.name).toBe('Jane')
     expect(store.currentUser!.gender).toBe(Gender.Female)
     expect(store.currentUser!.age).toBe(25)
     expect(store.currentUser!.unitSystem).toBe('imperial')
@@ -74,6 +78,7 @@ describe('useUserStore', () => {
     const store = useUserStore()
 
     await store.createUser({
+      name: 'Equipment User',
       gender: Gender.Male,
       age: 28,
       weightKg: 75,
@@ -101,6 +106,7 @@ describe('useUserStore', () => {
     const store = useUserStore()
 
     await store.createUser({
+      name: 'Injury User',
       gender: Gender.Other,
       age: 35,
       weightKg: 70,
@@ -134,6 +140,7 @@ describe('useUserStore', () => {
     const store = useUserStore()
 
     await store.createUser({
+      name: 'Goals User',
       gender: Gender.Male,
       age: 40,
       weightKg: 90,
@@ -158,9 +165,32 @@ describe('useUserStore', () => {
 })
 
 // ---------------------------------------------------------------------------
+// Helper: create a user and set it as active before measurement/achievement tests
+// ---------------------------------------------------------------------------
+async function ensureActiveUser() {
+  const userStore = useUserStore()
+  if (!userStore.currentUser) {
+    await userStore.createUser({
+      name: 'Test User',
+      gender: Gender.Male,
+      age: 30,
+      weightKg: 80,
+      heightCm: 180,
+      fitnessLevel: FitnessLevel.Beginner,
+      goals: [FitnessGoal.GeneralFitness],
+      equipment: [Equipment.BodyweightOnly],
+    })
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Measurements Store
 // ---------------------------------------------------------------------------
 describe('useMeasurementsStore', () => {
+  beforeEach(async () => {
+    await ensureActiveUser()
+  })
+
   it('addMeasurement adds a measurement to DB and store', async () => {
     const store = useMeasurementsStore()
 
@@ -172,6 +202,7 @@ describe('useMeasurementsStore', () => {
     })
 
     expect(measurement.id).toBeDefined()
+    expect(measurement.userId).toBeDefined()
     expect(measurement.date).toBe('2026-04-01')
     expect(measurement.weightKg).toBe(80)
     expect(measurement.bodyFatPercent).toBe(18)
@@ -253,6 +284,10 @@ describe('useMeasurementsStore', () => {
 // Achievements Store
 // ---------------------------------------------------------------------------
 describe('useAchievementsStore', () => {
+  beforeEach(async () => {
+    await ensureActiveUser()
+  })
+
   it('loadUnlocked loads unlocked achievements from DB', async () => {
     const store = useAchievementsStore()
 
@@ -273,6 +308,7 @@ describe('useAchievementsStore', () => {
 
     expect(result).not.toBeNull()
     expect(result!.achievementId).toBe('ach_first_session')
+    expect(result!.userId).toBeDefined()
     expect(result!.unlockedAt).toBeDefined()
     expect(result!.seen).toBe(false)
     expect(store.unlocked).toHaveLength(1)

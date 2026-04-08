@@ -1,17 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { db } from '../db'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/users',
+    },
+    {
+      path: '/users',
+      component: () => import('../pages/UserSelectPage.vue'),
+      meta: { hideChrome: true, title: 'Seleccionar Usuario', public: true },
     },
     {
       path: '/onboarding',
       component: () => import('../pages/OnboardingPage.vue'),
-      meta: { hideChrome: true, title: 'Bienvenido' },
+      meta: { hideChrome: true, title: 'Nuevo Usuario', public: true },
     },
     {
       path: '/dashboard',
@@ -86,13 +90,13 @@ const router = createRouter({
   ],
 })
 
-// Navigation guard: redirect to onboarding if no user profile exists
+// Navigation guard: redirect to user select if no active user
 router.beforeEach(async (to) => {
-  if (to.path === '/onboarding') return true
+  if (to.meta.public) return true
 
-  const profileCount = await db.userProfiles.count()
-  if (profileCount === 0) {
-    return '/onboarding'
+  const activeUserId = localStorage.getItem('pt-active-user-id')
+  if (!activeUserId) {
+    return '/users'
   }
   return true
 })

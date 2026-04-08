@@ -1,10 +1,39 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { db } from '../../src/db'
+import { useUserStore } from '../../src/stores/user'
 import { useAchievementsStore } from '../../src/stores/achievements'
 import { useMeasurementsStore } from '../../src/stores/measurements'
 import { checkAchievements } from '../../src/composables/useAchievementChecker'
-import { SessionDifficulty } from '../../src/types/enums'
+import { SessionDifficulty, Gender, FitnessLevel, FitnessGoal, Equipment } from '../../src/types/enums'
 import type { CompletedSession } from '../../src/types/plan'
+
+async function ensureActiveUser() {
+  const userStore = useUserStore()
+  if (!userStore.currentUser) {
+    const user = await userStore.createUser({
+      name: 'Test User',
+      gender: Gender.Male,
+      age: 30,
+      weightKg: 80,
+      heightCm: 180,
+      fitnessLevel: FitnessLevel.Beginner,
+      goals: [FitnessGoal.GeneralFitness],
+      equipment: [Equipment.BodyweightOnly],
+    })
+    // Add a plan so completedSessions with planId 'plan-1' are associated to this user
+    await db.trainingPlans.put({
+      id: 'plan-1',
+      userId: user.id,
+      name: 'Test Plan',
+      totalWeeks: 12,
+      startDate: '2026-01-01T00:00:00Z',
+      status: 'active',
+      generatedAt: '2026-01-01T00:00:00Z',
+      basedOn: { profile: { gender: 'male', age: 30, weightKg: 80, heightCm: 180, fitnessLevel: 'beginner' }, goals: [], equipment: [], injuries: [], feedbackHistory: [] },
+      weeks: [],
+    } as any)
+  }
+}
 
 function makeSession(overrides: Partial<CompletedSession> = {}): CompletedSession {
   return {
@@ -32,6 +61,10 @@ function makeSession(overrides: Partial<CompletedSession> = {}): CompletedSessio
 }
 
 describe('checkAchievements', () => {
+  beforeEach(async () => {
+    await ensureActiveUser()
+  })
+
   it('unlocks first session achievement after 1 session', async () => {
     const achievementsStore = useAchievementsStore()
     await achievementsStore.loadUnlocked()

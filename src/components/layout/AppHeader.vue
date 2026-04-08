@@ -29,7 +29,7 @@ const router = useRouter()
 const pageTitle = computed(() => (route.meta.title as string) || 'Personal Trainer')
 
 const canGoBack = computed(() => {
-  const noBackRoutes = ['/dashboard', '/onboarding']
+  const noBackRoutes = ['/dashboard', '/onboarding', '/users']
   return !noBackRoutes.includes(route.path)
 })
 </script>

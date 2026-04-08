@@ -19,6 +19,7 @@ describe('export/import', () => {
     // Add some test data
     await db.userProfiles.add({
       id: 'user-1',
+      name: 'Test User',
       gender: 'male',
       age: 30,
       weightKg: 80,
@@ -34,6 +35,7 @@ describe('export/import', () => {
 
     await db.bodyMeasurements.add({
       id: 'meas-1',
+      userId: 'user-1',
       date: '2026-01-01',
       weightKg: 80,
       waistCm: 85,
@@ -41,6 +43,7 @@ describe('export/import', () => {
 
     await db.unlockedAchievements.add({
       achievementId: 'ach_first_session',
+      userId: 'user-1',
       unlockedAt: '2026-01-01T12:00:00Z',
       seen: true,
     })
@@ -101,7 +104,7 @@ describe('export/import', () => {
       trainingPlans: [],
       completedSessions: [],
       unlockedAchievements: [],
-      bodyMeasurements: [{ id: 'new-1', date: '2026-06-01', weightKg: 75 }],
+      bodyMeasurements: [{ id: 'new-1', userId: 'user-x', date: '2026-06-01', weightKg: 75 }],
     }
 
     await importAllData(importData)

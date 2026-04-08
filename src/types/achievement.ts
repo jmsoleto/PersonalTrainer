@@ -28,7 +28,9 @@ export interface AchievementDefinition {
 }
 
 export interface UnlockedAchievement {
+  id?: number
   achievementId: string
+  userId: string
   unlockedAt: string
   seen: boolean
 }

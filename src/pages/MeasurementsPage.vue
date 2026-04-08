@@ -319,7 +319,7 @@ function closeForm() {
   form.value = emptyForm()
 }
 
-function buildMeasurementData(): Omit<BodyMeasurement, 'id'> {
+function buildMeasurementData(): Omit<BodyMeasurement, 'id' | 'userId'> {
   const data: Record<string, unknown> = { date: form.value.date }
   if (form.value.weightKg) data.weightKg = form.value.weightKg
   if (form.value.bodyFatPercent) data.bodyFatPercent = form.value.bodyFatPercent

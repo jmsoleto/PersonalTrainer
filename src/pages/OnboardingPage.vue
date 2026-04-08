@@ -103,6 +103,7 @@ const step = ref(1)
 const creating = ref(false)
 
 const profileData = ref({
+  name: '',
   gender: 'male' as Gender,
   age: 30,
   weightKg: 70,
@@ -129,6 +130,7 @@ async function finishOnboarding() {
   creating.value = true
   try {
     const data = {
+      name: profileData.value.name || 'Usuario',
       gender: profileData.value.gender,
       age: profileData.value.age,
       weightKg: profileData.value.weightKg,

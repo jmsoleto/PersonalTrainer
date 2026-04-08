@@ -208,8 +208,7 @@ onMounted(async () => {
 })
 
 const userName = computed(() => {
-  if (!userStore.currentUser) return ''
-  return ''
+  return userStore.currentUser?.name ?? ''
 })
 
 const todayDate = computed(() => {

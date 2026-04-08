@@ -2,6 +2,14 @@
   <div>
     <h6 class="q-mb-md">Sobre ti</h6>
 
+    <q-input
+      v-model="form.name"
+      label="Nombre"
+      outlined
+      :rules="[val => !!val && val.trim().length > 0 || 'Introduce tu nombre']"
+      class="q-mb-md"
+    />
+
     <q-select
       v-model="form.gender"
       :options="genderOptions"
@@ -63,6 +71,7 @@ import { Gender, FitnessLevel } from '../../types/enums'
 
 const emit = defineEmits<{
   update: [data: {
+    name: string
     gender: Gender
     age: number
     weightKg: number
@@ -75,6 +84,7 @@ const useImperial = ref(false)
 const unitSystem = computed(() => useImperial.value ? 'imperial' : 'metric')
 
 const form = reactive({
+  name: '',
   gender: Gender.Male,
   age: 30,
   weightKg: 70,
@@ -100,6 +110,7 @@ watch(form, () => {
   const heightCm = useImperial.value ? form.heightCm * 2.54 : form.heightCm
 
   emit('update', {
+    name: form.name.trim(),
     gender: form.gender,
     age: form.age,
     weightKg: Math.round(weightKg * 10) / 10,

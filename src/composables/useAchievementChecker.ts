@@ -1,7 +1,8 @@
 import { useAchievementsStore } from '../stores/achievements'
 import { useMeasurementsStore } from '../stores/measurements'
+import { useUserStore } from '../stores/user'
 import { db } from '../db'
-import type { AchievementDefinition, UnlockedAchievement } from '../types/achievement'
+import type { UnlockedAchievement } from '../types/achievement'
 import type { CompletedSession } from '../types/plan'
 
 interface SessionStats {
@@ -67,11 +68,22 @@ function computeStats(sessions: CompletedSession[]): SessionStats {
 export async function checkAchievements(): Promise<UnlockedAchievement[]> {
   const achievementsStore = useAchievementsStore()
   const measurementsStore = useMeasurementsStore()
+  const userStore = useUserStore()
 
-  const sessions = await db.completedSessions.toArray()
+  if (!userStore.currentUser) return []
+
+  // Get plans belonging to this user, then sessions for those plans
+  const userPlans = await db.trainingPlans
+    .where('userId').equals(userStore.currentUser.id)
+    .toArray()
+  const planIds = new Set(userPlans.map(p => p.id))
+
+  const allSessions = await db.completedSessions.toArray()
+  const sessions = allSessions.filter(s => planIds.has(s.planId))
+
   const stats = computeStats(sessions)
   const measurementCount = measurementsStore.measurements.length
-    || (await db.bodyMeasurements.count())
+    || (await db.bodyMeasurements.where('userId').equals(userStore.currentUser.id).count())
 
   const newlyUnlocked: UnlockedAchievement[] = []
 

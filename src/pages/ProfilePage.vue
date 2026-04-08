@@ -1,7 +1,16 @@
 <template>
   <PageShell :loading="loading">
     <template v-if="userStore.currentUser">
-      <div class="text-h6 q-mb-md">Mi Perfil</div>
+      <!-- User header with avatar -->
+      <div class="row items-center q-mb-lg">
+        <q-avatar color="primary" text-color="white" size="56px" class="q-mr-md">
+          {{ userStore.currentUser.name.charAt(0).toUpperCase() }}
+        </q-avatar>
+        <div>
+          <div class="text-h6">{{ userStore.currentUser.name }}</div>
+          <div class="text-caption text-grey-6">{{ levelLabel }}</div>
+        </div>
+      </div>
 
       <!-- Profile info cards -->
       <q-card flat bordered class="q-mb-md">
@@ -94,6 +103,17 @@
           </q-item-section>
           <q-item-section side><q-icon name="chevron_right" /></q-item-section>
         </q-item>
+
+        <q-separator class="q-my-sm" />
+
+        <q-item clickable @click="switchUser">
+          <q-item-section avatar><q-icon name="swap_horiz" color="orange" /></q-item-section>
+          <q-item-section>
+            <q-item-label>Cambiar de usuario</q-item-label>
+            <q-item-label caption>Seleccionar otro perfil</q-item-label>
+          </q-item-section>
+          <q-item-section side><q-icon name="chevron_right" /></q-item-section>
+        </q-item>
       </q-list>
     </template>
   </PageShell>
@@ -101,10 +121,12 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import PageShell from '../components/layout/PageShell.vue'
 import { useUserStore } from '../stores/user'
 import { Gender, FitnessLevel, FitnessGoal } from '../types/enums'
 
+const router = useRouter()
 const userStore = useUserStore()
 
 const loading = computed(() => userStore.loading)
@@ -135,6 +157,11 @@ const goalLabels: Record<string, string> = {
   [FitnessGoal.Flexibility]: 'Flexibilidad',
   [FitnessGoal.GeneralFitness]: 'Fitness general',
   [FitnessGoal.Strength]: 'Fuerza',
+}
+
+function switchUser() {
+  userStore.logout()
+  router.push('/users')
 }
 
 onMounted(async () => {

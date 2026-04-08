@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { db } from '../db'
+import { useUserStore } from './user'
 import type { BodyMeasurement } from '../types/measurement'
 
 export const useMeasurementsStore = defineStore('measurements', () => {
@@ -16,18 +17,28 @@ export const useMeasurementsStore = defineStore('measurements', () => {
   )
 
   async function loadMeasurements(): Promise<void> {
+    const userStore = useUserStore()
     loading.value = true
     try {
-      measurements.value = await db.bodyMeasurements.orderBy('date').toArray()
+      if (!userStore.currentUser) {
+        measurements.value = []
+        return
+      }
+      measurements.value = await db.bodyMeasurements
+        .where('userId').equals(userStore.currentUser.id)
+        .sortBy('date')
     } finally {
       loading.value = false
     }
   }
 
-  async function addMeasurement(data: Omit<BodyMeasurement, 'id'>): Promise<BodyMeasurement> {
+  async function addMeasurement(data: Omit<BodyMeasurement, 'id' | 'userId'>): Promise<BodyMeasurement> {
+    const userStore = useUserStore()
+    if (!userStore.currentUser) throw new Error('No active user')
     const measurement: BodyMeasurement = {
       ...data,
       id: crypto.randomUUID(),
+      userId: userStore.currentUser.id,
     }
     await db.bodyMeasurements.add(measurement)
     measurements.value.push(measurement)

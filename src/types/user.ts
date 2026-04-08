@@ -17,6 +17,7 @@ export interface InjuryZone {
 
 export interface UserProfile {
   id: string
+  name: string
   gender: Gender
   age: number
   weightKg: number
