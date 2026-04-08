@@ -7,20 +7,26 @@ import {
   buildRecalculationPrompt,
 } from '../ai/prompts/plan-recalculation'
 import { parsePlanResponse } from '../ai/parsers/plan-parser'
-import { generatePlanChunked } from '../ai/chunked-generator'
-import type { ChunkProgress } from '../ai/chunked-generator'
+import { generatePlanFromPhases } from '../ai/phase-generator'
 import { transformExternalPlan, validateExternalPlanJson } from '../import/external-plan-transformer'
 import type { ExternalPlanRoot } from '../import/external-plan-types'
 import { useUserStore } from './user'
 import { useExercisesStore } from './exercises'
+import { useSettingsStore } from './settings'
 import type { TrainingPlan, Week, CompletedSession, PlannedSession } from '../types/plan'
-import type { PlanStatus } from '../types/enums'
+import { FitnessLevel, type PlanStatus } from '../types/enums'
+
+const DAYS_PER_LEVEL: Record<FitnessLevel, number> = {
+  [FitnessLevel.Beginner]: 3,
+  [FitnessLevel.Intermediate]: 4,
+  [FitnessLevel.Advanced]: 5,
+}
 
 export const usePlanStore = defineStore('plan', () => {
   const activePlan = ref<TrainingPlan | null>(null)
   const generating = ref(false)
   const error = ref<string | null>(null)
-  const generationProgress = ref<ChunkProgress | null>(null)
+  const generationProgress = ref<{ status: string } | null>(null)
 
   async function loadActivePlan(): Promise<void> {
     const userStore = useUserStore()
@@ -52,11 +58,23 @@ export const usePlanStore = defineStore('plan', () => {
         userStore.currentUser.equipment,
       )
 
-      const weeks = await generatePlanChunked(
+      const settingsStore = useSettingsStore()
+      const daysPerWeek = settingsStore.settings.daysPerWeek > 0
+        ? settingsStore.settings.daysPerWeek
+        : DAYS_PER_LEVEL[userStore.currentUser.fitnessLevel]
+
+      const planParams = {
+        weeks: settingsStore.settings.planWeeks,
+        daysPerWeek,
+        sessionDurationMin: settingsStore.settings.sessionDurationMin,
+      }
+
+      const weeks = await generatePlanFromPhases(
         userStore.currentUser,
         availableExercises,
-        (progress) => {
-          generationProgress.value = { ...progress }
+        planParams,
+        (status) => {
+          generationProgress.value = { status }
         },
       )
 
@@ -64,7 +82,7 @@ export const usePlanStore = defineStore('plan', () => {
         id: crypto.randomUUID(),
         userId: userStore.currentUser.id,
         name: `Plan ${new Date().toLocaleDateString('es-ES')}`,
-        totalWeeks: 12,
+        totalWeeks: planParams.weeks,
         startDate: new Date().toISOString(),
         status: 'active' as PlanStatus,
         generatedAt: new Date().toISOString(),

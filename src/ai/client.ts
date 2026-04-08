@@ -10,10 +10,21 @@ export function getAIConfig(): AIClientConfig | null {
   return config
 }
 
+export interface SystemMessage {
+  type: 'text'
+  text: string
+  cache_control?: { type: 'ephemeral' }
+}
+
 export interface ClaudeResponse {
   text: string
   stopReason: string
-  usage: { inputTokens: number; outputTokens: number }
+  usage: {
+    inputTokens: number
+    outputTokens: number
+    cacheCreationTokens: number
+    cacheReadTokens: number
+  }
 }
 
 export class TruncationError extends Error {
@@ -62,6 +73,8 @@ async function readStream(response: Response): Promise<ClaudeResponse> {
   let stopReason = 'unknown'
   let inputTokens = 0
   let outputTokens = 0
+  let cacheCreationTokens = 0
+  let cacheReadTokens = 0
   let buffer = ''
 
   while (true) {
@@ -103,6 +116,8 @@ async function readStream(response: Response): Promise<ClaudeResponse> {
           case 'message_start':
             if (event.message?.usage) {
               inputTokens = event.message.usage.input_tokens ?? 0
+              cacheCreationTokens = event.message.usage.cache_creation_input_tokens ?? 0
+              cacheReadTokens = event.message.usage.cache_read_input_tokens ?? 0
             }
             break
         }
@@ -119,12 +134,12 @@ async function readStream(response: Response): Promise<ClaudeResponse> {
   return {
     text: fullText,
     stopReason,
-    usage: { inputTokens, outputTokens },
+    usage: { inputTokens, outputTokens, cacheCreationTokens, cacheReadTokens },
   }
 }
 
 export async function callClaude(
-  systemPrompt: string,
+  system: string | SystemMessage[],
   userPrompt: string,
   options?: { maxTokens?: number },
 ): Promise<ClaudeResponse> {
@@ -135,20 +150,27 @@ export async function callClaude(
   const baseUrl = config.proxyUrl || 'https://api.anthropic.com'
   const model = config.model || 'claude-sonnet-4-20250514'
   const maxTokens = options?.maxTokens ?? 16000
+  const usesCaching = Array.isArray(system)
+
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+    'x-api-key': config.apiKey,
+    'anthropic-version': '2023-06-01',
+    'anthropic-dangerous-direct-browser-access': 'true',
+  }
+
+  if (usesCaching) {
+    headers['anthropic-beta'] = 'prompt-caching-2024-07-31'
+  }
 
   const response = await fetchWithRetry(`${baseUrl}/v1/messages`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': config.apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
-    },
+    headers,
     body: JSON.stringify({
       model,
       max_tokens: maxTokens,
       stream: true,
-      system: systemPrompt,
+      system,
       messages: [
         { role: 'user', content: userPrompt },
       ],

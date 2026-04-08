@@ -9,6 +9,9 @@ interface AppSettings {
   proxyUrl: string
   model: string
   darkMode: boolean | 'auto'
+  planWeeks: number
+  daysPerWeek: number
+  sessionDurationMin: number
 }
 
 const defaults: AppSettings = {
@@ -16,6 +19,9 @@ const defaults: AppSettings = {
   proxyUrl: '',
   model: 'claude-sonnet-4-20250514',
   darkMode: 'auto',
+  planWeeks: 12,
+  daysPerWeek: 0, // 0 = automático según nivel de forma física
+  sessionDurationMin: 45,
 }
 
 export const useSettingsStore = defineStore('settings', () => {
@@ -59,6 +65,21 @@ export const useSettingsStore = defineStore('settings', () => {
     save()
   }
 
+  function updatePlanWeeks(weeks: number): void {
+    settings.value.planWeeks = weeks
+    save()
+  }
+
+  function updateDaysPerWeek(days: number): void {
+    settings.value.daysPerWeek = days
+    save()
+  }
+
+  function updateSessionDurationMin(minutes: number): void {
+    settings.value.sessionDurationMin = minutes
+    save()
+  }
+
   // Apply config on init
   applyAIConfig()
 
@@ -70,5 +91,8 @@ export const useSettingsStore = defineStore('settings', () => {
     updateApiKey,
     updateProxyUrl,
     updateModel,
+    updatePlanWeeks,
+    updateDaysPerWeek,
+    updateSessionDurationMin,
   }
 })
