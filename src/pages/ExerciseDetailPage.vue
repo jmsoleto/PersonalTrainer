@@ -80,6 +80,17 @@
         </q-card-section>
       </q-card>
 
+      <!-- Video -->
+      <q-card flat bordered class="q-mb-md">
+        <q-card-section>
+          <div class="text-subtitle2 q-mb-sm">Video</div>
+          <ExerciseVideoSection
+            :exercise-id="exercise.id"
+            :exercise-name="exercise.name"
+          />
+        </q-card-section>
+      </q-card>
+
       <!-- Tags -->
       <div class="q-mb-md">
         <q-chip
@@ -101,6 +112,7 @@
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import PageShell from '../components/layout/PageShell.vue'
+import ExerciseVideoSection from '../components/exercises/ExerciseVideoSection.vue'
 import { useExercisesStore } from '../stores/exercises'
 
 const route = useRoute()

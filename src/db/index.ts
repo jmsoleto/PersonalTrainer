@@ -4,12 +4,19 @@ import type { TrainingPlan, CompletedSession } from '../types/plan'
 import type { UnlockedAchievement } from '../types/achievement'
 import type { BodyMeasurement } from '../types/measurement'
 
+export interface ExerciseVideoRecord {
+  exerciseId: string
+  videoId: string | null
+  blacklistedVideoIds: string[]
+}
+
 class PersonalTrainerDB extends Dexie {
   userProfiles!: Table<UserProfile>
   trainingPlans!: Table<TrainingPlan>
   completedSessions!: Table<CompletedSession>
   unlockedAchievements!: Table<UnlockedAchievement>
   bodyMeasurements!: Table<BodyMeasurement>
+  exerciseVideos!: Table<ExerciseVideoRecord>
 
   constructor() {
     super('PersonalTrainerDB')
@@ -53,6 +60,15 @@ class PersonalTrainerDB extends Dexie {
           a.userId = defaultUserId
         }
       })
+    })
+
+    this.version(3).stores({
+      userProfiles: 'id, createdAt',
+      trainingPlans: 'id, userId, status, startDate',
+      completedSessions: 'id, planId, [weekNumber+dayNumber], startedAt',
+      unlockedAchievements: '++id, achievementId, userId, [achievementId+userId], unlockedAt',
+      bodyMeasurements: 'id, userId, date',
+      exerciseVideos: 'exerciseId',
     })
   }
 }

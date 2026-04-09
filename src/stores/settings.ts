@@ -12,6 +12,7 @@ interface AppSettings {
   planWeeks: number
   daysPerWeek: number
   sessionDurationMin: number
+  youtubeApiKey: string
 }
 
 const defaults: AppSettings = {
@@ -22,6 +23,7 @@ const defaults: AppSettings = {
   planWeeks: 12,
   daysPerWeek: 0, // 0 = automático según nivel de forma física
   sessionDurationMin: 45,
+  youtubeApiKey: '',
 }
 
 export const useSettingsStore = defineStore('settings', () => {

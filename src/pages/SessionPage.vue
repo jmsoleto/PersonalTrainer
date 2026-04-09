@@ -71,14 +71,24 @@
                 {{ getPlannedExercise(exercise.exerciseId)?.notes }}
               </div>
             </div>
-            <q-btn
-              flat dense round
-              :icon="isSkipped(exercise.exerciseId) ? 'undo' : 'skip_next'"
-              :color="isSkipped(exercise.exerciseId) ? 'primary' : 'grey-6'"
-              @click="toggleSkip(exercise.exerciseId)"
-            >
-              <q-tooltip>{{ isSkipped(exercise.exerciseId) ? 'Restaurar' : 'Saltar ejercicio' }}</q-tooltip>
-            </q-btn>
+            <div class="row items-center">
+              <q-btn
+                flat dense round
+                icon="info_outline"
+                color="grey-6"
+                @click="openExerciseInfo(exercise.exerciseId)"
+              >
+                <q-tooltip>Ver instrucciones y video</q-tooltip>
+              </q-btn>
+              <q-btn
+                flat dense round
+                :icon="isSkipped(exercise.exerciseId) ? 'undo' : 'skip_next'"
+                :color="isSkipped(exercise.exerciseId) ? 'primary' : 'grey-6'"
+                @click="toggleSkip(exercise.exerciseId)"
+              >
+                <q-tooltip>{{ isSkipped(exercise.exerciseId) ? 'Restaurar' : 'Saltar ejercicio' }}</q-tooltip>
+              </q-btn>
+            </div>
           </div>
 
           <template v-if="!isSkipped(exercise.exerciseId)">
@@ -192,19 +202,30 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useQuasar } from 'quasar'
 import PageShell from '../components/layout/PageShell.vue'
 import RestTimer from '../components/session/RestTimer.vue'
+import ExerciseInfoDialog from '../components/session/ExerciseInfoDialog.vue'
 import { usePlanStore } from '../stores/plan'
 import { useSessionStore } from '../stores/session'
+import { useExercisesStore } from '../stores/exercises'
 import type { PlannedSession, PlannedExercise, CompletedSet } from '../types/plan'
 
 const route = useRoute()
 const router = useRouter()
+const $q = useQuasar()
 const planStore = usePlanStore()
 const sessionStore = useSessionStore()
+const exercisesStore = useExercisesStore()
 const loading = ref(true)
 const session = ref<PlannedSession | undefined>(undefined)
 const showRestTimer = ref(false)
+
+function openExerciseInfo(exerciseId: string): void {
+  const exercise = exercisesStore.getById(exerciseId)
+  if (!exercise) return
+  $q.dialog({ component: ExerciseInfoDialog, componentProps: { exercise } })
+}
 
 function getPlannedExercise(exerciseId: string): PlannedExercise | undefined {
   return session.value?.mainWorkout.find(e => e.exerciseId === exerciseId)
@@ -241,7 +262,7 @@ function completeSession(): void {
 }
 
 onMounted(async () => {
-  await planStore.loadActivePlan()
+  await Promise.all([planStore.loadActivePlan(), exercisesStore.loadExercises()])
   const sessionId = route.params.sessionId as string
   session.value = planStore.getSession(sessionId)
 

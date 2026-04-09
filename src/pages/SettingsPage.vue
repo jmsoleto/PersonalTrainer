@@ -42,6 +42,29 @@
       </q-card-section>
     </q-card>
 
+    <!-- YouTube Configuration -->
+    <q-card flat bordered class="q-mb-md">
+      <q-card-section>
+        <div class="text-subtitle1 q-mb-sm">YouTube</div>
+        <q-input
+          v-model="settingsStore.settings.youtubeApiKey"
+          :type="showYoutubeKey ? 'text' : 'password'"
+          outlined
+          label="YouTube Data API v3 Key"
+          hint="Necesaria para buscar videos de ejercicios automáticamente"
+          class="q-mb-sm"
+        >
+          <template #append>
+            <q-icon
+              :name="showYoutubeKey ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="showYoutubeKey = !showYoutubeKey"
+            />
+          </template>
+        </q-input>
+      </q-card-section>
+    </q-card>
+
     <!-- Appearance -->
     <q-card flat bordered class="q-mb-md">
       <q-card-section>
@@ -130,6 +153,7 @@ const darkModeValue = computed({
 })
 
 const showApiKey = ref(false)
+const showYoutubeKey = ref(false)
 const exporting = ref(false)
 const importing = ref(false)
 const fileInput = ref<HTMLInputElement | null>(null)
