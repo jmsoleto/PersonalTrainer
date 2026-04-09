@@ -37,9 +37,9 @@ export const useSessionStore = defineStore('session', () => {
         exerciseName: ex.exerciseName,
         sets: Array.from({ length: ex.sets }, (_, i) => ({
           setNumber: i + 1,
-          reps: undefined,
-          weightKg: undefined,
-          durationSeconds: undefined,
+          reps: ex.reps,
+          weightKg: ex.targetWeightKg,
+          durationSeconds: ex.durationSeconds,
           completed: false,
           rpe: undefined,
         })),

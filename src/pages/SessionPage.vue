@@ -67,6 +67,13 @@
           <div class="row items-center justify-between">
             <div>
               <div class="text-subtitle2">{{ exercise.exerciseName }}</div>
+              <div class="text-caption text-grey-5 q-mt-xs">
+                <span>{{ getPlannedExercise(exercise.exerciseId)?.sets }} series</span>
+                <span v-if="getPlannedExercise(exercise.exerciseId)?.reps"> &times; {{ getPlannedExercise(exercise.exerciseId)?.reps }} reps</span>
+                <span v-if="getPlannedExercise(exercise.exerciseId)?.durationSeconds"> &times; {{ getPlannedExercise(exercise.exerciseId)?.durationSeconds }}s</span>
+                <span v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg"> &middot; {{ getPlannedExercise(exercise.exerciseId)?.targetWeightKg }} kg</span>
+                <span v-if="getPlannedExercise(exercise.exerciseId)?.restSeconds"> &middot; Descanso {{ getPlannedExercise(exercise.exerciseId)?.restSeconds }}s</span>
+              </div>
               <div v-if="getPlannedExercise(exercise.exerciseId)?.notes" class="text-caption text-grey-6">
                 {{ getPlannedExercise(exercise.exerciseId)?.notes }}
               </div>
@@ -92,10 +99,32 @@
           </div>
 
           <template v-if="!isSkipped(exercise.exerciseId)">
+            <!-- Column headers -->
+            <div class="row items-center q-gutter-sm q-mt-sm q-mb-xs">
+              <div style="min-width: 50px" />
+              <div
+                v-if="getPlannedExercise(exercise.exerciseId)?.reps"
+                class="text-caption text-grey-5 text-weight-medium"
+                style="width: 80px; text-align: center"
+              >REPS</div>
+              <div
+                v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg !== undefined"
+                class="text-caption text-grey-5 text-weight-medium"
+                style="width: 80px; text-align: center"
+              >KG</div>
+              <div
+                v-if="getPlannedExercise(exercise.exerciseId)?.durationSeconds"
+                class="text-caption text-grey-5 text-weight-medium"
+                style="width: 80px; text-align: center"
+              >SEG</div>
+            </div>
+
+            <!-- Set rows -->
             <div
               v-for="set in exercise.sets"
               :key="set.setNumber"
-              class="row items-center q-gutter-sm q-mt-sm"
+              class="row items-center q-gutter-sm q-mt-xs"
+              :style="set.completed ? 'opacity: 0.45' : ''"
             >
               <div class="text-caption text-grey-6" style="min-width: 50px">
                 Set {{ set.setNumber }}
@@ -106,19 +135,17 @@
                 v-model.number="set.reps"
                 type="number"
                 dense outlined
-                label="Reps"
-                :placeholder="String(getPlannedExercise(exercise.exerciseId)?.reps ?? '')"
-                style="max-width: 80px"
+                style="width: 80px"
+                input-style="text-align: center; font-size: 16px; font-weight: 600"
               />
 
               <q-input
-                v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg !== undefined || getPlannedExercise(exercise.exerciseId)?.reps"
+                v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg !== undefined"
                 v-model.number="set.weightKg"
                 type="number"
                 dense outlined
-                label="Kg"
-                :placeholder="String(getPlannedExercise(exercise.exerciseId)?.targetWeightKg ?? '')"
-                style="max-width: 80px"
+                style="width: 80px"
+                input-style="text-align: center; font-size: 16px; font-weight: 600"
               />
 
               <q-input
@@ -126,9 +153,8 @@
                 v-model.number="set.durationSeconds"
                 type="number"
                 dense outlined
-                label="Seg"
-                :placeholder="String(getPlannedExercise(exercise.exerciseId)?.durationSeconds ?? '')"
-                style="max-width: 80px"
+                style="width: 80px"
+                input-style="text-align: center; font-size: 16px; font-weight: 600"
               />
 
               <q-btn
@@ -266,7 +292,8 @@ onMounted(async () => {
   const sessionId = route.params.sessionId as string
   session.value = planStore.getSession(sessionId)
 
-  if (session.value && planStore.activePlan && !sessionStore.isActive) {
+  const isCorrectSession = sessionStore.currentSession?.planned.id === sessionId
+  if (session.value && planStore.activePlan && !isCorrectSession) {
     // Find which week/day this session belongs to
     let weekNumber = 1
     let dayNumber = 1
