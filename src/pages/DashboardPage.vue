@@ -172,11 +172,17 @@
       </div>
     </div>
   </PageShell>
+
+  <GeneratePlanDialog
+    v-model="showGenerateDialog"
+    @confirm="handleGenerateConfirm"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import PageShell from '../components/layout/PageShell.vue'
+import GeneratePlanDialog from '../components/plan/GeneratePlanDialog.vue'
 import { useUserStore } from '../stores/user'
 import { usePlanStore } from '../stores/plan'
 import { useSettingsStore } from '../stores/settings'
@@ -226,6 +232,7 @@ const weekProgress = computed(() => {
   return Math.round((completedCount / trainingDays) * 100)
 })
 
+const showGenerateDialog = ref(false)
 const importingPlan = ref(false)
 const planFileInput = ref<HTMLInputElement | null>(null)
 const completedThisWeek = ref(0)
@@ -269,9 +276,26 @@ async function handlePlanImport(event: Event): Promise<void> {
   }
 }
 
-async function generatePlan() {
+function generatePlan() {
+  showGenerateDialog.value = true
+}
+
+async function handleGenerateConfirm(params: {
+  weeks: number
+  daysPerWeek: number
+  sessionDurationMin: number
+  trainingStyle: string
+  additionalNotes: string
+}) {
+  settingsStore.updatePlanWeeks(params.weeks)
+  settingsStore.updateDaysPerWeek(params.daysPerWeek)
+  settingsStore.updateSessionDurationMin(params.sessionDurationMin)
+
   try {
-    await planStore.generatePlan()
+    await planStore.generatePlan({
+      trainingStyle: params.trainingStyle || undefined,
+      additionalNotes: params.additionalNotes || undefined,
+    })
     Notify.create({
       message: 'Plan generado correctamente',
       color: 'positive',

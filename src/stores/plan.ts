@@ -41,7 +41,12 @@ export const usePlanStore = defineStore('plan', () => {
     activePlan.value = plans[0] ?? null
   }
 
-  async function generatePlan(): Promise<TrainingPlan> {
+  interface GenerateOptions {
+    trainingStyle?: string
+    additionalNotes?: string
+  }
+
+  async function generatePlan(options: GenerateOptions = {}): Promise<TrainingPlan> {
     const userStore = useUserStore()
     const exercisesStore = useExercisesStore()
 
@@ -67,6 +72,8 @@ export const usePlanStore = defineStore('plan', () => {
         weeks: settingsStore.settings.planWeeks,
         daysPerWeek,
         sessionDurationMin: settingsStore.settings.sessionDurationMin,
+        trainingStyle: options.trainingStyle,
+        additionalNotes: options.additionalNotes,
       }
 
       const weeks = await generatePlanFromPhases(

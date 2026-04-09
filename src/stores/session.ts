@@ -89,8 +89,8 @@ export const useSessionStore = defineStore('session', () => {
       completedAt: new Date().toISOString(),
       difficultyRating,
       feedback,
-      exercises: currentSession.value.exercises,
-      skippedExercises: currentSession.value.skippedExercises,
+      exercises: JSON.parse(JSON.stringify(currentSession.value.exercises)),
+      skippedExercises: JSON.parse(JSON.stringify(currentSession.value.skippedExercises)),
     }
 
     await db.completedSessions.add(completed)

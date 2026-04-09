@@ -8,6 +8,8 @@ export interface PlanParams {
   weeks: number
   daysPerWeek: number
   sessionDurationMin: number
+  trainingStyle?: string
+  additionalNotes?: string
 }
 
 const GOAL_LABELS: Record<FitnessGoal, string> = {
@@ -115,6 +117,10 @@ export function buildPhaseUserPrompt(profile: UserProfile, params: PlanParams): 
 - Duración total: ${params.weeks} semanas
 - Días de entrenamiento por semana: ${params.daysPerWeek}
 - Duración objetivo por sesión: ${params.sessionDurationMin} minutos
+
+## Preferencias adicionales
+- Estilo de entrenamiento: ${params.trainingStyle || 'Sin preferencia'}
+- Notas adicionales del usuario: ${params.additionalNotes || 'Ninguna'}
 
 ## Estructura de fases
 ${phaseNote}
