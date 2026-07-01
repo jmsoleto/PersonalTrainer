@@ -14,7 +14,22 @@ import { useUserStore } from './user'
 import { useExercisesStore } from './exercises'
 import { useSettingsStore } from './settings'
 import type { TrainingPlan, Week, CompletedSession, PlannedSession } from '../types/plan'
-import { FitnessLevel, type PlanStatus } from '../types/enums'
+import { FitnessGoal, FitnessLevel, type PlanStatus } from '../types/enums'
+
+const GOAL_PLAN_NAMES: Record<FitnessGoal, string> = {
+  [FitnessGoal.Strength]: 'Ruta de fuerza',
+  [FitnessGoal.GainMuscle]: 'Ruta de hipertrofia',
+  [FitnessGoal.LoseWeight]: 'Ruta de definición',
+  [FitnessGoal.ImproveEndurance]: 'Ruta de resistencia',
+  [FitnessGoal.Flexibility]: 'Ruta de movilidad',
+  [FitnessGoal.GeneralFitness]: 'Ruta de fitness',
+}
+
+function buildPlanName(goals: FitnessGoal[], userName: string): string {
+  const primaryGoal = goals[0]
+  const base = primaryGoal ? GOAL_PLAN_NAMES[primaryGoal] : 'Tu ruta'
+  return `${base} · ${userName}`
+}
 
 const DAYS_PER_LEVEL: Record<FitnessLevel, number> = {
   [FitnessLevel.Beginner]: 3,
@@ -88,7 +103,7 @@ export const usePlanStore = defineStore('plan', () => {
       const plan: TrainingPlan = {
         id: crypto.randomUUID(),
         userId: userStore.currentUser.id,
-        name: `Plan ${new Date().toLocaleDateString('es-ES')}`,
+        name: buildPlanName(userStore.currentUser.goals, userStore.currentUser.name),
         totalWeeks: planParams.weeks,
         startDate: new Date().toISOString(),
         status: 'active' as PlanStatus,

@@ -30,7 +30,7 @@ export async function generatePlanFromPhases(
 
   onProgress?.('Generando plan con IA...')
 
-  const response = await callClaude(system, userPrompt, { maxTokens: 8192 })
+  const response = await callClaude(system, userPrompt, { maxTokens: 12000 })
 
   onProgress?.('Procesando respuesta...')
 

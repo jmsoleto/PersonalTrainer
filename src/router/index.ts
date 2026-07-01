@@ -33,6 +33,11 @@ const router = createRouter({
       meta: { title: 'Semana' },
     },
     {
+      path: '/plan/debug',
+      component: () => import('../pages/PlanDebugPage.vue'),
+      meta: { title: 'Debug Plan' },
+    },
+    {
       path: '/plan/session/:sessionId',
       component: () => import('../pages/SessionPage.vue'),
       meta: { title: 'Sesion' },

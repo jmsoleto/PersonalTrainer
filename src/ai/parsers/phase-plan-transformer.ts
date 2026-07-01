@@ -3,47 +3,39 @@ import type { Exercise } from '../../types/exercise'
 import { DayType } from '../../types/enums'
 
 // ---------------------------------------------------------------------------
-// Types for the phase-based AI output
+// Types for the compact phase-based AI output
 // ---------------------------------------------------------------------------
 
-interface PhaseExercise {
-  exercise_id: string
-  sets?: number
-  reps?: number
-  duration_sec?: number
-  each_side?: boolean
+/** Compact exercise format returned by the AI */
+interface CompactExercise {
+  id: string       // exercise_id
+  s?: number       // sets
+  r?: number       // reps
+  sec?: number     // duration_sec
+  es?: boolean     // each_side
 }
 
-interface PhaseWarmupCooldown {
-  duration_min: number
-  exercises: PhaseExercise[]
-}
-
-interface PhaseMain {
-  duration_min: number
-  rest_between_sets_sec: { min: number; max: number }
-  exercises: PhaseExercise[]
-}
-
-interface PhaseSession {
-  session_id: string
+/** Compact session: warmup/cooldown defined once, main varies per week */
+interface CompactSession {
+  id: string                   // session letter: "A", "B", …
   name: string
-  duration_min: number
-  warmup: PhaseWarmupCooldown
-  main: PhaseMain
-  cooldown: PhaseWarmupCooldown
+  dur: number                  // duration_min
+  rest: [number, number]       // [min, max] rest between sets in seconds
+  wu: CompactExercise[]        // warmup exercises (same every week)
+  cd: CompactExercise[]        // cooldown exercises (same every week)
+  weeks: CompactExercise[][]   // main exercises per week (index = position in phase.weeks)
 }
 
-interface Phase {
+interface CompactPhase {
   phase: number
   name: string
   weeks: number[]
   goal: string
-  sessions: PhaseSession[]
+  sessions: CompactSession[]
 }
 
 export interface PhaseOutput {
-  phases: Phase[]
+  phases: CompactPhase[]
 }
 
 // ---------------------------------------------------------------------------
@@ -81,53 +73,55 @@ function buildExerciseMap(exercises: Exercise[]): Map<string, string> {
 // Mapping helpers
 // ---------------------------------------------------------------------------
 
-function mapPhaseExercise(
-  pe: PhaseExercise,
+const WARMUP_COOLDOWN_DURATION_MIN = 5
+
+function mapCompactExercise(
+  ce: CompactExercise,
   restSeconds: number,
   exerciseMap: Map<string, string>,
 ): PlannedExercise {
   return {
-    exerciseId: pe.exercise_id,
-    exerciseName: exerciseMap.get(pe.exercise_id) ?? pe.exercise_id,
-    sets: pe.sets ?? 1,
-    reps: pe.reps,
-    durationSeconds: pe.duration_sec,
+    exerciseId: ce.id,
+    exerciseName: exerciseMap.get(ce.id) ?? ce.id,
+    sets: ce.s ?? 1,
+    reps: ce.r,
+    durationSeconds: ce.sec,
     restSeconds,
-    notes: pe.each_side ? 'Cada lado' : undefined,
+    notes: ce.es ? 'Cada lado' : undefined,
   }
 }
 
-function mapSegment(
-  phaseSegment: PhaseWarmupCooldown,
+function mapCompactSegment(
+  exercises: CompactExercise[],
   exerciseMap: Map<string, string>,
 ): SessionSegment {
   return {
-    durationMinutes: phaseSegment.duration_min,
-    exercises: phaseSegment.exercises.map(pe =>
-      mapPhaseExercise(pe, 0, exerciseMap),
-    ),
+    durationMinutes: WARMUP_COOLDOWN_DURATION_MIN,
+    exercises: exercises.map(ce => mapCompactExercise(ce, 0, exerciseMap)),
   }
 }
 
-function mapPhaseSession(
-  ps: PhaseSession,
+function mapCompactSession(
+  session: CompactSession,
+  weekPos: number,
   weekNumber: number,
   dayNumber: number,
   exerciseMap: Map<string, string>,
 ): PlannedSession {
-  const restSeconds = ps.main.rest_between_sets_sec?.min ?? 60
-  const mainExercises: PlannedExercise[] = ps.main.exercises.map(pe =>
-    mapPhaseExercise(pe, restSeconds, exerciseMap),
+  const restSeconds = session.rest?.[0] ?? 60
+  const weekExercises = session.weeks[weekPos] ?? session.weeks[0] ?? []
+  const mainExercises: PlannedExercise[] = weekExercises.map(ce =>
+    mapCompactExercise(ce, restSeconds, exerciseMap),
   )
 
   return {
     id: `s-w${weekNumber}-d${dayNumber}`,
-    title: ps.name,
+    title: session.name,
     targetMuscleGroups: [],
-    estimatedDurationMinutes: ps.duration_min,
-    warmup: mapSegment(ps.warmup, exerciseMap),
+    estimatedDurationMinutes: session.dur,
+    warmup: mapCompactSegment(session.wu ?? [], exerciseMap),
     mainWorkout: mainExercises,
-    cooldown: mapSegment(ps.cooldown, exerciseMap),
+    cooldown: mapCompactSegment(session.cd ?? [], exerciseMap),
   }
 }
 
@@ -179,7 +173,8 @@ export function transformPhasesToWeeks(
       throw new Error(`Phase ${phase.phase} has no sessions`)
     }
 
-    for (const weekNumber of phase.weeks) {
+    for (let weekIdx = 0; weekIdx < phase.weeks.length; weekIdx++) {
+      const weekNumber = phase.weeks[weekIdx]
       const days: DayPlan[] = []
 
       for (let dayNumber = 1; dayNumber <= 7; dayNumber++) {
@@ -187,12 +182,12 @@ export function transformPhasesToWeeks(
         const isTrainingDay = trainingIndex !== -1
 
         if (isTrainingDay) {
-          // Rotate through session templates
+          // Rotate through session templates; pick week-specific main exercises
           const session = sessions[trainingIndex % sessions.length]
           days.push({
             dayNumber,
             dayType: DayType.Training,
-            session: mapPhaseSession(session, weekNumber, dayNumber, exerciseMap),
+            session: mapCompactSession(session, weekIdx, weekNumber, dayNumber, exerciseMap),
           })
         } else {
           // Non-training days adjacent to training days are active_rest, others are full rest

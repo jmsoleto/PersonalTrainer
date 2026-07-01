@@ -18,12 +18,20 @@ interface AppSettings {
 const defaults: AppSettings = {
   apiKey: '',
   proxyUrl: '',
-  model: 'claude-sonnet-4-20250514',
+  model: 'claude-sonnet-4-6',
   darkMode: 'auto',
   planWeeks: 12,
   daysPerWeek: 0, // 0 = automático según nivel de forma física
   sessionDurationMin: 45,
   youtubeApiKey: '',
+}
+
+// Modelos antiguos persistidos → ID actual equivalente. Los IDs con fecha
+// están retirados y devuelven 404, así que migramos al cargar.
+const MODEL_MIGRATIONS: Record<string, string> = {
+  'claude-sonnet-4-20250514': 'claude-sonnet-4-6',
+  'claude-opus-4-20250514': 'claude-opus-4-8',
+  'claude-3-5-haiku-20241022': 'claude-haiku-4-5',
 }
 
 export const useSettingsStore = defineStore('settings', () => {
@@ -32,7 +40,11 @@ export const useSettingsStore = defineStore('settings', () => {
   function loadFromStorage(): AppSettings {
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
-      if (raw) return { ...defaults, ...JSON.parse(raw) }
+      if (raw) {
+        const loaded = { ...defaults, ...JSON.parse(raw) }
+        loaded.model = MODEL_MIGRATIONS[loaded.model] ?? loaded.model
+        return loaded
+      }
     } catch { /* ignore */ }
     return { ...defaults }
   }

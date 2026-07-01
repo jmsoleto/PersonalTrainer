@@ -1,176 +1,197 @@
 <template>
   <PageShell :loading="loading">
-    <!-- Welcome -->
-    <div class="q-mb-lg">
-      <h5 class="q-mb-xs">Hola{{ userName ? ', ' + userName : '' }}</h5>
-      <p class="text-grey-6">{{ todayDate }}</p>
-    </div>
 
-    <!-- No plan yet -->
+    <!-- ── Header ─────────────────────────────────────────────── -->
+    <header class="db-header">
+      <div class="db-header-text">
+        <p class="db-date">{{ todayDate }}</p>
+        <h1 class="db-greeting">
+          Hola<span v-if="userName">, {{ userName }}</span>
+        </h1>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ESTADO: SIN PLAN
+    ════════════════════════════════════════════════════════════ -->
     <template v-if="!planStore.activePlan">
-      <q-card flat bordered class="q-mb-md">
-        <q-card-section class="text-center q-pa-xl">
-          <q-icon name="rocket_launch" size="64px" color="primary" />
-          <h6 class="q-mt-md">Genera tu plan de entrenamiento</h6>
-          <p class="text-grey-6">
-            Configura tu API key y genera tu plan personalizado de 12 semanas con IA
+
+      <!-- Hero vacío -->
+      <section class="db-empty-hero">
+        <span class="db-empty-watermark">00</span>
+
+        <div class="db-empty-icon-wrap">
+          <q-icon name="rocket_launch" size="36px" class="db-empty-icon" />
+        </div>
+
+        <h2 class="db-empty-title">Genera tu plan<br>de entrenamiento</h2>
+        <p class="db-empty-desc">
+          Crea tu plan personalizado de 12 semanas con IA.<br>
+          Solo necesitas tu API key de Claude.
+        </p>
+
+        <!-- Acciones -->
+        <div class="db-empty-actions">
+          <router-link
+            v-if="!settingsStore.settings.apiKey"
+            to="/settings"
+            class="db-btn db-btn--secondary"
+          >
+            <q-icon name="key" size="18px" />
+            Configurar API Key
+          </router-link>
+
+          <button
+            class="db-btn db-btn--cta"
+            :disabled="!settingsStore.settings.apiKey || planStore.generating"
+            @click="generatePlan"
+          >
+            <q-spinner-dots v-if="planStore.generating" size="18px" color="white" />
+            <template v-else>
+              <q-icon name="auto_awesome" size="18px" />
+              Generar Plan
+            </template>
+          </button>
+
+          <button
+            class="db-btn db-btn--ghost"
+            :disabled="importingPlan"
+            @click="triggerPlanImport"
+          >
+            <q-spinner-dots v-if="importingPlan" size="18px" />
+            <template v-else>
+              <q-icon name="upload_file" size="18px" />
+              Importar Plan
+            </template>
+          </button>
+        </div>
+
+        <!-- Progreso de generación -->
+        <div v-if="planStore.generating" class="db-gen-progress">
+          <div class="db-gen-bar">
+            <div class="db-gen-bar-fill" />
+          </div>
+          <p class="db-gen-status">
+            {{ planStore.generationProgress?.status ?? 'Generando plan...' }}
           </p>
-          <div class="q-gutter-sm q-mt-md">
-            <q-btn
-              v-if="!settingsStore.settings.apiKey"
-              color="grey-7"
-              label="Configurar API Key"
-              icon="key"
-              to="/settings"
-            />
-            <q-btn
-              color="primary"
-              label="Generar Plan"
-              icon="auto_awesome"
-              :loading="planStore.generating"
-              :disable="!settingsStore.settings.apiKey"
-              @click="generatePlan"
-            />
-            <q-btn
-              outline
-              color="primary"
-              label="Importar Plan"
-              icon="upload_file"
-              :loading="importingPlan"
-              @click="triggerPlanImport"
-            />
-            <input
-              ref="planFileInput"
-              type="file"
-              accept=".json"
-              style="display: none"
-              @change="handlePlanImport"
-            />
-          </div>
+        </div>
 
-          <!-- Generation progress -->
-          <div v-if="planStore.generating" class="q-mt-md">
-            <q-linear-progress
-              indeterminate
-              color="primary"
-              rounded
-              class="q-mb-sm"
-              style="height: 8px"
-            />
-            <p class="text-caption text-grey-6 text-center q-mb-none">
-              {{ planStore.generationProgress?.status ?? 'Generando plan...' }}
-            </p>
-          </div>
-        </q-card-section>
-      </q-card>
+        <input
+          ref="planFileInput"
+          type="file"
+          accept=".json"
+          style="display:none"
+          @change="handlePlanImport"
+        />
+      </section>
+
     </template>
 
-    <!-- Active plan -->
+    <!-- ═══════════════════════════════════════════════════════════
+         ESTADO: CON PLAN ACTIVO
+    ════════════════════════════════════════════════════════════ -->
     <template v-else>
-      <!-- Current week -->
-      <q-card flat bordered class="q-mb-md">
-        <q-card-section>
-          <div class="row items-center justify-between">
-            <div>
-              <div class="text-overline text-primary">SEMANA {{ planStore.getCurrentWeekNumber() }} DE {{ planStore.activePlan?.totalWeeks ?? 12 }}</div>
-              <div class="text-subtitle1">{{ planStore.currentWeek?.theme || 'Plan activo' }}</div>
-            </div>
-            <q-circular-progress
-              :value="weekProgress"
-              size="56px"
-              :thickness="0.3"
-              color="primary"
-              track-color="grey-8"
-            >
-              <span class="text-caption">{{ weekProgress }}%</span>
-            </q-circular-progress>
-          </div>
-        </q-card-section>
-        <q-separator />
-        <q-card-actions>
-          <q-btn flat color="primary" label="Ver plan completo" to="/plan" />
-          <q-btn
-            flat
-            label="Semana actual"
-            :to="`/plan/week/${planStore.getCurrentWeekNumber()}`"
-          />
-        </q-card-actions>
-      </q-card>
 
-      <!-- Today's session -->
-      <q-card v-if="todaySession" flat bordered class="q-mb-md">
-        <q-card-section>
-          <div class="text-overline">HOY</div>
-          <div class="text-h6">{{ todaySession.title }}</div>
-          <div class="text-grey-6">
-            {{ todaySession.estimatedDurationMinutes }} min ·
+      <!-- Semana actual -->
+      <section class="db-card db-week-card">
+        <div class="db-week-info">
+          <span class="db-overline">
+            Semana {{ planStore.getCurrentWeekNumber() }} de {{ planStore.activePlan?.totalWeeks ?? 12 }}
+          </span>
+          <h2 class="db-week-theme">
+            {{ planStore.currentWeek?.theme || 'Plan activo' }}
+          </h2>
+        </div>
+
+        <!-- Progress ring -->
+        <div
+          class="db-ring"
+          :style="{ '--prog': weekProgress }"
+          aria-label="`${weekProgress}% completado`"
+        >
+          <span class="db-ring-value">{{ weekProgress }}<span class="db-ring-pct">%</span></span>
+        </div>
+      </section>
+
+      <!-- Accesos semana -->
+      <div class="db-week-links">
+        <router-link to="/plan" class="db-link-btn">
+          Ver plan completo
+          <q-icon name="chevron_right" size="18px" />
+        </router-link>
+        <router-link :to="`/plan/week/${planStore.getCurrentWeekNumber()}`" class="db-link-btn">
+          Semana actual
+          <q-icon name="chevron_right" size="18px" />
+        </router-link>
+      </div>
+
+      <!-- Sesión de hoy -->
+      <section v-if="todaySession" class="db-card db-session-card">
+        <span class="db-overline db-overline--accent">Hoy</span>
+        <h2 class="db-session-title">{{ todaySession.title }}</h2>
+
+        <div class="db-session-meta">
+          <span class="db-meta-pill">
+            <q-icon name="timer" size="14px" />
+            {{ todaySession.estimatedDurationMinutes }} min
+          </span>
+          <span class="db-meta-pill">
+            <q-icon name="fitness_center" size="14px" />
             {{ todaySession.mainWorkout.length }} ejercicios
-          </div>
-          <div class="q-mt-sm">
-            <q-chip
-              v-for="mg in todaySession.targetMuscleGroups"
-              :key="mg"
-              dense
-              size="sm"
-              outline
-            >
-              {{ mg }}
-            </q-chip>
-          </div>
-        </q-card-section>
-        <q-card-actions>
-          <q-btn
-            color="primary"
-            label="Empezar sesion"
-            icon="play_arrow"
-            :to="`/plan/session/${todaySession.id}`"
-          />
-        </q-card-actions>
-      </q-card>
+          </span>
+        </div>
 
-      <q-card v-else flat bordered class="q-mb-md">
-        <q-card-section class="text-center">
-          <q-icon name="spa" size="36px" color="green" />
-          <p class="q-mt-sm text-grey-6">Hoy es dia de descanso</p>
-        </q-card-section>
-      </q-card>
+        <div class="db-muscle-chips">
+          <span
+            v-for="mg in todaySession.targetMuscleGroups"
+            :key="mg"
+            class="db-chip"
+          >{{ mg }}</span>
+        </div>
+
+        <router-link
+          :to="`/plan/session/${todaySession.id}`"
+          class="db-btn db-btn--cta db-session-cta"
+        >
+          <q-icon name="play_arrow" size="20px" />
+          Empezar sesión
+        </router-link>
+      </section>
+
+      <!-- Día de descanso -->
+      <section v-else class="db-card db-rest-card">
+        <q-icon name="spa" size="32px" class="db-rest-icon" />
+        <div>
+          <h3 class="db-rest-title">Día de descanso</h3>
+          <p class="db-rest-desc">Descansa y recupera. Mañana volvemos.</p>
+        </div>
+      </section>
+
     </template>
 
-    <!-- Quick actions -->
-    <div class="row q-col-gutter-md q-mt-sm">
-      <div class="col-6">
-        <q-card flat bordered clickable class="cursor-pointer" @click="$router.push('/measurements')">
-          <q-card-section class="text-center">
-            <q-icon name="straighten" size="28px" color="blue" />
-            <div class="text-caption q-mt-xs">Medidas</div>
-          </q-card-section>
-        </q-card>
-      </div>
-      <div class="col-6">
-        <q-card flat bordered clickable class="cursor-pointer" @click="$router.push('/achievements')">
-          <q-card-section class="text-center">
-            <q-icon name="emoji_events" size="28px" color="amber" />
-            <div class="text-caption q-mt-xs">Logros</div>
-          </q-card-section>
-        </q-card>
-      </div>
-      <div class="col-6">
-        <q-card flat bordered clickable class="cursor-pointer" @click="$router.push('/exercises')">
-          <q-card-section class="text-center">
-            <q-icon name="fitness_center" size="28px" color="orange" />
-            <div class="text-caption q-mt-xs">Ejercicios</div>
-          </q-card-section>
-        </q-card>
-      </div>
-      <div class="col-6">
-        <q-card flat bordered clickable class="cursor-pointer" @click="$router.push('/stats')">
-          <q-card-section class="text-center">
-            <q-icon name="bar_chart" size="28px" color="purple" />
-            <div class="text-caption q-mt-xs">Estadisticas</div>
-          </q-card-section>
-        </q-card>
-      </div>
+    <!-- ── Acciones rápidas (siempre visibles) ─────────────────── -->
+    <div class="db-quick-label">
+      <span class="db-overline">Acceso rápido</span>
     </div>
+    <div class="db-quick-grid">
+      <button class="db-quick-tile" @click="$router.push('/measurements')">
+        <q-icon name="straighten" size="26px" class="db-quick-icon" style="color: var(--k-tertiary)" />
+        <span class="db-quick-name">Medidas</span>
+      </button>
+      <button class="db-quick-tile" @click="$router.push('/achievements')">
+        <q-icon name="emoji_events" size="26px" class="db-quick-icon" style="color: #ffd166" />
+        <span class="db-quick-name">Logros</span>
+      </button>
+      <button class="db-quick-tile" @click="$router.push('/exercises')">
+        <q-icon name="fitness_center" size="26px" class="db-quick-icon" style="color: var(--k-primary)" />
+        <span class="db-quick-name">Ejercicios</span>
+      </button>
+      <button class="db-quick-tile" @click="$router.push('/stats')">
+        <q-icon name="bar_chart" size="26px" class="db-quick-icon" style="color: var(--k-primary-container)" />
+        <span class="db-quick-name">Estadísticas</span>
+      </button>
+    </div>
+
   </PageShell>
 
   <GeneratePlanDialog
@@ -189,53 +210,41 @@ import { useSettingsStore } from '../stores/settings'
 import { useSessionStore } from '../stores/session'
 import { Notify } from 'quasar'
 
-const userStore = useUserStore()
-const planStore = usePlanStore()
+const userStore     = useUserStore()
+const planStore     = usePlanStore()
 const settingsStore = useSettingsStore()
-const sessionStore = useSessionStore()
-const loading = ref(true)
+const sessionStore  = useSessionStore()
+const loading       = ref(true)
 
 onMounted(async () => {
-  await Promise.all([
-    userStore.loadUser(),
-    planStore.loadActivePlan(),
-  ])
+  await Promise.all([userStore.loadUser(), planStore.loadActivePlan()])
   await loadWeekProgress()
   loading.value = false
 })
 
-const userName = computed(() => {
-  return userStore.currentUser?.name ?? ''
-})
+const userName = computed(() => userStore.currentUser?.name ?? '')
 
-const todayDate = computed(() => {
-  return new Date().toLocaleDateString('es-ES', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  })
-})
+const todayDate = computed(() =>
+  new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })
+)
 
 const todaySession = computed(() => {
   if (!planStore.currentWeek) return null
-  const dayOfWeek = new Date().getDay() || 7 // 1=Mon ... 7=Sun
-  const today = planStore.currentWeek.days.find(d => d.dayNumber === dayOfWeek)
-  return today?.session ?? null
+  const dayOfWeek = new Date().getDay() || 7
+  return planStore.currentWeek.days.find(d => d.dayNumber === dayOfWeek)?.session ?? null
 })
 
 const weekProgress = computed(() => {
   if (!planStore.currentWeek || !planStore.activePlan) return 0
-  const weekNum = planStore.getCurrentWeekNumber()
   const trainingDays = planStore.currentWeek.days.filter(d => d.dayType === 'training').length
   if (trainingDays === 0) return 100
-  const completedCount = completedThisWeek.value
-  return Math.round((completedCount / trainingDays) * 100)
+  return Math.round((completedThisWeek.value / trainingDays) * 100)
 })
 
 const showGenerateDialog = ref(false)
-const importingPlan = ref(false)
-const planFileInput = ref<HTMLInputElement | null>(null)
-const completedThisWeek = ref(0)
+const importingPlan      = ref(false)
+const planFileInput      = ref<HTMLInputElement | null>(null)
+const completedThisWeek  = ref(0)
 
 async function loadWeekProgress() {
   if (!planStore.activePlan) return
@@ -244,69 +253,463 @@ async function loadWeekProgress() {
   completedThisWeek.value = sessions.filter(s => s.weekNumber === weekNum).length
 }
 
-function triggerPlanImport(): void {
-  planFileInput.value?.click()
-}
+function triggerPlanImport() { planFileInput.value?.click() }
 
-async function handlePlanImport(event: Event): Promise<void> {
-  const target = event.target as HTMLInputElement
-  const file = target.files?.[0]
+async function handlePlanImport(event: Event) {
+  const file = (event.target as HTMLInputElement).files?.[0]
   if (!file) return
-
   importingPlan.value = true
   try {
-    const text = await file.text()
-    const data = JSON.parse(text)
+    const data = JSON.parse(await file.text())
     await planStore.importExternalPlan(data)
     await loadWeekProgress()
-    Notify.create({
-      message: 'Plan importado correctamente',
-      color: 'positive',
-      icon: 'check_circle',
-    })
+    Notify.create({ message: 'Plan importado correctamente', color: 'positive', icon: 'check_circle' })
   } catch (e) {
-    Notify.create({
-      message: e instanceof Error ? e.message : 'Error al importar el plan',
-      color: 'negative',
-      icon: 'error',
-    })
+    Notify.create({ message: e instanceof Error ? e.message : 'Error al importar el plan', color: 'negative', icon: 'error' })
   } finally {
     importingPlan.value = false
-    target.value = ''
+    ;(event.target as HTMLInputElement).value = ''
   }
 }
 
-function generatePlan() {
-  showGenerateDialog.value = true
-}
+function generatePlan() { showGenerateDialog.value = true }
 
 async function handleGenerateConfirm(params: {
-  weeks: number
-  daysPerWeek: number
-  sessionDurationMin: number
-  trainingStyle: string
-  additionalNotes: string
+  weeks: number; daysPerWeek: number; sessionDurationMin: number
+  trainingStyle: string; additionalNotes: string
 }) {
   settingsStore.updatePlanWeeks(params.weeks)
   settingsStore.updateDaysPerWeek(params.daysPerWeek)
   settingsStore.updateSessionDurationMin(params.sessionDurationMin)
-
   try {
-    await planStore.generatePlan({
-      trainingStyle: params.trainingStyle || undefined,
-      additionalNotes: params.additionalNotes || undefined,
-    })
-    Notify.create({
-      message: 'Plan generado correctamente',
-      color: 'positive',
-      icon: 'check_circle',
-    })
-  } catch (e) {
-    Notify.create({
-      message: planStore.error || 'Error al generar el plan',
-      color: 'negative',
-      icon: 'error',
-    })
+    await planStore.generatePlan({ trainingStyle: params.trainingStyle || undefined, additionalNotes: params.additionalNotes || undefined })
+    Notify.create({ message: 'Plan generado correctamente', color: 'positive', icon: 'check_circle' })
+  } catch {
+    Notify.create({ message: planStore.error || 'Error al generar el plan', color: 'negative', icon: 'error' })
   }
 }
 </script>
+
+<style scoped>
+/* ══════════════════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════════════════ */
+.db-header {
+  margin-bottom: 1.75rem;
+}
+
+.db-date {
+  font-family: var(--k-font-body);
+  font-size: var(--k-label-md);
+  font-weight: 500;
+  letter-spacing: var(--k-tracking-label);
+  text-transform: uppercase;
+  color: var(--k-secondary);
+  margin: 0 0 0.25rem;
+}
+
+.db-greeting {
+  font-family: var(--k-font-headline);
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface);
+  margin: 0;
+  line-height: 1.05;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   TARJETAS BASE
+══════════════════════════════════════════════════════════════ */
+.db-card {
+  border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-container);
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ESTADO VACÍO (SIN PLAN)
+══════════════════════════════════════════════════════════════ */
+.db-empty-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-low);
+  padding: 2rem 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.db-empty-watermark {
+  position: absolute;
+  top: -1rem;
+  right: 0.75rem;
+  font-family: var(--k-font-headline);
+  font-size: 7rem;
+  font-weight: 700;
+  color: var(--k-on-surface);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.db-empty-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-high);
+}
+
+.db-empty-icon {
+  color: var(--k-primary-container);
+}
+
+.db-empty-title {
+  font-family: var(--k-font-headline);
+  font-size: var(--k-headline-md);
+  font-weight: 700;
+  letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.db-empty-desc {
+  font-family: var(--k-font-body);
+  font-size: var(--k-body-md);
+  color: var(--k-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.db-empty-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Barra de progreso de generación */
+.db-gen-progress {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.db-gen-bar {
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--k-surface-high);
+  overflow: hidden;
+}
+
+.db-gen-bar-fill {
+  height: 100%;
+  width: 40%;
+  border-radius: 3px;
+  background: var(--k-gradient-cta);
+  animation: db-indeterminate 1.4s ease-in-out infinite;
+}
+
+@keyframes db-indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+
+.db-gen-status {
+  font-family: var(--k-font-body);
+  font-size: var(--k-label-md);
+  color: var(--k-secondary);
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SEMANA ACTUAL
+══════════════════════════════════════════════════════════════ */
+.db-week-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.db-week-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.db-week-theme {
+  font-family: var(--k-font-headline);
+  font-size: var(--k-title-lg);
+  font-weight: 700;
+  letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Progress ring via conic-gradient */
+.db-ring {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--k-primary-container) calc(var(--prog, 0) * 1%),
+    var(--k-surface-high) 0
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Inner circle (donut) */
+.db-ring::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background-color: var(--k-surface-container);
+}
+
+.db-ring-value {
+  position: relative;
+  z-index: 1;
+  font-family: var(--k-font-headline);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--k-on-surface);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.db-ring-pct {
+  font-size: 0.55rem;
+  font-weight: 500;
+}
+
+/* Links de semana */
+.db-week-links {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.db-link-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-highest);
+  color: var(--k-secondary);
+  font-family: var(--k-font-body);
+  font-size: var(--k-label-md);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+.db-link-btn:hover { background-color: var(--k-surface-bright); color: var(--k-on-surface); }
+
+/* ══════════════════════════════════════════════════════════════
+   SESIÓN DE HOY
+══════════════════════════════════════════════════════════════ */
+.db-session-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.db-session-title {
+  font-family: var(--k-font-headline);
+  font-size: var(--k-headline-md);
+  font-weight: 700;
+  letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.db-session-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.db-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.625rem;
+  border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-high);
+  font-family: var(--k-font-body);
+  font-size: var(--k-label-md);
+  color: var(--k-secondary);
+}
+
+.db-muscle-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.db-chip {
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--k-radius-sm);
+  background-color: var(--k-surface-highest);
+  font-family: var(--k-font-body);
+  font-size: var(--k-label-md);
+  letter-spacing: var(--k-tracking-label);
+  text-transform: uppercase;
+  color: var(--k-on-surface-variant);
+}
+
+.db-session-cta {
+  margin-top: 0.25rem;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DÍA DE DESCANSO
+══════════════════════════════════════════════════════════════ */
+.db-rest-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.db-rest-icon {
+  color: var(--k-tertiary);
+  flex-shrink: 0;
+}
+
+.db-rest-title {
+  font-family: var(--k-font-headline);
+  font-size: var(--k-body-lg);
+  font-weight: 600;
+  letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface);
+  margin: 0 0 0.2rem;
+}
+
+.db-rest-desc {
+  font-family: var(--k-font-body);
+  font-size: var(--k-body-md);
+  color: var(--k-secondary);
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ACCIONES RÁPIDAS
+══════════════════════════════════════════════════════════════ */
+.db-quick-label {
+  margin: 1.25rem 0 0.625rem;
+}
+
+.db-quick-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+
+.db-quick-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 1rem;
+  border: none;
+  border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-container);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+.db-quick-tile:hover { background-color: var(--k-surface-high); }
+
+.db-quick-name {
+  font-family: var(--k-font-headline);
+  font-size: var(--k-body-md);
+  font-weight: 600;
+  letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TOKENS COMPARTIDOS: OVERLINE / BOTONES
+══════════════════════════════════════════════════════════════ */
+.db-overline {
+  font-family: var(--k-font-body);
+  font-size: var(--k-label-md);
+  font-weight: 500;
+  letter-spacing: var(--k-tracking-label);
+  text-transform: uppercase;
+  color: var(--k-secondary);
+}
+
+.db-overline--accent {
+  color: var(--k-primary-container);
+}
+
+/* Botones comunes */
+.db-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.25rem;
+  border: none;
+  border-radius: var(--k-radius-md);
+  font-family: var(--k-font-headline);
+  font-size: var(--k-body-md);
+  font-weight: 600;
+  letter-spacing: var(--k-tracking-headline);
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.db-btn--cta {
+  background: var(--k-gradient-cta);
+  color: var(--k-on-primary-container);
+}
+.db-btn--cta:hover:not(:disabled) { opacity: 0.9; }
+
+.db-btn--secondary {
+  background-color: var(--k-surface-highest);
+  color: var(--k-secondary);
+}
+.db-btn--secondary:hover { background-color: var(--k-surface-bright); color: var(--k-on-surface); }
+
+.db-btn--ghost {
+  background-color: transparent;
+  color: var(--k-secondary);
+  box-shadow: inset 0 0 0 1px var(--k-ghost-border);
+}
+.db-btn--ghost:hover { background-color: var(--k-surface-container); }
+
+.db-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+</style>

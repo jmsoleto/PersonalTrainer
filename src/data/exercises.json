@@ -5060,5 +5060,2200 @@
       "equilibrio",
       "tren_inferior"
     ]
+  },
+  {
+    "id": "desc_flexion_manos_elevadas",
+    "name": "Flexión Manos Elevadas",
+    "description": "Nivel 1 de flexiones del programa Desencadenado. Las manos se apoyan en una superficie elevada (mesa, silla), reduciendo la carga. Ideal para principiantes que aún no dominan la flexión clásica.",
+    "instructions": [
+      "Coloca las manos sobre una superficie elevada (mesa, banco o silla) separadas al ancho de los hombros.",
+      "Mantén el cuerpo recto desde los pies hasta la cabeza.",
+      "Baja el pecho hacia la superficie de apoyo flexionando los codos.",
+      "Empuja hacia arriba hasta estirar completamente los brazos.",
+      "Cuanto más alta la superficie, más fácil el ejercicio. Ve bajando progresivamente."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "principiante",
+    "equipment": [
+      "bench"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_1",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_flexion_de_rodillas",
+    "name": "Flexión de Rodillas",
+    "description": "Nivel 2 de flexiones del programa Desencadenado. Se realiza apoyando las rodillas en el suelo, reduciendo el peso que soportan los brazos. Paso intermedio hacia la flexión clásica.",
+    "instructions": [
+      "Colócate en posición de flexión pero con las rodillas apoyadas en el suelo.",
+      "Cruza los pies por detrás y mantén el cuerpo recto desde las rodillas hasta la cabeza.",
+      "Baja el pecho hasta casi tocar el suelo.",
+      "Empuja hacia arriba hasta estirar los brazos completamente.",
+      "Mantén el core activado durante todo el movimiento."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_2",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_flexion_clasica",
+    "name": "Flexión Clásica",
+    "description": "Nivel 3 de flexiones del programa Desencadenado. La flexión de toda la vida: manos en el suelo, cuerpo recto, bajar y subir. El pilar fundamental del entrenamiento de empuje con peso corporal.",
+    "instructions": [
+      "Colócate en posición de plancha alta con las manos separadas al ancho de los hombros.",
+      "Mantén el cuerpo completamente recto, sin arquear la espalda ni subir las caderas.",
+      "Baja el cuerpo controladamente hasta que el pecho casi toque el suelo.",
+      "Empuja con fuerza hacia arriba hasta la posición inicial.",
+      "No dejes caer la cabeza; mira ligeramente hacia adelante."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_3",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_flexion_pies_elevados",
+    "name": "Flexión Pies Elevados",
+    "description": "Nivel 4 de flexiones del programa Desencadenado. Con los pies sobre una superficie elevada, se incrementa la carga sobre el tren superior y se traslada más trabajo a los hombros.",
+    "instructions": [
+      "Coloca los pies sobre una superficie elevada (silla, banco, escalón).",
+      "Las manos en el suelo, separadas al ancho de los hombros.",
+      "Mantén el cuerpo recto y el core activado.",
+      "Baja el pecho hasta casi tocar el suelo.",
+      "Empuja hacia arriba con fuerza. Cuanto más alta la superficie, mayor dificultad."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [
+      "bench"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_4",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_flexion_una_mano",
+    "name": "Flexión con Una Mano",
+    "description": "Nivel 5 de flexiones del programa Desencadenado. El santo grial de las flexiones. Requiere una fuerza brutal en pecho, hombro, tríceps y core. Pocas personas la dominan correctamente.",
+    "instructions": [
+      "Adopta una postura más amplia de piernas para mantener el equilibrio.",
+      "Coloca una mano en el suelo, centrada bajo el pecho.",
+      "La otra mano va detrás de la espalda.",
+      "Baja el cuerpo controladamente hasta que el pecho casi toque el suelo.",
+      "Empuja con fuerza hasta estirar el brazo. Evita rotar el torso.",
+      "Alterna ambos brazos por igual."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_5",
+      "progresion",
+      "unilateral"
+    ]
+  },
+  {
+    "id": "desc_flexion_manos_separadas",
+    "name": "Flexión Manos Separadas",
+    "description": "Variante de flexión con las manos más separadas que el ancho de hombros. Aumenta la activación del pecho y reduce la del tríceps.",
+    "instructions": [
+      "Colócate en posición de flexión con las manos considerablemente más separadas que el ancho de los hombros.",
+      "Mantén el cuerpo recto y el core activado.",
+      "Baja el pecho hasta casi tocar el suelo.",
+      "Empuja hacia arriba hasta la posición inicial.",
+      "Sentirás más trabajo en la zona externa del pecho."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_diamante",
+    "name": "Flexión Diamante (Manos Juntas)",
+    "description": "Variante de flexión con las manos juntas formando un diamante con los dedos. Traslada mucho más trabajo al tríceps y a la zona interna del pecho.",
+    "instructions": [
+      "Colócate en posición de flexión con las manos juntas bajo el pecho.",
+      "Forma un diamante juntando los dedos índice y pulgar de cada mano.",
+      "Mantén el cuerpo recto y el core activado.",
+      "Baja el pecho hasta tocar las manos.",
+      "Empuja hacia arriba hasta estirar los brazos completamente."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "tríceps",
+      "hombros",
+      "core"
+    ],
+    "primaryMuscle": "tríceps",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_t",
+    "name": "Flexión T",
+    "description": "Variante de flexión que combina la flexión clásica con una rotación lateral del torso al subir, formando una T con el cuerpo. Trabaja oblicuos y mejora la estabilidad.",
+    "instructions": [
+      "Realiza una flexión clásica.",
+      "Al subir, rota el torso hacia un lado levantando un brazo hacia el techo.",
+      "El cuerpo debe formar una T, apoyado sobre una mano y los pies.",
+      "Mantén la posición un instante y regresa a la posición de flexión.",
+      "Alterna el lado en cada repetición."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "core",
+      "desencadenado",
+      "variante",
+      "rotacion"
+    ]
+  },
+  {
+    "id": "desc_flexion_sobre_balones",
+    "name": "Flexión sobre Balones",
+    "description": "Variante de flexión con cada mano apoyada sobre un balón. La inestabilidad obliga a activar más fibras musculares estabilizadoras y fortalece muñecas y antebrazos.",
+    "instructions": [
+      "Coloca dos balones (medicinales o de baloncesto) en el suelo separados al ancho de los hombros.",
+      "Apoya una mano sobre cada balón en posición de flexión.",
+      "Mantén el equilibrio y el core muy activo.",
+      "Baja el pecho entre los balones controlando la estabilidad.",
+      "Empuja hacia arriba manteniendo el equilibrio."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core",
+      "antebrazos"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "estabilidad",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_balon_alternando",
+    "name": "Flexión sobre Balón Alternando",
+    "description": "Variante dinámica con un solo balón. Una mano se apoya en el balón y la otra en el suelo, alternando tras cada repetición. Añade un componente de asimetría y explosividad.",
+    "instructions": [
+      "Coloca un balón en el suelo. Apoya una mano sobre el balón y la otra en el suelo.",
+      "Realiza una flexión desde esta posición asimétrica.",
+      "Al subir, desplázate lateralmente para cambiar la mano que apoya sobre el balón.",
+      "Realiza otra flexión con la otra mano sobre el balón.",
+      "Continúa alternando."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "estabilidad",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_superman",
+    "name": "Flexión Superman",
+    "description": "Variante explosiva donde al subir se despegan ambas manos y pies del suelo, extendiendo brazos hacia adelante como Superman volando. Requiere potencia extrema.",
+    "instructions": [
+      "Colócate en posición de flexión estándar.",
+      "Baja el pecho al suelo.",
+      "Empuja explosivamente para despegar completamente del suelo (manos y pies).",
+      "En el aire, extiende los brazos hacia adelante como Superman.",
+      "Aterriza suavemente en posición de flexión y repite."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "explosivo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_con_palmada",
+    "name": "Flexión con Palmada",
+    "description": "Variante pliométrica de la flexión donde al subir se da una palmada en el aire. Desarrolla potencia y velocidad de empuje.",
+    "instructions": [
+      "Colócate en posición de flexión estándar.",
+      "Baja el pecho al suelo.",
+      "Empuja explosivamente para despegar las manos del suelo.",
+      "Da una palmada rápida frente al pecho mientras estás en el aire.",
+      "Aterriza suavemente con las manos en posición de flexión y repite."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "explosivo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_espartana",
+    "name": "Flexión Espartana",
+    "description": "Variante asimétrica donde una mano está más adelantada que la otra. El cambio de posición entre repeticiones la convierte en un ejercicio dinámico y exigente.",
+    "instructions": [
+      "Colócate en posición de flexión con una mano adelantada y la otra retrasada respecto a los hombros.",
+      "Realiza una flexión desde esta posición asimétrica.",
+      "Al subir explosivamente, cambia la posición de las manos en el aire.",
+      "Aterriza con la otra mano adelantada y repite.",
+      "Mantén el core activado para evitar la rotación del torso."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "explosivo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_fondos_paralelas",
+    "name": "Fondos en Paralelas (Dips)",
+    "description": "Ejercicio de empuje vertical que trabaja intensamente pecho, tríceps y hombros. Se realiza entre dos superficies paralelas (barras, sillas, o bordes de muebles).",
+    "instructions": [
+      "Apóyate sobre dos superficies paralelas con los brazos estirados.",
+      "Inclina ligeramente el torso hacia adelante para mayor activación del pecho.",
+      "Baja el cuerpo flexionando los codos hasta que los brazos formen un ángulo de 90 grados.",
+      "Empuja hacia arriba hasta estirar completamente los brazos.",
+      "Evita balancear el cuerpo durante el movimiento."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "tríceps",
+      "hombros"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_profunda",
+    "name": "Flexión Profunda",
+    "description": "Variante donde las manos se apoyan sobre superficies elevadas (libros, sillas bajas) permitiendo bajar el pecho más allá de la línea de las manos. Mayor rango de movimiento, mayor ganancia.",
+    "instructions": [
+      "Coloca las manos sobre dos superficies elevadas (libros gruesos, bloques o soportes).",
+      "Adopta la posición de flexión estándar.",
+      "Baja el pecho más allá de la línea de las manos, aprovechando el rango extra.",
+      "Mantén el core activo y el cuerpo recto.",
+      "Empuja hacia arriba hasta la posición inicial."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "pecho",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "rango_completo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_extension_triceps",
+    "name": "Extensión de Tríceps en Suelo",
+    "description": "Variante que aísla más el tríceps. Las manos se colocan más adelantadas y se baja flexionando desde los codos, similar a una extensión de tríceps con peso corporal.",
+    "instructions": [
+      "Colócate en posición de flexión pero con las manos más adelantadas de lo normal, a la altura de la frente.",
+      "Los codos deben apuntar hacia adelante, no hacia los lados.",
+      "Baja el cuerpo flexionando los codos hasta que la frente casi toque el suelo entre las manos.",
+      "Extiende los codos para empujar hacia arriba.",
+      "Mantén el core activado y el cuerpo recto."
+    ],
+    "muscleGroups": [
+      "tríceps",
+      "pecho",
+      "hombros",
+      "core"
+    ],
+    "primaryMuscle": "tríceps",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "aislamiento",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_vertical_sobre_cabeza",
+    "name": "Posición Vertical sobre Cabeza",
+    "description": "Nivel 1 de flexión vertical. Simplemente mantenerse invertido con apoyo contra la pared. Se trata de acostumbrarse a estar boca abajo y desarrollar la fuerza base en hombros.",
+    "instructions": [
+      "Colócate de espaldas a la pared y sube los pies apoyándolos en ella.",
+      "Camina con las manos hacia la pared hasta quedar lo más vertical posible.",
+      "Mantén los brazos estirados y aguanta la posición.",
+      "Empieza aguantando pocos segundos e incrementa progresivamente.",
+      "Para bajar, camina con las manos alejándote de la pared."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_1",
+      "progresion",
+      "isometrico"
+    ]
+  },
+  {
+    "id": "desc_vertical_sobre_manos",
+    "name": "Flexión Vertical sobre Manos",
+    "description": "Nivel 2 de flexión vertical. Posición de pino contra la pared, pero subiendo con impulso de piernas (kick-up). Mantener la posición invertida con brazos estirados.",
+    "instructions": [
+      "Colócate frente a la pared y pon las manos en el suelo a unos 15-20 cm de la pared.",
+      "Impulsa las piernas hacia arriba hasta apoyar los pies en la pared.",
+      "Mantén los brazos completamente estirados y el cuerpo recto.",
+      "Aguanta la posición el mayor tiempo posible.",
+      "Para bajar, deja caer las piernas controladamente hacia un lado."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_2",
+      "progresion",
+      "isometrico"
+    ]
+  },
+  {
+    "id": "desc_semi_flexion_vertical",
+    "name": "Semi-Flexión Vertical",
+    "description": "Nivel 3 de flexión vertical. En posición de pino contra la pared, se realiza media flexión bajando hasta la mitad del recorrido. El primer paso hacia la flexión vertical completa.",
+    "instructions": [
+      "Sube a la posición de pino contra la pared (kick-up).",
+      "Flexiona los codos hasta bajar unos 10-15 cm (medio recorrido).",
+      "Empuja hacia arriba hasta estirar los brazos completamente.",
+      "Mantén el core activo y evita arquear la espalda.",
+      "Progresa aumentando el rango de movimiento gradualmente."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_3",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_flexion_vertical",
+    "name": "Flexión Vertical",
+    "description": "Nivel 4 de flexión vertical. La flexión vertical completa contra la pared: pino y bajar hasta que la cabeza casi toque el suelo. Requiere una fuerza considerable en hombros y tríceps.",
+    "instructions": [
+      "Sube a posición de pino contra la pared.",
+      "Flexiona los codos bajando el cuerpo controladamente hasta que la cabeza casi toque el suelo.",
+      "Empuja con fuerza hacia arriba hasta estirar los brazos completamente.",
+      "Mantén el core activado y el cuerpo lo más recto posible.",
+      "Evita dejarte caer; el movimiento debe ser controlado."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_4",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_flexion_vertical_profunda",
+    "name": "Flexión Vertical Profunda",
+    "description": "Nivel 5 de flexión vertical. Se realiza con las manos sobre superficies elevadas para ganar rango de movimiento. La cabeza baja más allá de las manos. Bestialidad de ejercicio para hombros.",
+    "instructions": [
+      "Coloca dos superficies elevadas (sillas, bloques) y apoya las manos sobre ellas.",
+      "Sube a posición de pino con los pies contra la pared.",
+      "Flexiona los codos bajando la cabeza más allá de la línea de las manos.",
+      "Empuja hacia arriba hasta estirar los brazos completamente.",
+      "Este rango extra incrementa enormemente la dificultad y la ganancia muscular."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "tríceps",
+      "core"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "nivel_5",
+      "progresion",
+      "rango_completo"
+    ]
+  },
+  {
+    "id": "desc_flexion_hindu",
+    "name": "Flexión Hindú",
+    "description": "Variante de flexión vertical que combina movimiento de cadera con empuje. Se parte de una V invertida y se pasa a una posición de cobra. Trabaja hombros, pecho, espalda baja y flexibilidad.",
+    "instructions": [
+      "Adopta la posición de V invertida (perro boca abajo) con las caderas arriba y piernas y brazos estirados.",
+      "Desciende llevando el pecho hacia el suelo en un movimiento circular hacia adelante.",
+      "Pasa el pecho rasando el suelo y sube estirando los brazos (posición de cobra).",
+      "Vuelve a la posición de V invertida empujando las caderas hacia arriba.",
+      "El movimiento es fluido y circular, no recto como en una flexión normal."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "pecho",
+      "tríceps",
+      "core",
+      "espalda"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "flexibilidad",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_bombardero_picado",
+    "name": "Bombardero en Picado (Dive Bomber)",
+    "description": "Similar a la flexión hindú pero el regreso se hace en sentido inverso, pasando de nuevo rasando el suelo. Más exigente porque trabajas ambas direcciones del movimiento.",
+    "instructions": [
+      "Adopta la posición de V invertida (perro boca abajo).",
+      "Desciende llevando el pecho hacia el suelo en un movimiento circular hacia adelante.",
+      "Pasa el pecho rasando el suelo y sube a posición de cobra.",
+      "Regresa por el mismo camino: baja rasando el suelo hacia atrás y sube a V invertida.",
+      "A diferencia de la flexión hindú, aquí el regreso también es a ras de suelo."
+    ],
+    "muscleGroups": [
+      "hombros",
+      "pecho",
+      "tríceps",
+      "core",
+      "espalda"
+    ],
+    "primaryMuscle": "hombros",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "empuje",
+      "tren_superior",
+      "flexibilidad",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_colgarse_barra",
+    "name": "Colgarse de la Barra",
+    "description": "Nivel 1 de dominadas. Simplemente colgarse de la barra con los brazos estirados. Fortalece el agarre, antebrazos y prepara los hombros para los niveles superiores.",
+    "instructions": [
+      "Agarra la barra con ambas manos en pronación (palmas mirando hacia afuera) al ancho de los hombros.",
+      "Cuélgate con los brazos completamente estirados y los pies sin tocar el suelo.",
+      "Mantén los hombros activados (ligeramente encogidos, no relajados del todo).",
+      "Aguanta la posición el mayor tiempo posible.",
+      "Progresa incrementando el tiempo de colgado."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "antebrazos",
+      "hombros"
+    ],
+    "primaryMuscle": "antebrazos",
+    "difficulty": "principiante",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "agarre",
+      "desencadenado",
+      "nivel_1",
+      "progresion",
+      "isometrico"
+    ]
+  },
+  {
+    "id": "desc_dominada_asistida",
+    "name": "Dominada Asistida",
+    "description": "Nivel 2 de dominadas. Se usa una silla o superficie para apoyar parcialmente los pies, reduciendo el peso que se tracciona. Transición hacia la dominada completa.",
+    "instructions": [
+      "Agarra la barra y coloca los pies sobre una silla o superficie elevada frente a ti.",
+      "Usa las piernas lo mínimo posible como ayuda para subir.",
+      "Tracciona con la espalda y los brazos hasta que la barbilla supere la barra.",
+      "Baja controladamente hasta estirar completamente los brazos.",
+      "Ve reduciendo progresivamente la ayuda de las piernas."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos",
+      "hombros"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "principiante",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "nivel_2",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_dominada_clasica",
+    "name": "Dominada Clásica",
+    "description": "Nivel 3 de dominadas. La dominada completa: colgarse de la barra y subir hasta que la barbilla supere la barra. El rey de los ejercicios de tracción.",
+    "instructions": [
+      "Agarra la barra con las palmas mirando hacia afuera, separadas al ancho de los hombros.",
+      "Cuélgate con los brazos completamente estirados.",
+      "Tracciona llevando los codos hacia abajo y atrás hasta que la barbilla supere la barra.",
+      "Baja controladamente hasta estirar los brazos completamente.",
+      "Evita balancear el cuerpo o usar impulso."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos",
+      "hombros"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "intermedio",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "nivel_3",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_dominada_mano_y_media",
+    "name": "Dominada Mano y Media",
+    "description": "Nivel 4 de dominadas. Una mano agarra la barra normalmente y la otra agarra la muñeca de la primera mano. Se reduce la asistencia del segundo brazo progresivamente.",
+    "instructions": [
+      "Agarra la barra con una mano en pronación.",
+      "Con la otra mano, agarra la muñeca del brazo que está en la barra.",
+      "Tracciona subiendo hasta que la barbilla supere la barra.",
+      "Baja controladamente hasta estirar completamente el brazo de la barra.",
+      "La mano que agarra la muñeca ayuda menos; ve bajando el punto de agarre (muñeca → antebrazo) para progresar."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos",
+      "hombros"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "avanzado",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "nivel_4",
+      "progresion",
+      "unilateral"
+    ]
+  },
+  {
+    "id": "desc_dominada_una_mano",
+    "name": "Dominada con Una Mano",
+    "description": "Nivel 5 de dominadas. El ejercicio de tracción definitivo. Subir el peso completo del cuerpo con un solo brazo. Requiere años de entrenamiento constante.",
+    "instructions": [
+      "Agarra la barra con una sola mano.",
+      "Cuélgate con el brazo completamente estirado.",
+      "Tracciona con toda la fuerza hasta que la barbilla supere la barra.",
+      "Baja controladamente hasta estirar el brazo.",
+      "La mano libre puede ir al costado o detrás de la espalda.",
+      "Alterna ambos brazos."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos",
+      "hombros",
+      "core"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "avanzado",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "nivel_5",
+      "progresion",
+      "unilateral"
+    ]
+  },
+  {
+    "id": "desc_dominada_manos_juntas",
+    "name": "Dominada Manos Juntas",
+    "description": "Variante con agarre estrecho, manos casi tocándose. Incrementa la activación de bíceps y la zona central de la espalda.",
+    "instructions": [
+      "Agarra la barra con ambas manos juntas o muy próximas (5-10 cm entre ellas).",
+      "Cuélgate con los brazos estirados.",
+      "Tracciona hasta que la barbilla supere la barra.",
+      "Baja controladamente.",
+      "El agarre estrecho activa más los bíceps que el agarre estándar."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos"
+    ],
+    "primaryMuscle": "bíceps",
+    "difficulty": "intermedio",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_semi_dominada_horizontal",
+    "name": "Semi-Dominada Horizontal",
+    "description": "Variante de remo invertido con el cuerpo parcialmente inclinado. Se usa una barra baja o mesa. Ejercicio de transición hacia la dominada horizontal completa.",
+    "instructions": [
+      "Colócate debajo de una barra baja o mesa resistente.",
+      "Agarra la barra/borde con las manos al ancho de los hombros.",
+      "Flexiona las piernas para reducir la dificultad.",
+      "Tracciona el pecho hacia la barra manteniendo el cuerpo lo más recto posible.",
+      "Baja controladamente hasta estirar los brazos."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "hombros",
+      "core"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "principiante",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "variante",
+      "horizontal"
+    ]
+  },
+  {
+    "id": "desc_dominada_horizontal",
+    "name": "Dominada Horizontal (Remo Invertido)",
+    "description": "Remo invertido con el cuerpo completamente recto y horizontal bajo una barra baja. Trabaja la espalda en un ángulo diferente al de la dominada vertical.",
+    "instructions": [
+      "Colócate debajo de una barra a la altura de la cintura.",
+      "Agarra la barra con las manos al ancho de los hombros.",
+      "Estira las piernas completamente, apoyando solo los talones. El cuerpo debe estar recto.",
+      "Tracciona el pecho hacia la barra.",
+      "Baja controladamente hasta estirar los brazos."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "hombros",
+      "core"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "intermedio",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "variante",
+      "horizontal"
+    ]
+  },
+  {
+    "id": "desc_dominada_comando",
+    "name": "Dominada Comando",
+    "description": "Variante con agarre mixto (una palma hacia ti, otra hacia afuera) y subiendo la cabeza alternando a un lado y otro de la barra. Trabaja asimetrías y fortalece el agarre.",
+    "instructions": [
+      "Agarra la barra con las manos juntas en agarre mixto (una en pronación, otra en supinación).",
+      "Tracciona subiendo la cabeza hacia un lado de la barra.",
+      "Baja controladamente.",
+      "En la siguiente repetición, sube la cabeza hacia el otro lado de la barra.",
+      "Alterna lados en cada repetición."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos",
+      "core"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "avanzado",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_muscle_up",
+    "name": "Muscle-Up",
+    "description": "Combinación de dominada y fondo. Se sube por encima de la barra en un solo movimiento fluido. Uno de los ejercicios más completos y espectaculares de calistenia.",
+    "instructions": [
+      "Agarra la barra con un agarre ligeramente más ancho que los hombros, en 'false grip' si es posible.",
+      "Tracciona explosivamente como en una dominada, pero llevando las caderas hacia la barra.",
+      "Al superar la barra con el pecho, transiciona rápidamente a la fase de empuje.",
+      "Empuja hacia arriba como en un fondo hasta estirar los brazos sobre la barra.",
+      "Baja controladamente invirtiendo el movimiento."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "pecho",
+      "tríceps",
+      "bíceps",
+      "hombros",
+      "core"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "avanzado",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "empuje",
+      "tren_superior",
+      "desencadenado",
+      "variante",
+      "explosivo"
+    ]
+  },
+  {
+    "id": "desc_dominada_negativa",
+    "name": "Dominada Negativa",
+    "description": "Se sube con ayuda (salto o silla) y se baja lo más lento posible. Fortalece la fase excéntrica y es excelente para progresar hacia la dominada completa.",
+    "instructions": [
+      "Sube a la posición final de la dominada (barbilla sobre la barra) usando un salto o silla.",
+      "Baja el cuerpo lo más lento que puedas, resistiendo la gravedad.",
+      "El descenso debe durar al menos 5 segundos idealmente.",
+      "Al llegar abajo con brazos estirados, vuelve a subir con ayuda y repite.",
+      "Excelente para construir la fuerza necesaria para dominadas completas."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "bíceps",
+      "antebrazos",
+      "hombros"
+    ],
+    "primaryMuscle": "espalda",
+    "difficulty": "principiante",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tirón",
+      "tren_superior",
+      "excéntrico",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_media_sentadilla_apoyo",
+    "name": "Media Sentadilla con Apoyo",
+    "description": "Nivel 1 de sentadillas. Media sentadilla sujetándose a un soporte (puerta, poste). Ideal para principiantes o rehabilitación de rodillas.",
+    "instructions": [
+      "Sujétate a un soporte firme (marco de puerta, poste, silla) con ambas manos.",
+      "Separa los pies al ancho de los hombros.",
+      "Baja las caderas hasta que los muslos estén a 45 grados (media sentadilla).",
+      "Usa mínimamente los brazos como apoyo; la fuerza debe venir de las piernas.",
+      "Sube a la posición inicial y repite."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "desencadenado",
+      "nivel_1",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_sentadilla_completa_apoyo",
+    "name": "Sentadilla Completa con Apoyo",
+    "description": "Nivel 2 de sentadillas. Sentadilla profunda completa sujetándose a un soporte. Se baja completamente hasta que los glúteos casi toquen los talones.",
+    "instructions": [
+      "Sujétate a un soporte firme con ambas manos.",
+      "Separa los pies al ancho de los hombros.",
+      "Baja las caderas completamente hasta la posición más profunda que puedas.",
+      "Mantén los talones en el suelo y la espalda lo más recta posible.",
+      "Sube a la posición inicial usando mínimamente los brazos como ayuda."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "desencadenado",
+      "nivel_2",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_sentadilla_tradicional",
+    "name": "Sentadilla Tradicional",
+    "description": "Nivel 3 de sentadillas. La sentadilla clásica sin apoyo ni peso adicional. Baja hasta que los muslos estén al menos paralelos al suelo. Fundamento del tren inferior.",
+    "instructions": [
+      "Separa los pies al ancho de los hombros, puntas ligeramente hacia afuera.",
+      "Extiende los brazos al frente para mantener el equilibrio.",
+      "Baja las caderas como si fueras a sentarte, hasta que los muslos estén paralelos al suelo o más abajo.",
+      "Mantén los talones en el suelo, las rodillas alineadas con los pies y la espalda recta.",
+      "Sube empujando desde los talones hasta la posición inicial."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "desencadenado",
+      "nivel_3",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_sentadilla_una_pierna_asistida",
+    "name": "Sentadilla a Una Pierna Asistida",
+    "description": "Nivel 4 de sentadillas. Sentadilla pistol pero con una mano agarrada a un soporte para equilibrio y asistencia parcial. Transición hacia la pistol completa.",
+    "instructions": [
+      "Sujétate con una mano a un soporte firme.",
+      "Extiende una pierna hacia adelante, sin tocar el suelo.",
+      "Baja con la pierna de apoyo hasta la posición más profunda posible.",
+      "Usa el soporte lo mínimo necesario para equilibrio y asistencia.",
+      "Sube empujando con la pierna de apoyo. Alterna piernas."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "desencadenado",
+      "nivel_4",
+      "progresion",
+      "unilateral"
+    ]
+  },
+  {
+    "id": "desc_sentadilla_pistol",
+    "name": "Sentadilla Pistol (Una Pierna)",
+    "description": "Nivel 5 de sentadillas. La sentadilla a una pierna sin ayuda. Requiere fuerza, equilibrio y flexibilidad extraordinarios. El ejercicio definitivo para el tren inferior con peso corporal.",
+    "instructions": [
+      "De pie sobre una pierna, extiende la otra pierna completamente hacia adelante.",
+      "Extiende los brazos al frente para equilibrarte.",
+      "Baja controladamente con la pierna de apoyo hasta abajo del todo (glúteo toca el talón).",
+      "La pierna extendida no debe tocar el suelo en ningún momento.",
+      "Sube empujando con fuerza desde la pierna de apoyo hasta quedar completamente erguido.",
+      "Alterna ambas piernas."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "desencadenado",
+      "nivel_5",
+      "progresion",
+      "unilateral",
+      "equilibrio"
+    ]
+  },
+  {
+    "id": "desc_saltos_plataforma",
+    "name": "Saltos sobre Plataforma",
+    "description": "Salto vertical explosivo aterrizando sobre una plataforma o cajón. Desarrolla potencia en piernas y es ideal para entrenamiento por intervalos.",
+    "instructions": [
+      "Colócate frente a una plataforma, banco o cajón resistente.",
+      "Flexiona las rodillas y balancea los brazos hacia atrás.",
+      "Salta explosivamente hacia arriba aterrizando con ambos pies sobre la plataforma.",
+      "Estabilízate arriba y baja con control (saltando o bajando con un paso).",
+      "Empieza con alturas bajas e incrementa progresivamente."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "gemelos",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "intermedio",
+    "equipment": [
+      "bench"
+    ],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "explosivo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_sentadilla_con_salto",
+    "name": "Sentadilla con Salto",
+    "description": "Sentadilla clásica con un salto explosivo al subir. Combina fuerza y potencia. Excelente para quemar grasa y mejorar la capacidad atlética.",
+    "instructions": [
+      "Realiza una sentadilla clásica hasta que los muslos estén paralelos al suelo.",
+      "Desde la posición baja, salta explosivamente lo más alto que puedas.",
+      "Aterriza suavemente flexionando las rodillas para absorber el impacto.",
+      "Inmediatamente baja a la siguiente sentadilla y repite.",
+      "Mantén el core activado y la espalda recta durante todo el movimiento."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "gemelos",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "explosivo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_rodillas_a_pecho",
+    "name": "Rodillas a Pecho (Tuck Jump)",
+    "description": "Salto vertical llevando las rodillas al pecho en el aire. Ejercicio pliométrico intenso que trabaja piernas, core y capacidad cardiovascular.",
+    "instructions": [
+      "De pie con los pies al ancho de los hombros.",
+      "Flexiona ligeramente las rodillas y salta explosivamente hacia arriba.",
+      "En el punto más alto, lleva ambas rodillas al pecho.",
+      "Aterriza suavemente flexionando las rodillas.",
+      "Repite inmediatamente para mantener la intensidad."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "core",
+      "gemelos"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "explosivo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_desplantes",
+    "name": "Desplantes (Zancadas)",
+    "description": "Zancada hacia adelante flexionando ambas rodillas a 90 grados. Trabaja cuádriceps, glúteos e isquiotibiales de forma unilateral, mejorando también el equilibrio.",
+    "instructions": [
+      "De pie, da un paso largo hacia adelante con una pierna.",
+      "Flexiona ambas rodillas hasta que la rodilla trasera casi toque el suelo.",
+      "La rodilla delantera no debe sobrepasar la punta del pie.",
+      "Empuja con la pierna delantera para volver a la posición inicial.",
+      "Alterna piernas en cada repetición."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "unilateral",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_desplantes_laterales",
+    "name": "Desplantes Laterales",
+    "description": "Zancada lateral que trabaja los aductores y abductores además de cuádriceps y glúteos. Mejora la movilidad lateral y la estabilidad de cadera.",
+    "instructions": [
+      "De pie con los pies juntos.",
+      "Da un paso amplio hacia un lado.",
+      "Flexiona la rodilla de la pierna que avanza mientras la otra pierna se mantiene estirada.",
+      "Baja las caderas lo más posible manteniendo el pecho erguido.",
+      "Empuja con la pierna flexionada para volver a la posición inicial. Alterna lados."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "lateral",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_desplantes_con_salto",
+    "name": "Desplantes con Salto",
+    "description": "Versión pliométrica de los desplantes. Se salta para cambiar de pierna en el aire. Combina fuerza, potencia y coordinación.",
+    "instructions": [
+      "Colócate en posición de zancada con una pierna adelante y otra atrás.",
+      "Baja hasta la posición de desplante (ambas rodillas a 90 grados).",
+      "Salta explosivamente hacia arriba.",
+      "En el aire, cambia la posición de las piernas.",
+      "Aterriza suavemente en posición de desplante con la otra pierna adelante."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "gemelos",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "pliométrico",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "explosivo",
+      "unilateral",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_elevaciones_talones",
+    "name": "Elevaciones de Talones",
+    "description": "Ejercicio de aislamiento para los gemelos (pantorrillas). Se realiza de pie levantando los talones del suelo. Simple pero efectivo para desarrollar los gemelos.",
+    "instructions": [
+      "De pie sobre el borde de un escalón, con los talones colgando.",
+      "Sube elevando los talones lo más alto posible contrayendo los gemelos.",
+      "Mantén la posición arriba un instante.",
+      "Baja controladamente dejando que los talones desciendan por debajo del escalón.",
+      "Para mayor dificultad, hazlo con una sola pierna."
+    ],
+    "muscleGroups": [
+      "gemelos"
+    ],
+    "primaryMuscle": "gemelos",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "tren_inferior",
+      "aislamiento",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_sentadilla_bulgara",
+    "name": "Sentadilla Búlgara",
+    "description": "Sentadilla unilateral con el pie trasero elevado sobre un banco o silla. Incrementa enormemente la carga sobre la pierna delantera y activa glúteos de forma brutal.",
+    "instructions": [
+      "Coloca el empeine de un pie sobre un banco o silla detrás de ti.",
+      "La pierna delantera está adelantada a una distancia cómoda.",
+      "Baja flexionando la rodilla delantera hasta que el muslo esté paralelo al suelo.",
+      "La rodilla delantera no debe sobrepasar la punta del pie.",
+      "Empuja hacia arriba con la pierna delantera. Completa las repeticiones y cambia de pierna."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "glúteos",
+      "isquiotibiales",
+      "core"
+    ],
+    "primaryMuscle": "cuádriceps",
+    "difficulty": "intermedio",
+    "equipment": [
+      "bench"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "tren_inferior",
+      "unilateral",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_abdominales_en_silla",
+    "name": "Abdominales en Silla",
+    "description": "Nivel 1 de abdominales. Sentado en una silla, se levantan las rodillas hacia el pecho. Ideal para principiantes y para desarrollar la conexión mente-músculo con el core.",
+    "instructions": [
+      "Siéntate en el borde de una silla resistente, agarrándote a los lados.",
+      "Inclina ligeramente el torso hacia atrás.",
+      "Levanta las rodillas hacia el pecho contrayendo los abdominales.",
+      "Baja las piernas controladamente sin apoyar los pies en el suelo.",
+      "Repite manteniendo la tensión abdominal constante."
+    ],
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "nivel_1",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_lev_piernas_suelo_encogidas",
+    "name": "Levantamiento de Piernas en Suelo (Encogidas)",
+    "description": "Nivel 2 de abdominales. Tumbado en el suelo, se levantan las piernas encogidas (rodillas flexionadas) hacia el pecho. Reduce la palanca para hacer el ejercicio más accesible.",
+    "instructions": [
+      "Túmbate boca arriba con las manos bajo los glúteos o a los lados.",
+      "Flexiona las rodillas y levántalas hacia el pecho contrayendo los abdominales.",
+      "La espalda baja debe mantenerse pegada al suelo.",
+      "Baja las piernas controladamente sin apoyar los pies en el suelo.",
+      "Mantén la tensión abdominal constante."
+    ],
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "nivel_2",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_lev_piernas_suelo_estiradas",
+    "name": "Levantamiento de Piernas en Suelo (Estiradas)",
+    "description": "Nivel 3 de abdominales. Tumbado en el suelo, se levantan las piernas completamente estiradas. Mayor palanca = mayor dificultad y activación abdominal.",
+    "instructions": [
+      "Túmbate boca arriba con las manos bajo los glúteos o a los lados.",
+      "Con las piernas completamente estiradas, levántalas hasta formar un ángulo de 90 grados con el torso.",
+      "La espalda baja debe mantenerse pegada al suelo durante todo el movimiento.",
+      "Baja las piernas controladamente sin tocar el suelo.",
+      "Si la espalda baja se despega del suelo, reduce el rango de movimiento."
+    ],
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "intermedio",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "nivel_3",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_lev_piernas_colgado_encogidas",
+    "name": "Levantamiento de Piernas Colgado (Encogidas)",
+    "description": "Nivel 4 de abdominales. Colgado de la barra, se levantan las rodillas hacia el pecho. El peso de las piernas colgando incrementa la dificultad respecto al suelo.",
+    "instructions": [
+      "Cuélgate de la barra con los brazos estirados.",
+      "Levanta las rodillas hacia el pecho contrayendo los abdominales.",
+      "Evita balancearte; el movimiento debe ser controlado.",
+      "Baja las piernas lentamente a la posición inicial.",
+      "Mantén los hombros activados (no te cuelgues pasivamente)."
+    ],
+    "muscleGroups": [
+      "core",
+      "antebrazos"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "intermedio",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "nivel_4",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_lev_piernas_colgado_estiradas",
+    "name": "Levantamiento de Piernas Colgado (Estiradas)",
+    "description": "Nivel 5 de abdominales. Colgado de la barra, se levantan las piernas completamente estiradas hasta la barra. El ejercicio abdominal definitivo con peso corporal.",
+    "instructions": [
+      "Cuélgate de la barra con los brazos estirados.",
+      "Con las piernas completamente rectas, levántalas hasta tocar la barra con los pies.",
+      "Contrae los abdominales con fuerza y evita balancearte.",
+      "Baja las piernas lentamente y controladamente.",
+      "Si no llegas a la barra, levanta las piernas lo más alto posible y progresa."
+    ],
+    "muscleGroups": [
+      "core",
+      "antebrazos"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "avanzado",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "nivel_5",
+      "progresion"
+    ]
+  },
+  {
+    "id": "desc_plancha",
+    "name": "Plancha (Plank)",
+    "description": "Ejercicio isométrico de core. Mantener el cuerpo recto apoyado sobre antebrazos y pies. Trabaja toda la faja abdominal, lumbares y estabilizadores.",
+    "instructions": [
+      "Apóyate sobre los antebrazos y las puntas de los pies.",
+      "Mantén el cuerpo completamente recto como una tabla.",
+      "Activa el core contrayendo los abdominales y los glúteos.",
+      "No dejes caer las caderas ni levantes el trasero.",
+      "Aguanta la posición el mayor tiempo posible. Empieza con 20-30 segundos y progresa."
+    ],
+    "muscleGroups": [
+      "core",
+      "hombros"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "isometrico",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_plancha_lateral",
+    "name": "Plancha Lateral",
+    "description": "Variante de plancha apoyado sobre un antebrazo y el lateral del pie. Trabaja especialmente los oblicuos y los estabilizadores laterales del core.",
+    "instructions": [
+      "Túmbate de lado y apóyate sobre un antebrazo con el codo bajo el hombro.",
+      "Levanta las caderas hasta que el cuerpo forme una línea recta.",
+      "El pie de arriba puede ir sobre el de abajo o ligeramente adelantado.",
+      "Mantén la posición contrayendo los oblicuos.",
+      "Aguanta el máximo tiempo posible y repite del otro lado."
+    ],
+    "muscleGroups": [
+      "core",
+      "hombros"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "isometrico",
+      "oblicuos",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_plancha_con_flexion",
+    "name": "Plancha con Flexión",
+    "description": "Combinación dinámica: se alterna entre posición de plancha sobre antebrazos y posición alta de flexión. Trabaja core, tríceps y hombros.",
+    "instructions": [
+      "Comienza en posición de plancha sobre los antebrazos.",
+      "Sube un brazo estirándolo, luego el otro, hasta quedar en posición alta de flexión.",
+      "Baja un brazo al antebrazo, luego el otro, volviendo a la posición de plancha.",
+      "Alterna el brazo con el que inicias cada repetición.",
+      "Mantén el core activo y evita balancear las caderas."
+    ],
+    "muscleGroups": [
+      "core",
+      "tríceps",
+      "hombros"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "intermedio",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "core",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_plancha_lateral_con_flexion",
+    "name": "Plancha Lateral con Flexión",
+    "description": "Plancha lateral dinámica: se bajan y suben las caderas en movimiento controlado. Trabaja los oblicuos de forma intensa.",
+    "instructions": [
+      "Colócate en posición de plancha lateral sobre un antebrazo.",
+      "Baja la cadera hacia el suelo sin llegar a tocarlo.",
+      "Sube la cadera por encima de la línea del cuerpo contrayendo los oblicuos.",
+      "Repite el movimiento de subida y bajada controladamente.",
+      "Completa las repeticiones de un lado y cambia al otro."
+    ],
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "intermedio",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "oblicuos",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_levantamiento_caderas",
+    "name": "Levantamiento de Caderas (Puente de Glúteos)",
+    "description": "Tumbado boca arriba, se levantan las caderas contrayendo glúteos y core. Fortalece la cadena posterior y los abdominales inferiores.",
+    "instructions": [
+      "Túmbate boca arriba con las rodillas flexionadas y los pies apoyados en el suelo.",
+      "Los brazos a los lados del cuerpo, con las palmas hacia abajo.",
+      "Levanta las caderas contrayendo glúteos y abdominales hasta formar una línea recta desde las rodillas hasta los hombros.",
+      "Mantén la posición arriba un instante.",
+      "Baja controladamente y repite."
+    ],
+    "muscleGroups": [
+      "glúteos",
+      "core",
+      "isquiotibiales"
+    ],
+    "primaryMuscle": "glúteos",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "core",
+      "tren_inferior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_lumbares",
+    "name": "Lumbares (Superman en Suelo)",
+    "description": "Ejercicio para fortalecer la espalda baja. Tumbado boca abajo, se levantan brazos y piernas del suelo simultáneamente. Esencial para la salud de la columna.",
+    "instructions": [
+      "Túmbate boca abajo con los brazos estirados por encima de la cabeza.",
+      "Levanta simultáneamente los brazos y las piernas del suelo.",
+      "Mantén la posición un instante contrayendo los músculos lumbares.",
+      "Baja controladamente.",
+      "Evita movimientos bruscos y mantén el cuello en posición neutral."
+    ],
+    "muscleGroups": [
+      "core",
+      "espalda"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "lumbar",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_abdominales_en_v",
+    "name": "Abdominales en V",
+    "description": "Ejercicio abdominal intenso. Se levantan simultáneamente el torso y las piernas estiradas hasta tocarse, formando una V. Trabaja toda la pared abdominal.",
+    "instructions": [
+      "Túmbate boca arriba con los brazos estirados por encima de la cabeza.",
+      "Levanta simultáneamente el torso y las piernas estiradas.",
+      "Intenta tocar los pies con las manos en el punto más alto, formando una V.",
+      "Baja controladamente a la posición inicial.",
+      "Mantén las piernas lo más rectas posible durante todo el movimiento."
+    ],
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "intermedio",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_flexion_sm",
+    "name": "Flexión S&M",
+    "description": "Combinación brutal de flexión y levantamiento de piernas en V. Alterna una flexión con un V-up. Trabaja prácticamente todo el cuerpo.",
+    "instructions": [
+      "Realiza una flexión completa.",
+      "Al subir, gira inmediatamente el cuerpo boca arriba.",
+      "Realiza un abdominal en V (levantando torso y piernas).",
+      "Gira de nuevo a posición de flexión y repite.",
+      "El movimiento es continuo y fluido."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "core",
+      "hombros",
+      "tríceps"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "avanzado",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "core",
+      "tren_superior",
+      "cuerpo_completo",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_bicicleta",
+    "name": "Abdominales Bicicleta",
+    "description": "Ejercicio abdominal dinámico que simula el pedaleo. Trabaja los oblicuos intensamente al rotar el torso llevando el codo hacia la rodilla contraria.",
+    "instructions": [
+      "Túmbate boca arriba con las manos detrás de la cabeza.",
+      "Levanta los hombros del suelo y las piernas.",
+      "Lleva una rodilla hacia el pecho mientras rotas el torso para acercar el codo contrario.",
+      "Alterna lados en un movimiento de pedaleo continuo.",
+      "Mantén la espalda baja pegada al suelo."
+    ],
+    "muscleGroups": [
+      "core"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "principiante",
+    "equipment": [
+      "yoga_mat"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "oblicuos",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_pies_a_manos",
+    "name": "Pies a Manos (Toe Touch Colgado)",
+    "description": "Colgado de la barra, se llevan los pies hasta las manos. Similar al levantamiento de piernas colgado pero tocando la barra con los pies. Requiere un core muy fuerte.",
+    "instructions": [
+      "Cuélgate de la barra con los brazos estirados.",
+      "Levanta las piernas estiradas con fuerza hasta tocar la barra con los pies.",
+      "Controla el movimiento para evitar balanceo.",
+      "Baja las piernas lentamente hasta la posición inicial.",
+      "Si no llegas, acerca los pies lo más posible y progresa."
+    ],
+    "muscleGroups": [
+      "core",
+      "antebrazos"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "avanzado",
+    "equipment": [
+      "pull_up_bar"
+    ],
+    "category": "fuerza",
+    "isCompound": false,
+    "tags": [
+      "core",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_bandera",
+    "name": "Bandera Humana (Human Flag)",
+    "description": "Uno de los ejercicios más impresionantes de calistenia. El cuerpo se mantiene horizontal agarrado a un poste vertical. Requiere fuerza extrema en todo el cuerpo.",
+    "instructions": [
+      "Agarra un poste vertical con ambas manos separadas (una arriba, otra abajo).",
+      "La mano de arriba empuja y la de abajo tracciona.",
+      "Levanta las piernas lateralmente hasta que el cuerpo esté completamente horizontal.",
+      "Mantén la posición el mayor tiempo posible.",
+      "Empieza con la versión encogida (rodillas al pecho) y progresa estirando las piernas."
+    ],
+    "muscleGroups": [
+      "core",
+      "hombros",
+      "espalda"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "core",
+      "tren_superior",
+      "isometrico",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_rueda_abdominales",
+    "name": "Rueda de Abdominales (Ab Wheel)",
+    "description": "Ejercicio con rueda de abdominales que trabaja toda la faja abdominal, lumbares, hombros y brazos. Deceptivamente difícil. No uses la rueda si no aguantas 45 segundos de plancha.",
+    "instructions": [
+      "Coloca las rodillas sobre un mat o toalla doblada.",
+      "Agarra la rueda con ambas manos, brazos estirados y espalda ligeramente encorvada.",
+      "Haz que la rueda avance hacia adelante manteniendo los abdominales y brazos tensos.",
+      "Baja hasta que el pecho quede a pocos centímetros del suelo.",
+      "Contrae los abdominales para regresar a la posición original.",
+      "La versión avanzada se hace desde los pies en vez de las rodillas."
+    ],
+    "muscleGroups": [
+      "core",
+      "hombros",
+      "espalda"
+    ],
+    "primaryMuscle": "core",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "core",
+      "tren_superior",
+      "desencadenado",
+      "variante"
+    ]
+  },
+  {
+    "id": "desc_burpees",
+    "name": "Burpees",
+    "description": "El rey de los ejercicios de cuerpo completo. Combina una flexión con una sentadilla con salto en un solo movimiento fluido. Ideal para quemar grasa con entrenamiento por intervalos.",
+    "instructions": [
+      "De pie, baja a posición de cuclillas con las manos en el suelo.",
+      "Lanza los pies hacia atrás quedando en posición de flexión.",
+      "Realiza una flexión completa.",
+      "Recoge los pies hacia las manos de un salto.",
+      "Salta explosivamente hacia arriba con los brazos sobre la cabeza.",
+      "Aterriza y repite inmediatamente."
+    ],
+    "muscleGroups": [
+      "pecho",
+      "cuádriceps",
+      "glúteos",
+      "hombros",
+      "core",
+      "tríceps"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "cardio",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "cardio",
+      "explosivo",
+      "desencadenado",
+      "hiit"
+    ]
+  },
+  {
+    "id": "desc_escaladores",
+    "name": "Escaladores (Mountain Climbers)",
+    "description": "Desde posición de flexión, se alternan las piernas llevando las rodillas al pecho con un salto. Trabaja abdominales, piernas y glúteos, además de dorsales y hombros de forma indirecta.",
+    "instructions": [
+      "Colócate en posición de flexión alta (brazos estirados).",
+      "Lleva una rodilla hacia el pecho con un movimiento rápido.",
+      "Salta para cambiar de pierna, llevando la otra rodilla al pecho.",
+      "Mantén un ritmo rápido y constante, como si corrieras en el sitio en posición horizontal.",
+      "Mantén el core activo y las caderas bajas."
+    ],
+    "muscleGroups": [
+      "core",
+      "cuádriceps",
+      "glúteos",
+      "hombros"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "cardio",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "cardio",
+      "core",
+      "desencadenado",
+      "hiit"
+    ]
+  },
+  {
+    "id": "desc_escaladores_inversos",
+    "name": "Escaladores Inversos",
+    "description": "Similar a los escaladores pero mirando hacia arriba (posición de cangrejo invertido). Complemento perfecto de los escaladores normales, con más foco en lumbares y espalda baja.",
+    "instructions": [
+      "Colócate en posición invertida: manos en el suelo detrás de ti, mirando hacia arriba, caderas elevadas.",
+      "Levanta alternadamente las piernas con un salto, intentando que no estén las dos en el suelo a la vez.",
+      "Mantén las caderas elevadas durante todo el movimiento.",
+      "Los músculos trabajados son similares al escalador normal pero con más foco en lumbares.",
+      "Un buen combo: 20 escaladores normales + 20 escaladores inversos sin descanso."
+    ],
+    "muscleGroups": [
+      "core",
+      "cuádriceps",
+      "glúteos",
+      "hombros",
+      "espalda"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "cardio",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "cardio",
+      "core",
+      "lumbar",
+      "desencadenado",
+      "hiit"
+    ]
+  },
+  {
+    "id": "desc_jumping_jacks",
+    "name": "Jumping Jacks",
+    "description": "Ejercicio aeróbico clásico de calentamiento. Se salta alternando entre piernas abiertas con brazos arriba y piernas juntas con brazos abajo. Ideal como calentamiento previo al entrenamiento.",
+    "instructions": [
+      "De pie con los pies juntos y los brazos a los lados.",
+      "Salta abriendo las piernas al ancho de los hombros y levantando los brazos estirados sobre la cabeza.",
+      "Las manos deben juntarse (o casi) por encima de la cabeza.",
+      "Salta de nuevo juntando las piernas y bajando los brazos a los lados.",
+      "Mantén un ritmo constante y fluido."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "gemelos",
+      "hombros"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "principiante",
+    "equipment": [],
+    "category": "cardio",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "cardio",
+      "calentamiento",
+      "desencadenado"
+    ]
+  },
+  {
+    "id": "desc_flexion_a_plancha",
+    "name": "Flexión a Plancha",
+    "description": "Mezcla entre flexión y plancha. Desde posición de flexión alta, se baja un brazo a posición de plancha, luego el otro, y se vuelve a subir. Trabaja core, hombros y tríceps de forma intensa.",
+    "instructions": [
+      "Colócate en posición alta de flexión (brazos estirados).",
+      "Desciende con un brazo hasta apoyarte con el codo en el suelo.",
+      "Haz lo mismo con el otro brazo, quedando en posición de plancha.",
+      "Empuja con un brazo hasta estirarlo, luego el otro, volviendo a posición de flexión.",
+      "Para contar una repetición, debes estirar los dos brazos.",
+      "Alterna el brazo con el que empiezas."
+    ],
+    "muscleGroups": [
+      "core",
+      "hombros",
+      "tríceps",
+      "pecho"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "core",
+      "tren_superior",
+      "desencadenado"
+    ]
+  },
+  {
+    "id": "desc_levantamiento_con_impulso",
+    "name": "Levantamiento con Impulso (Kip-Up)",
+    "description": "Desde tumbado boca arriba, se usa el impulso de brazos y piernas para levantarse de un salto sin apoyar las manos en el suelo. Trabaja coordinación, potencia y todo el cuerpo.",
+    "instructions": [
+      "Túmbate boca arriba con los brazos estirados en el suelo por encima de la cabeza.",
+      "Mueve rápido los brazos hacia adelante y dobla las piernas.",
+      "Con el impulso de los brazos, levántate sin apoyar las manos en el suelo.",
+      "Regresa inmediatamente a la posición inicial tumbado.",
+      "El movimiento debe ser explosivo y fluido."
+    ],
+    "muscleGroups": [
+      "core",
+      "cuádriceps",
+      "hombros",
+      "glúteos"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "fuerza",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "explosivo",
+      "coordinacion",
+      "desencadenado"
+    ]
+  },
+  {
+    "id": "desc_levantamientos_rodillas",
+    "name": "Levantamientos de Rodillas (High Knees)",
+    "description": "Correr en el sitio llevando las rodillas lo más alto posible, al menos por encima de la cadera. Excelente ejercicio cardiovascular y de coordinación.",
+    "instructions": [
+      "De pie, comienza a correr en el sitio.",
+      "Eleva cada rodilla lo más alto posible, al menos hasta la altura de la cadera.",
+      "Alterna las piernas con saltos rápidos.",
+      "Mantén el core activo y el torso erguido.",
+      "Usa los brazos de forma coordinada con las piernas para mantener el ritmo."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "core",
+      "gemelos",
+      "glúteos"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "cardio",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "cardio",
+      "desencadenado",
+      "hiit"
+    ]
+  },
+  {
+    "id": "desc_pino_puente",
+    "name": "Pino Puente (Back Bridge)",
+    "description": "Ejercicio de puente dorsal que fortalece espalda, mejora la postura y la flexibilidad de la columna vertebral. Trabaja piernas, brazos y hombros además de la espalda. En su versión básica es el levantamiento de caderas.",
+    "instructions": [
+      "Empieza con la versión básica: levantamiento de caderas tumbado boca arriba.",
+      "Progresa hacia el puente completo: manos y pies en el suelo, caderas elevadas al máximo.",
+      "También puedes realizarlo sobre una superficie elevada al principio para reducir la dificultad.",
+      "Trabaja gradualmente la fuerza y la flexibilidad.",
+      "El objetivo final es levantarte del suelo sin apoyo hasta la posición de puente completo."
+    ],
+    "muscleGroups": [
+      "espalda",
+      "glúteos",
+      "hombros",
+      "cuádriceps",
+      "core"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "avanzado",
+    "equipment": [],
+    "category": "flexibilidad",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "flexibilidad",
+      "espalda",
+      "desencadenado"
+    ]
+  },
+  {
+    "id": "desc_esprintar",
+    "name": "Esprintar",
+    "description": "Correr a toda velocidad en distancias cortas. Ejercicio de cuerpo completo que libera testosterona y hormona de crecimiento, clave para el desarrollo muscular y la pérdida de grasa.",
+    "instructions": [
+      "Realiza un calentamiento previo adecuado.",
+      "Haz un par de semi-sprints al 70-80% de tu capacidad.",
+      "Esprinta a máxima velocidad durante 20-30 segundos o 100-200 metros.",
+      "Descansa caminando 1-2 minutos entre sprints.",
+      "Si hace tiempo que no corres, empieza en una colina o cuesta arriba para reducir el riesgo de lesión.",
+      "Lo importante es el esfuerzo máximo, no la velocidad absoluta."
+    ],
+    "muscleGroups": [
+      "cuádriceps",
+      "isquiotibiales",
+      "glúteos",
+      "gemelos",
+      "core"
+    ],
+    "primaryMuscle": "cuerpo_completo",
+    "difficulty": "intermedio",
+    "equipment": [],
+    "category": "cardio",
+    "isCompound": true,
+    "tags": [
+      "cuerpo_completo",
+      "cardio",
+      "explosivo",
+      "desencadenado",
+      "hiit"
+    ]
   }
 ]

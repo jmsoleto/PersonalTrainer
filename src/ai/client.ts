@@ -148,7 +148,7 @@ export async function callClaude(
   }
 
   const baseUrl = config.proxyUrl || 'https://api.anthropic.com'
-  const model = config.model || 'claude-sonnet-4-20250514'
+  const model = config.model || 'claude-sonnet-4-6'
   const maxTokens = options?.maxTokens ?? 16000
   const usesCaching = Array.isArray(system)
 

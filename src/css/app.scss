@@ -93,18 +93,26 @@ body {
   color: var(--k-on-surface);
 }
 
-// Smooth page transitions
+// Ensure page content clears the fixed bottom nav (~56px nav + safe area)
 .q-page {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
 }
 
-// Dark mode override for fitness app feel
+// Kinetic: force correct background regardless of Quasar dark mode class
 body.body--dark {
-  background-color: var(--pt-background);
+  background-color: var(--k-surface);
+  color: var(--k-on-surface);
+}
 
-  .q-card {
-    background-color: var(--pt-surface);
-  }
+// Material Symbols Outlined — Kinetic icon style
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 // Utility classes

@@ -1,7 +1,5 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <AppHeader v-if="!hideChrome" />
-
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -13,7 +11,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import AppHeader from './components/layout/AppHeader.vue'
 import BottomNav from './components/layout/BottomNav.vue'
 
 const route = useRoute()

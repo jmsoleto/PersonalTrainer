@@ -46,16 +46,16 @@ function slimExercise(ex: Exercise): SlimExercise {
 }
 
 export function buildPhaseSystemPrompt(): string {
-  return `Eres un entrenador personal experto y fisiólogo del ejercicio. Diseñas planes de entrenamiento personalizados estructurados en fases.
+  return `Eres un entrenador personal experto y fisiólogo del ejercicio. Diseñas planes de entrenamiento personalizados estructurados en fases con variación semanal.
 
 REGLAS ESTRICTAS:
 - Responde ÚNICAMENTE con JSON válido. Sin texto adicional, sin markdown, sin explicaciones.
 - El JSON debe cumplir EXACTAMENTE el schema proporcionado.
 - Usa solo los IDs de ejercicio del catálogo proporcionado.
 - Incluye calentamiento y vuelta a la calma en cada sesión.
-- Aplica sobrecarga progresiva entre fases.
+- Aplica sobrecarga progresiva entre fases Y entre semanas de la misma fase.
 - Adapta el plan a las lesiones e historial del usuario: evita ejercicios que afecten zonas lesionadas.
-- Las sesiones son plantillas reutilizables para todas las semanas de su fase.`
+- Cada sesión define su bloque principal por semana para evitar monotonía: varía ejercicios, series y repeticiones semana a semana.`
 }
 
 /**
@@ -125,53 +125,53 @@ export function buildPhaseUserPrompt(profile: UserProfile, params: PlanParams): 
 ## Estructura de fases
 ${phaseNote}
 
-## Schema JSON requerido
+## Variación semanal dentro de cada fase
+Cada semana dentro de una fase debe variar el bloque principal siguiendo periodización ondulatoria:
+- Semana 1: Introducción — volumen moderado, técnica. Ej: 3×10 con ejercicios base.
+- Semana 2: Acumulación — aumenta repeticiones o series. Ej: 3×12 o 4×10.
+- Semana 3: Intensificación — sube carga/dificultad. Puede intercambiar 1-2 ejercicios por variantes más exigentes del mismo grupo muscular.
+- Semana 4 (si existe): Descarga o peak — reduce volumen un 20-30% manteniendo intensidad, o introduce la variante más avanzada.
+Adapta este patrón al número de semanas de la fase. El calentamiento y la vuelta a la calma NO cambian entre semanas de la misma fase.
+
+## Schema JSON requerido (formato compacto)
+Claves: id=exercise_id, s=sets, r=reps, sec=duration_sec, es=each_side(bool)
 {
   "phases": [
     {
       "phase": 1,
       "name": "Adaptación",
-      "weeks": [1, 2, 3],
+      "weeks": [1,2,3,4],
       "goal": "descripción del objetivo de la fase",
       "sessions": [
         {
-          "session_id": "A",
+          "id": "A",
           "name": "Tren superior · Empuje",
-          "duration_min": ${params.sessionDurationMin},
-          "warmup": {
-            "duration_min": 5,
-            "exercises": [
-              { "exercise_id": "ex_...", "sets": 2, "reps": 10 },
-              { "exercise_id": "ex_...", "sets": 1, "duration_sec": 30 }
-            ]
-          },
-          "main": {
-            "duration_min": ${params.sessionDurationMin - 10},
-            "rest_between_sets_sec": { "min": 60, "max": 90 },
-            "exercises": [
-              { "exercise_id": "ex_...", "sets": 3, "reps": 12 },
-              { "exercise_id": "ex_...", "sets": 3, "duration_sec": 30 }
-            ]
-          },
-          "cooldown": {
-            "duration_min": 5,
-            "exercises": [
-              { "exercise_id": "ex_...", "duration_sec": 30, "each_side": true }
-            ]
-          }
+          "dur": ${params.sessionDurationMin},
+          "rest": [60,90],
+          "wu": [
+            {"id":"ex_...","s":2,"r":10},
+            {"id":"ex_...","s":1,"sec":30}
+          ],
+          "cd": [
+            {"id":"ex_...","sec":30,"es":true}
+          ],
+          "weeks": [
+            [{"id":"ex_...","s":3,"r":10},{"id":"ex_...","s":3,"r":10}],
+            [{"id":"ex_...","s":3,"r":12},{"id":"ex_...","s":3,"r":12}],
+            [{"id":"ex_...","s":4,"r":10},{"id":"ex_2..","s":4,"r":10}],
+            [{"id":"ex_...","s":3,"r":8},{"id":"ex_2..","s":3,"r":8}]
+          ]
         }
       ]
     }
   ]
 }
 
-IMPORTANTE:
-- Cada fase necesita entre ${params.daysPerWeek} y ${params.daysPerWeek + 1} sesiones (plantillas con session_id: "A", "B", "C"...)
-- Las sesiones son plantillas que se repiten en rotación durante todas las semanas de la fase
-- Los IDs de sesión deben ser únicos dentro de cada fase
-- Usa SOLO exercise_id del catálogo proporcionado
-- Ejercicios de warmup: categoría "warmup". Ejercicios de cooldown: categoría "cooldown"
-- Para ejercicios con tiempo usa duration_sec en vez de reps
-- El campo "weeks" de cada fase debe listar exactamente los números de semana que la componen
-- La suma de todos los arrays "weeks" debe ser ${Array.from({ length: params.weeks }, (_, i) => i + 1).join(', ')} (${params.weeks} semanas en total)`
+REGLAS DEL SCHEMA:
+- Cada fase necesita entre ${params.daysPerWeek} y ${params.daysPerWeek + 1} sesiones (id: "A","B","C"...)
+- "weeks" en la sesión tiene EXACTAMENTE tantos arrays como semanas tenga la fase (length = phase.weeks.length)
+- Cada array en "weeks" son los ejercicios principales de esa semana (índice 0 = primera semana de la fase)
+- wu = warmup (categoría "warmup"), cd = cooldown (categoría "cooldown"), definidos una sola vez
+- Usa SOLO ids del catálogo. Para tiempo usa sec en vez de r.
+- El campo "weeks" de cada fase lista los números de semana absolutos. La suma de todos: ${Array.from({ length: params.weeks }, (_, i) => i + 1).join(',')} (${params.weeks} semanas)`
 }
