@@ -1,7 +1,8 @@
 {
-  "name": "personal-trainer",
+  "name": "filetics-trainer",
+  "productName": "Filetics Trainer",
   "version": "0.1.0",
-  "description": "AI-powered Personal Trainer app - 12-week training plans",
+  "description": "Filetics Trainer - AI-powered 12-week training plans",
   "private": true,
   "type": "module",
   "scripts": {

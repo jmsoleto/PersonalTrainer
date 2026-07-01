@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.jmsoleto.app',
-  appName: 'FileticsTrainer',
+  appName: 'Filetics Trainer',
   webDir: 'dist/spa'
 };
 

@@ -7,7 +7,7 @@
         <div class="usp-icon-wrap">
           <q-icon name="fitness_center" class="usp-icon" />
         </div>
-        <h1 class="usp-title">Personal<br>Trainer</h1>
+        <h1 class="usp-title">Filetics<br>Trainer</h1>
         <p class="usp-subtitle">Selecciona tu perfil o crea uno nuevo</p>
       </div>
 

@@ -26,7 +26,7 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
-const pageTitle = computed(() => (route.meta.title as string) || 'Personal Trainer')
+const pageTitle = computed(() => (route.meta.title as string) || 'Filetics Trainer')
 
 const canGoBack = computed(() => {
   const noBackRoutes = ['/dashboard', '/onboarding', '/users']

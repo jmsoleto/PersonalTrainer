@@ -39,8 +39,8 @@ export default configure(() => {
     pwa: {
       workboxMode: 'GenerateSW',
       manifestOptions: {
-        name: 'Personal Trainer',
-        short_name: 'PT',
+        name: 'Filetics Trainer',
+        short_name: 'Filetics',
         description: 'AI-powered 12-week training plans',
         display: 'standalone',
         orientation: 'portrait',
