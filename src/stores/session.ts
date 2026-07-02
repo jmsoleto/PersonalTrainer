@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { db } from '../db'
 import type {
   PlannedSession,
+  PlannedExercise,
   CompletedSession,
   CompletedExercise,
   CompletedSet,
@@ -64,6 +65,35 @@ export const useSessionStore = defineStore('session', () => {
     if (!set) return
 
     Object.assign(set, data, { completed: true })
+  }
+
+  /**
+   * Replace an exercise in the active session with a new prescription, rebuilding
+   * its logged-set skeleton (any sets logged on the original are reset). Mirrors
+   * the skeleton construction in startSession.
+   */
+  function replaceExercise(originalExerciseId: string, replacement: PlannedExercise): void {
+    if (!currentSession.value) return
+    const skeleton: CompletedExercise = {
+      exerciseId: replacement.exerciseId,
+      exerciseName: replacement.exerciseName,
+      sets: Array.from({ length: replacement.sets }, (_, i) => ({
+        setNumber: i + 1,
+        reps: replacement.reps,
+        weightKg: replacement.targetWeightKg,
+        durationSeconds: replacement.durationSeconds,
+        completed: false,
+        rpe: undefined,
+      })),
+    }
+    const idx = currentSession.value.exercises.findIndex(
+      e => e.exerciseId === originalExerciseId,
+    )
+    if (idx >= 0) currentSession.value.exercises.splice(idx, 1, skeleton)
+
+    // Drop the original from skipped, if present.
+    const s = currentSession.value.skippedExercises.indexOf(originalExerciseId)
+    if (s >= 0) currentSession.value.skippedExercises.splice(s, 1)
   }
 
   function skipExercise(exerciseId: string): void {
@@ -144,6 +174,7 @@ export const useSessionStore = defineStore('session', () => {
     totalSetsCount,
     startSession,
     logSet,
+    replaceExercise,
     skipExercise,
     completeSession,
     cancelSession,

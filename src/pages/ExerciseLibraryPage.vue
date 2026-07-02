@@ -113,43 +113,43 @@ const filterEquipment = ref('')
 
 onMounted(() => exercisesStore.loadExercises())
 
-// ── Opciones de filtros (valores reales del JSON) ───────────────
+// ── Opciones de filtros (valores canónicos del enum) ────────────
 const muscleOptions = [
-  { label: 'Pecho',           value: 'pecho' },
-  { label: 'Espalda',         value: 'espalda' },
-  { label: 'Hombros',         value: 'hombros' },
-  { label: 'Bíceps',          value: 'bíceps' },
-  { label: 'Tríceps',         value: 'tríceps' },
-  { label: 'Antebrazos',      value: 'antebrazos' },
+  { label: 'Pecho',           value: 'chest' },
+  { label: 'Espalda',         value: 'back' },
+  { label: 'Hombros',         value: 'shoulders' },
+  { label: 'Bíceps',          value: 'biceps' },
+  { label: 'Tríceps',         value: 'triceps' },
+  { label: 'Antebrazos',      value: 'forearms' },
   { label: 'Core',            value: 'core' },
-  { label: 'Cuádriceps',      value: 'cuádriceps' },
-  { label: 'Isquiotibiales',  value: 'isquiotibiales' },
-  { label: 'Glúteos',         value: 'glúteos' },
-  { label: 'Gemelos',         value: 'gemelos' },
-  { label: 'Cuerpo completo', value: 'cuerpo_completo' },
+  { label: 'Cuádriceps',      value: 'quads' },
+  { label: 'Isquiotibiales',  value: 'hamstrings' },
+  { label: 'Glúteos',         value: 'glutes' },
+  { label: 'Gemelos',         value: 'calves' },
+  { label: 'Cuerpo completo', value: 'full_body' },
 ]
 
 const difficultyOptions = [
-  { label: 'Principiante', value: 'principiante' },
-  { label: 'Intermedio',   value: 'intermedio'   },
-  { label: 'Avanzado',     value: 'avanzado'     },
+  { label: 'Principiante', value: 'beginner'     },
+  { label: 'Intermedio',   value: 'intermediate' },
+  { label: 'Avanzado',     value: 'advanced'     },
 ]
 
 const equipmentOptions = [
-  { label: 'Mancuernas',      value: 'mancuernas'     },
-  { label: 'Barra',           value: 'barra'           },
-  { label: 'Kettlebell',      value: 'kettlebell'      },
-  { label: 'Bandas elásticas',value: 'banda_elástica'  },
-  { label: 'Bandas resist.',  value: 'resistance_bands'},
-  { label: 'Barra dominadas', value: 'barra_dominadas' },
-  { label: 'Banco',           value: 'banco'           },
+  { label: 'Mancuernas',      value: 'dumbbells'        },
+  { label: 'Barra',           value: 'barbell'          },
+  { label: 'Kettlebell',      value: 'kettlebell'       },
+  { label: 'Bandas elásticas',value: 'resistance_bands' },
+  { label: 'Barra dominadas', value: 'pull_up_bar'      },
+  { label: 'Banco',           value: 'bench'            },
+  { label: 'Esterilla',       value: 'yoga_mat'         },
 ]
 
 // ── Labels ──────────────────────────────────────────────────────
 const difficultyLabel: Record<string, string> = {
-  principiante: 'Principiante',
-  intermedio:   'Intermedio',
-  avanzado:     'Avanzado',
+  beginner:     'Principiante',
+  intermediate: 'Intermedio',
+  advanced:     'Avanzado',
 }
 
 function muscleLabel(m: string): string {
@@ -158,26 +158,26 @@ function muscleLabel(m: string): string {
 
 // ── Clases por dificultad ────────────────────────────────────────
 function difficultyIconClass(d: string): string {
-  if (d === 'principiante') return 'el-item-icon--principiante'
-  if (d === 'intermedio')   return 'el-item-icon--intermedio'
-  if (d === 'avanzado')     return 'el-item-icon--avanzado'
+  if (d === 'beginner')     return 'el-item-icon--beginner'
+  if (d === 'intermediate') return 'el-item-icon--intermediate'
+  if (d === 'advanced')     return 'el-item-icon--advanced'
   return ''
 }
 function difficultyBadgeClass(d: string): string {
-  if (d === 'principiante') return 'el-diff--principiante'
-  if (d === 'intermedio')   return 'el-diff--intermedio'
-  if (d === 'avanzado')     return 'el-diff--avanzado'
+  if (d === 'beginner')     return 'el-diff--beginner'
+  if (d === 'intermediate') return 'el-diff--intermediate'
+  if (d === 'advanced')     return 'el-diff--advanced'
   return ''
 }
 
-// ── Icono por categoría (valores reales del JSON) ────────────────
+// ── Icono por categoría (valores canónicos del enum) ─────────────
 function getCategoryIcon(category: string): string {
   const icons: Record<string, string> = {
-    fuerza:      'fitness_center',
+    strength:    'fitness_center',
     cardio:      'directions_run',
-    flexibilidad:'self_improvement',
-    equilibrio:  'balance',
-    pliométrico: 'bolt',
+    flexibility: 'self_improvement',
+    balance:     'balance',
+    plyometric:  'bolt',
     warmup:      'wb_sunny',
     cooldown:    'nightlight',
   }
@@ -384,15 +384,15 @@ const filteredExercises = computed(() => {
   border-radius: var(--k-radius-md);
 }
 
-.el-item-icon--principiante {
+.el-item-icon--beginner {
   background-color: rgba(166, 200, 255, 0.15);
   color: var(--k-tertiary);
 }
-.el-item-icon--intermedio {
+.el-item-icon--intermediate {
   background-color: rgba(255, 180, 162, 0.15);
   color: var(--k-primary);
 }
-.el-item-icon--avanzado {
+.el-item-icon--advanced {
   background-color: rgba(255, 86, 44, 0.15);
   color: var(--k-primary-container);
 }
@@ -445,15 +445,15 @@ const filteredExercises = computed(() => {
   border-radius: var(--k-radius-sm);
 }
 
-.el-diff--principiante {
+.el-diff--beginner {
   background-color: rgba(166, 200, 255, 0.18);
   color: var(--k-tertiary);
 }
-.el-diff--intermedio {
+.el-diff--intermediate {
   background-color: rgba(255, 180, 162, 0.18);
   color: var(--k-primary);
 }
-.el-diff--avanzado {
+.el-diff--advanced {
   background-color: rgba(255, 86, 44, 0.18);
   color: var(--k-primary-container);
 }

@@ -93,6 +93,9 @@
             <button class="sp-icon-btn" @click="openExerciseInfo(exercise.exerciseId)">
               <q-icon name="info_outline" size="18px" />
             </button>
+            <button class="sp-icon-btn" @click="openSwap(exercise.exerciseId)">
+              <q-icon name="swap_horiz" size="18px" />
+            </button>
             <button
               :class="['sp-icon-btn', { 'sp-icon-btn--active': isSkipped(exercise.exerciseId) }]"
               @click="toggleSkip(exercise.exerciseId)"
@@ -190,6 +193,34 @@
         <RestTimer @close="showRestTimer = false" />
       </q-dialog>
 
+      <!-- ── Swap Exercise Dialog ──────────────────────────────────── -->
+      <q-dialog v-model="swapOpen">
+        <div class="sp-swap-card">
+          <div class="sp-swap-head">
+            <span class="sp-swap-title">Cambiar ejercicio</span>
+            <button class="sp-icon-btn" @click="swapOpen = false">
+              <q-icon name="close" size="18px" />
+            </button>
+          </div>
+          <p v-if="swapAlternatives.length === 0" class="sp-swap-empty">
+            No hay alternativas disponibles para tu material y lesiones.
+          </p>
+          <button
+            v-for="alt in swapAlternatives"
+            :key="alt.id"
+            class="sp-swap-row"
+            type="button"
+            @click="performSwap(alt)"
+          >
+            <div class="sp-swap-info">
+              <span class="sp-swap-name">{{ alt.name }}</span>
+              <span class="sp-swap-meta">{{ alt.equipment.length ? alt.equipment.join(', ') : 'Sin material' }}</span>
+            </div>
+            <q-icon name="chevron_right" size="18px" class="sp-swap-chevron" />
+          </button>
+        </div>
+      </q-dialog>
+
       <!-- ── Fixed bottom bar ──────────────────────────────────────── -->
       <div class="sp-fab-bar">
         <button class="sp-fab-timer" @click="showRestTimer = true">
@@ -215,6 +246,9 @@ import ExerciseInfoDialog from '../components/session/ExerciseInfoDialog.vue'
 import { usePlanStore } from '../stores/plan'
 import { useSessionStore } from '../stores/session'
 import { useExercisesStore } from '../stores/exercises'
+import { useUserStore } from '../stores/user'
+import { Equipment } from '../types/enums'
+import type { Exercise } from '../types/exercise'
 import type { PlannedSession, PlannedExercise, CompletedSet } from '../types/plan'
 
 const route = useRoute()
@@ -223,11 +257,16 @@ const $q = useQuasar()
 const planStore = usePlanStore()
 const sessionStore = useSessionStore()
 const exercisesStore = useExercisesStore()
+const userStore = useUserStore()
+const sessionId = route.params.sessionId as string
 const loading = ref(true)
 const session = ref<PlannedSession | undefined>(undefined)
 const showRestTimer = ref(false)
 const warmupOpen = ref(false)
 const cooldownOpen = ref(false)
+const swapOpen = ref(false)
+const swapTargetId = ref<string | null>(null)
+const swapAlternatives = ref<Exercise[]>([])
 
 function hasDetail(exerciseId: string): boolean {
   return exercisesStore.getById(exerciseId) !== undefined
@@ -273,9 +312,53 @@ function completeSession(): void {
   router.push(`/plan/session/${route.params.sessionId}/complete`)
 }
 
+// ── Swap exercise ────────────────────────────────────────────────
+const WEIGHTED_EQUIPMENT = new Set<string>([
+  Equipment.Dumbbells, Equipment.Barbell, Equipment.Kettlebell,
+])
+
+function openSwap(exerciseId: string): void {
+  swapTargetId.value = exerciseId
+  swapAlternatives.value = exercisesStore.findAlternatives(exerciseId, {
+    equipment: userStore.currentUser?.equipment ?? [],
+    injuries: userStore.currentUser?.injuries ?? [],
+  })
+  swapOpen.value = true
+}
+
+// Keep the original prescription (sets/reps/rest/duration); carry weight only if
+// the alternative is a weighted movement; adopt the alternative's identity.
+function buildReplacement(original: PlannedExercise, alt: Exercise): PlannedExercise {
+  const replacement: PlannedExercise = {
+    exerciseId: alt.id,
+    exerciseName: alt.name,
+    sets: original.sets,
+    restSeconds: original.restSeconds,
+  }
+  if (original.reps !== undefined) replacement.reps = original.reps
+  if (original.durationSeconds !== undefined) replacement.durationSeconds = original.durationSeconds
+  if (original.notes !== undefined) replacement.notes = original.notes
+  const altWeighted = alt.equipment.some(e => WEIGHTED_EQUIPMENT.has(e))
+  if (altWeighted && original.targetWeightKg !== undefined) {
+    replacement.targetWeightKg = original.targetWeightKg
+  }
+  return replacement
+}
+
+async function performSwap(alt: Exercise): Promise<void> {
+  const originalId = swapTargetId.value
+  if (!originalId) return
+  const original = getPlannedExercise(originalId)
+  if (!original) return
+  const replacement = buildReplacement(original, alt)
+  await planStore.swapPlannedExercise(sessionId, originalId, replacement)
+  sessionStore.replaceExercise(originalId, replacement)
+  swapOpen.value = false
+  swapTargetId.value = null
+}
+
 onMounted(async () => {
   await Promise.all([planStore.loadActivePlan(), exercisesStore.loadExercises()])
-  const sessionId = route.params.sessionId as string
   session.value = planStore.getSession(sessionId)
 
   const isCorrectSession = sessionStore.currentSession?.planned.id === sessionId
@@ -500,4 +583,36 @@ onMounted(async () => {
   letter-spacing: var(--k-tracking-headline); cursor: pointer; text-decoration: none;
 }
 .sp-btn--cta { background: var(--k-gradient-cta); color: var(--k-on-primary-container); }
+
+/* ── Swap dialog ─────────────────────────────────────────────── */
+.sp-swap-card {
+  width: 92vw; max-width: 420px; background-color: var(--k-surface-container);
+  border-radius: var(--k-radius-md); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;
+}
+.sp-swap-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; }
+.sp-swap-title {
+  font-family: var(--k-font-headline); font-size: var(--k-body-lg); font-weight: 700;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+}
+.sp-swap-empty {
+  font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary);
+  padding: 0.5rem 0.25rem; margin: 0;
+}
+.sp-swap-row {
+  width: 100%; display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 0.875rem; border: none; cursor: pointer; text-align: left;
+  background-color: var(--k-surface-high); border-radius: var(--k-radius-md);
+  transition: background-color 0.15s ease;
+}
+.sp-swap-row:hover { background-color: var(--k-surface-highest); }
+.sp-swap-info { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.sp-swap-name {
+  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+}
+.sp-swap-meta {
+  font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary);
+  text-transform: uppercase; letter-spacing: var(--k-tracking-label);
+}
+.sp-swap-chevron { color: var(--k-secondary); flex-shrink: 0; }
 </style>
