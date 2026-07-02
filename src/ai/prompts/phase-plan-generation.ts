@@ -134,7 +134,7 @@ Cada semana dentro de una fase debe variar el bloque principal siguiendo periodi
 Adapta este patrón al número de semanas de la fase. El calentamiento y la vuelta a la calma NO cambian entre semanas de la misma fase.
 
 ## Schema JSON requerido (formato compacto)
-Claves: id=exercise_id, s=sets, r=reps, sec=duration_sec, es=each_side(bool)
+Claves: id=exercise_id, s=sets, r=reps, sec=duration_sec, es=each_side(bool), w=peso_recomendado_kg
 {
   "phases": [
     {
@@ -156,10 +156,10 @@ Claves: id=exercise_id, s=sets, r=reps, sec=duration_sec, es=each_side(bool)
             {"id":"ex_...","sec":30,"es":true}
           ],
           "weeks": [
-            [{"id":"ex_...","s":3,"r":10},{"id":"ex_...","s":3,"r":10}],
-            [{"id":"ex_...","s":3,"r":12},{"id":"ex_...","s":3,"r":12}],
-            [{"id":"ex_...","s":4,"r":10},{"id":"ex_2..","s":4,"r":10}],
-            [{"id":"ex_...","s":3,"r":8},{"id":"ex_2..","s":3,"r":8}]
+            [{"id":"ex_...","s":3,"r":10,"w":40},{"id":"ex_...","s":3,"r":10}],
+            [{"id":"ex_...","s":3,"r":12,"w":40},{"id":"ex_...","s":3,"r":12}],
+            [{"id":"ex_...","s":4,"r":10,"w":42.5},{"id":"ex_2..","s":4,"r":10}],
+            [{"id":"ex_...","s":3,"r":8,"w":45},{"id":"ex_2..","s":3,"r":8}]
           ]
         }
       ]
@@ -173,5 +173,7 @@ REGLAS DEL SCHEMA:
 - Cada array en "weeks" son los ejercicios principales de esa semana (índice 0 = primera semana de la fase)
 - wu = warmup (categoría "warmup"), cd = cooldown (categoría "cooldown"), definidos una sola vez
 - Usa SOLO ids del catálogo. Para tiempo usa sec en vez de r.
+- "w" (peso recomendado en kg): inclúyelo SOLO en ejercicios de peso (equipment con dumbbells/barbell/kettlebell/machines). OMÍTELO por completo en ejercicios de peso corporal, de tiempo (sec) y en wu/cd. No añadas "w" donde no aplique: mantén la respuesta compacta.
+- Cuando incluyas "w", básalo en el peso corporal y nivel del usuario, con incrementos realistas (enteros o medios kg en mancuernas, saltos de ~2.5 kg en barra).
 - El campo "weeks" de cada fase lista los números de semana absolutos. La suma de todos: ${Array.from({ length: params.weeks }, (_, i) => i + 1).join(',')} (${params.weeks} semanas)`
 }

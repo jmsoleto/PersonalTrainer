@@ -13,6 +13,7 @@ interface CompactExercise {
   r?: number       // reps
   sec?: number     // duration_sec
   es?: boolean     // each_side
+  w?: number       // target_weight_kg (weight-loaded exercises only)
 }
 
 /** Compact session: warmup/cooldown defined once, main varies per week */
@@ -88,6 +89,7 @@ function mapCompactExercise(
     durationSeconds: ce.sec,
     restSeconds,
     notes: ce.es ? 'Cada lado' : undefined,
+    targetWeightKg: ce.w,
   }
 }
 
