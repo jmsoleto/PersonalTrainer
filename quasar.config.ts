@@ -9,6 +9,7 @@ export default configure(() => {
     extras: [
       'roboto-font',
       'material-icons',
+      'material-symbols-outlined',
     ],
 
     build: {
