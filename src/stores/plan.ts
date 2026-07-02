@@ -13,7 +13,7 @@ import type { ExternalPlanRoot } from '../import/external-plan-types'
 import { useUserStore } from './user'
 import { useExercisesStore } from './exercises'
 import { useSettingsStore } from './settings'
-import type { TrainingPlan, Week, CompletedSession, PlannedSession } from '../types/plan'
+import type { TrainingPlan, Week, CompletedSession, PlannedSession, PlannedExercise } from '../types/plan'
 import { FitnessGoal, FitnessLevel, type PlanStatus } from '../types/enums'
 
 const GOAL_PLAN_NAMES: Record<FitnessGoal, string> = {
@@ -264,6 +264,26 @@ export const usePlanStore = defineStore('plan', () => {
     return undefined
   }
 
+  /**
+   * Replace a planned main-workout exercise for a specific session (i.e. one
+   * day of one week) and persist the plan. The change is scoped to that session
+   * only; the same exercise on other days/weeks is untouched.
+   */
+  async function swapPlannedExercise(
+    sessionId: string,
+    originalExerciseId: string,
+    replacement: PlannedExercise,
+  ): Promise<void> {
+    if (!activePlan.value) return
+    const planned = getSession(sessionId)
+    if (!planned) return
+    const idx = planned.mainWorkout.findIndex(e => e.exerciseId === originalExerciseId)
+    if (idx < 0) return
+    planned.mainWorkout.splice(idx, 1, replacement)
+    // Persist a plain snapshot — IndexedDB cannot structured-clone the reactive proxy.
+    await db.trainingPlans.put(JSON.parse(JSON.stringify(activePlan.value)) as TrainingPlan)
+  }
+
   const currentWeek = computed(() => getWeek(getCurrentWeekNumber()))
 
   return {
@@ -279,5 +299,6 @@ export const usePlanStore = defineStore('plan', () => {
     getCurrentWeekNumber,
     getWeek,
     getSession,
+    swapPlannedExercise,
   }
 })

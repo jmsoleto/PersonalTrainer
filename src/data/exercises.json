@@ -11,15 +11,15 @@
       "Repite el número de repeticiones deseado."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -38,14 +38,14 @@
       "Empuja hacia arriba hasta la posición inicial."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -63,14 +63,14 @@
       "Empuja hacia arriba hasta la posición inicial."
     ],
     "muscleGroups": [
-      "tríceps",
-      "pecho",
-      "hombros"
+      "triceps",
+      "chest",
+      "shoulders"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -88,14 +88,14 @@
       "Empuja hacia arriba hasta la posición inicial."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -113,14 +113,14 @@
       "Empuja hacia arriba hasta la posición inicial."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -138,14 +138,14 @@
       "Empuja hacia arriba hasta la posición inicial."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
-      "pecho"
+      "shoulders",
+      "triceps",
+      "chest"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -164,15 +164,15 @@
       "Empuja hacia el centro y repite en el otro lado."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "avanzado",
+    "primaryMuscle": "chest",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -190,14 +190,14 @@
       "Da una palmada y aterriza suavemente de vuelta en posición de flexión."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "avanzado",
+    "primaryMuscle": "chest",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -215,15 +215,15 @@
       "Alterna los lados en cada repetición."
     ],
     "muscleGroups": [
-      "pecho",
+      "chest",
       "core",
-      "hombros",
-      "tríceps"
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -242,16 +242,16 @@
       "Empuja las caderas de vuelta hacia arriba a la posición de perro boca abajo y repite."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
-      "espalda",
+      "chest",
+      "shoulders",
+      "triceps",
+      "back",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -270,15 +270,15 @@
       "Baja hasta que los muslos estén paralelos al suelo y vuelve a ponerte de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -296,15 +296,15 @@
       "Aterriza suavemente con las rodillas flexionadas y baja de inmediato a la siguiente repetición."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "calves",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -322,14 +322,14 @@
       "Empuja a través de los talones para volver a estar de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -347,15 +347,15 @@
       "Empuja a través del talón para volver a ponerte de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "avanzado",
+    "primaryMuscle": "quads",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -374,13 +374,13 @@
       "Mantén la posición durante el tiempo indicado."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos"
+      "quads",
+      "glutes"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "sentadilla",
@@ -399,14 +399,14 @@
       "Alterna las piernas en cada repetición."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -424,14 +424,14 @@
       "Empuja a través del talón delantero para volver a estar de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -449,15 +449,15 @@
       "Continúa alternando piernas mientras avanzas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -475,14 +475,14 @@
       "Empuja con el pie derecho para volver al centro y repite en el otro lado."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -500,15 +500,15 @@
       "Salta de inmediato para continuar alternando."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
-      "gemelos"
+      "quads",
+      "glutes",
+      "hamstrings",
+      "calves"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "avanzado",
+    "primaryMuscle": "quads",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -526,14 +526,14 @@
       "Empuja con el talón delantero para volver a la posición de pie."
     ],
     "muscleGroups": [
-      "glúteos",
-      "cuádriceps",
-      "isquiotibiales"
+      "glutes",
+      "quads",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -552,12 +552,12 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros"
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -576,13 +576,13 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "tríceps"
+      "shoulders",
+      "triceps"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -601,12 +601,12 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros"
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -624,12 +624,12 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros"
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -648,11 +648,11 @@
     ],
     "muscleGroups": [
       "core",
-      "cuádriceps",
-      "hombros"
+      "quads",
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -673,13 +673,13 @@
       "Aterriza suavemente y comienza la siguiente repetición de inmediato."
     ],
     "muscleGroups": [
-      "cuerpo_completo",
-      "pecho",
-      "cuádriceps",
+      "full_body",
+      "chest",
+      "quads",
       "core"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -698,12 +698,12 @@
       "Salta los pies hacia las manos y ponte de pie."
     ],
     "muscleGroups": [
-      "cuerpo_completo",
-      "cuádriceps",
+      "full_body",
+      "quads",
       "core"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "principiante",
+    "primaryMuscle": "full_body",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -725,9 +725,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -748,9 +748,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -770,9 +770,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -793,9 +793,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -815,9 +815,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -837,9 +837,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -859,9 +859,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -878,14 +878,14 @@
       "Mantén brevemente la posición y luego baja de nuevo."
     ],
     "muscleGroups": [
-      "espalda",
-      "glúteos",
-      "isquiotibiales"
+      "back",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -904,14 +904,14 @@
       "Baja las caderas de nuevo con control."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "bisagra",
@@ -929,14 +929,14 @@
       "Baja con control y repite en ambos lados."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "bisagra",
@@ -954,12 +954,12 @@
       "Baja lentamente y repite."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "principiante",
+    "primaryMuscle": "calves",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -976,12 +976,12 @@
       "Baja lentamente y completa todas las repeticiones antes de cambiar de pierna."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "calves",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -998,13 +998,13 @@
       "Baja con control y repite en ambos lados."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -1021,12 +1021,12 @@
       "Baja con control y repite en ambos lados."
     ],
     "muscleGroups": [
-      "glúteos"
+      "glutes"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -1043,14 +1043,14 @@
       "Baja con control y repite en ambos lados."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -1067,15 +1067,15 @@
       "Baja con cuidado y repite."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "calves",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -1092,15 +1092,15 @@
       "Aterriza suavemente con las rodillas flexionadas y repite inmediatamente."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
+      "quads",
+      "glutes",
+      "calves",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "avanzado",
+    "primaryMuscle": "quads",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -1117,12 +1117,12 @@
       "Mantén una postura erguida y un ritmo rápido."
     ],
     "muscleGroups": [
-      "cuádriceps",
+      "quads",
       "core",
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -1141,12 +1141,12 @@
       "Mantén una postura erguida y un ritmo ágil."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "gemelos",
-      "cuádriceps"
+      "hamstrings",
+      "calves",
+      "quads"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -1165,12 +1165,12 @@
       "Continúa a un ritmo constante."
     ],
     "muscleGroups": [
-      "cuerpo_completo",
-      "gemelos",
-      "hombros"
+      "full_body",
+      "calves",
+      "shoulders"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "principiante",
+    "primaryMuscle": "full_body",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -1189,14 +1189,14 @@
       "Salta inmediatamente de vuelta al lado inicial y repite."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos"
+      "quads",
+      "glutes",
+      "calves"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -1214,13 +1214,13 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "cuádriceps"
+      "shoulders",
+      "quads"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "cuerpo_completo",
@@ -1239,13 +1239,13 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "isquiotibiales"
+      "shoulders",
+      "hamstrings"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "cuerpo_completo",
@@ -1263,14 +1263,14 @@
       "Empuja hacia arriba para extender los brazos."
     ],
     "muscleGroups": [
-      "tríceps",
-      "hombros",
-      "pecho"
+      "triceps",
+      "shoulders",
+      "chest"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "triceps",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -1289,13 +1289,13 @@
     ],
     "muscleGroups": [
       "core",
-      "tríceps",
-      "hombros"
+      "triceps",
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -1317,9 +1317,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -1336,15 +1336,15 @@
       "Aterriza suavemente con las rodillas flexionadas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "calves",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -1361,15 +1361,15 @@
       "Mantén las caderas elevadas durante todo el ejercicio."
     ],
     "muscleGroups": [
-      "tríceps",
-      "hombros",
+      "triceps",
+      "shoulders",
       "core",
-      "glúteos"
+      "glutes"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_superior",
@@ -1387,13 +1387,13 @@
       "Continúa pulsando durante el número de repeticiones indicado."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos"
+      "quads",
+      "glutes"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -1411,17 +1411,17 @@
       "Mantén los pies apoyados en el suelo y la espalda ligeramente arqueada."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas",
-      "banco"
+      "dumbbells",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -1440,17 +1440,17 @@
       "Mantén los pies apoyados en el suelo y el core activo."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas",
-      "banco"
+      "dumbbells",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -1469,15 +1469,15 @@
       "Aprieta el pecho para volver a juntar las mancuernas."
     ],
     "muscleGroups": [
-      "pecho"
+      "chest"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas",
-      "banco"
+      "dumbbells",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "empuje",
@@ -1495,15 +1495,15 @@
       "Mantén el core tenso y evita arquear la espalda."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps"
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -1522,14 +1522,14 @@
       "Baja las mancuernas lentamente."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -1546,14 +1546,14 @@
       "Baja con control y repite."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -1570,15 +1570,15 @@
       "Baja las mancuernas de vuelta con control."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -1596,14 +1596,14 @@
       "Baja las mancuernas de vuelta con control."
     ],
     "muscleGroups": [
-      "bíceps"
+      "biceps"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "biceps",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -1621,15 +1621,15 @@
       "Baja con control y repite."
     ],
     "muscleGroups": [
-      "bíceps",
-      "antebrazos"
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "biceps",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -1647,14 +1647,14 @@
       "Extiende los brazos de vuelta a la posición inicial."
     ],
     "muscleGroups": [
-      "tríceps"
+      "triceps"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "empuje",
@@ -1672,14 +1672,14 @@
       "Vuelve a la posición inicial y repite en ambos lados."
     ],
     "muscleGroups": [
-      "tríceps"
+      "triceps"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "triceps",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "empuje",
@@ -1697,15 +1697,15 @@
       "Baja las mancuernas de vuelta con control."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps"
+      "back",
+      "biceps"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -1723,16 +1723,16 @@
       "Baja con control y completa todas las repeticiones antes de cambiar de lado."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps"
+      "back",
+      "biceps"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas",
-      "banco"
+      "dumbbells",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -1750,17 +1750,17 @@
       "Mantén las caderas niveladas y el core tenso durante todo el movimiento."
     ],
     "muscleGroups": [
-      "espalda",
+      "back",
       "core",
-      "bíceps",
-      "hombros"
+      "biceps",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -1779,16 +1779,16 @@
       "Empuja a través de los talones para volver a ponerte de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -1806,16 +1806,16 @@
       "Empuja de vuelta a la posición de pie y alterna las piernas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -1833,16 +1833,16 @@
       "Baja hasta sentir el estiramiento en los isquiotibiales, luego empuja las caderas hacia adelante para erguirte."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
-      "espalda"
+      "hamstrings",
+      "glutes",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "intermedio",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -1861,14 +1861,14 @@
       "Baja lentamente y repite."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "principiante",
+    "primaryMuscle": "calves",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -1885,15 +1885,15 @@
       "Baja con control y repite."
     ],
     "muscleGroups": [
-      "espalda",
-      "hombros"
+      "back",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -1910,14 +1910,14 @@
       "Baja lentamente y repite."
     ],
     "muscleGroups": [
-      "antebrazos"
+      "forearms"
     ],
-    "primaryMuscle": "antebrazos",
-    "difficulty": "principiante",
+    "primaryMuscle": "forearms",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -1934,14 +1934,14 @@
       "Baja lentamente y completa todas las repeticiones antes de cambiar de brazo."
     ],
     "muscleGroups": [
-      "bíceps"
+      "biceps"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "biceps",
+    "difficulty": "beginner",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -1959,15 +1959,15 @@
       "Invierte la rotación al bajar de vuelta."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps"
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -1987,16 +1987,16 @@
       "Tira de la mancuerna de vuelta sobre el pecho."
     ],
     "muscleGroups": [
-      "pecho",
-      "espalda"
+      "chest",
+      "back"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas",
-      "banco"
+      "dumbbells",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -2015,17 +2015,17 @@
       "Baja las mancuernas de nuevo a los hombros mientras desciendes hacia la siguiente sentadilla."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "hombros",
-      "tríceps"
+      "quads",
+      "glutes",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -2044,16 +2044,16 @@
       "Baja con control y repite en ambos lados."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -2071,17 +2071,17 @@
       "Mantén el pecho erguido y el core activo en todo momento."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -2099,16 +2099,16 @@
       "Empuja a través de los talones para volver a la posición de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "avanzado",
+    "primaryMuscle": "quads",
+    "difficulty": "advanced",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -2127,18 +2127,18 @@
       "Mantén la espalda plana y el core activo en todo momento."
     ],
     "muscleGroups": [
-      "espalda",
-      "isquiotibiales",
-      "glúteos",
+      "back",
+      "hamstrings",
+      "glutes",
       "core",
-      "antebrazos"
+      "forearms"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2157,16 +2157,16 @@
       "Baja hasta sentir el estiramiento en los isquiotibiales y luego impulsa las caderas hacia adelante."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
-      "espalda"
+      "hamstrings",
+      "glutes",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "intermedio",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2185,17 +2185,17 @@
       "Mantén los pies apoyados, la espalda ligeramente arqueada y los omóplatos retraídos."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra",
-      "banco"
+      "barbell",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -2214,17 +2214,17 @@
       "Empuja la barra hacia arriba hasta la extensión completa de los brazos."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra",
-      "banco"
+      "barbell",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -2243,16 +2243,16 @@
       "Baja la barra de nuevo a la altura de los hombros con control."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -2271,16 +2271,16 @@
       "Baja la barra con control y repite."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos"
+      "back",
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -2298,17 +2298,17 @@
       "Aprieta los glúteos en la parte superior y baja con control."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra",
-      "banco"
+      "barbell",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2326,15 +2326,15 @@
       "Baja la barra de nuevo con control."
     ],
     "muscleGroups": [
-      "bíceps",
-      "antebrazos"
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "biceps",
+    "difficulty": "beginner",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -2352,15 +2352,15 @@
       "Extiende los brazos de vuelta a la posición inicial."
     ],
     "muscleGroups": [
-      "tríceps"
+      "triceps"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra",
-      "banco"
+      "barbell",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "empuje",
@@ -2378,17 +2378,17 @@
       "Baja la barra de vuelta con control."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
-      "cuádriceps",
-      "espalda"
+      "glutes",
+      "hamstrings",
+      "quads",
+      "back"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2407,17 +2407,17 @@
       "Empuja la barra hacia arriba hasta la extensión completa de los brazos."
     ],
     "muscleGroups": [
-      "tríceps",
-      "pecho",
-      "hombros"
+      "triceps",
+      "chest",
+      "shoulders"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra",
-      "banco"
+      "barbell",
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -2436,15 +2436,15 @@
       "Baja la barra con control y repite."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -2462,16 +2462,16 @@
       "Impulsa las caderas hacia adelante para volver a la posición erguida."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
-      "espalda"
+      "hamstrings",
+      "glutes",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "intermedio",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2490,17 +2490,17 @@
       "Baja de vuelta a los hombros y luego al suelo."
     ],
     "muscleGroups": [
-      "cuerpo_completo",
-      "hombros",
-      "espalda",
-      "cuádriceps"
+      "full_body",
+      "shoulders",
+      "back",
+      "quads"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "avanzado",
+    "primaryMuscle": "full_body",
+    "difficulty": "advanced",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -2519,16 +2519,16 @@
       "Empuja a través del talón del pie delantero para volver a la posición de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -2546,14 +2546,14 @@
       "Baja los talones por debajo de la plataforma y repite."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "calves",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -2570,15 +2570,15 @@
       "Baja con control y repite."
     ],
     "muscleGroups": [
-      "antebrazos",
-      "bíceps"
+      "forearms",
+      "biceps"
     ],
-    "primaryMuscle": "antebrazos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "forearms",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -2597,18 +2597,18 @@
       "Controla el descenso y repite en un movimiento fluido."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
-      "espalda",
+      "glutes",
+      "hamstrings",
+      "back",
       "core",
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2626,16 +2626,16 @@
       "Empuja con los talones para volver a la posición de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -2654,16 +2654,16 @@
       "Invierte los pasos para volver a la posición inicial."
     ],
     "muscleGroups": [
-      "cuerpo_completo",
-      "hombros",
+      "full_body",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "avanzado",
+    "primaryMuscle": "full_body",
+    "difficulty": "advanced",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "cuerpo_completo",
@@ -2681,17 +2681,17 @@
       "Rota la mano y deja que el kettlebell descanse sobre el antebrazo en la posición de rack."
     ],
     "muscleGroups": [
-      "espalda",
-      "hombros",
-      "bíceps",
+      "back",
+      "shoulders",
+      "biceps",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -2709,16 +2709,16 @@
       "Baja el kettlebell de vuelta a la posición de rack."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -2737,17 +2737,17 @@
       "Bloquea el brazo arriba y regresa a la posición inicial."
     ],
     "muscleGroups": [
-      "cuerpo_completo",
-      "hombros",
-      "glúteos",
-      "isquiotibiales"
+      "full_body",
+      "shoulders",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "avanzado",
+    "primaryMuscle": "full_body",
+    "difficulty": "advanced",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2765,16 +2765,16 @@
       "Baja el kettlebell al suelo manteniendo la espalda recta."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
-      "espalda"
+      "hamstrings",
+      "glutes",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -2794,15 +2794,15 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "isquiotibiales"
+      "shoulders",
+      "hamstrings"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -2820,15 +2820,15 @@
       "Completa las repeticiones en una dirección y luego invierte."
     ],
     "muscleGroups": [
-      "hombros",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior",
@@ -2846,15 +2846,15 @@
       "Baja con control y completa todas las repeticiones antes de cambiar de lado."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps"
+      "back",
+      "biceps"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -2872,16 +2872,16 @@
       "Empuja con los talones para volver a la posición de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -2899,16 +2899,16 @@
       "Vuelve a la posición de pie y alterna piernas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -2926,17 +2926,17 @@
       "Mantén una postura recta durante la distancia o el tiempo indicados."
     ],
     "muscleGroups": [
-      "antebrazos",
+      "forearms",
       "core",
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "antebrazos",
-    "difficulty": "principiante",
+    "primaryMuscle": "forearms",
+    "difficulty": "beginner",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "cuerpo_completo"
@@ -2954,15 +2954,15 @@
     ],
     "muscleGroups": [
       "core",
-      "espalda",
-      "hombros"
+      "back",
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "kettlebell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -2980,16 +2980,16 @@
       "Baja con control hasta el colgado completo."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos"
+      "back",
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3007,16 +3007,16 @@
       "Baja con control hasta el colgado completo."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos"
+      "back",
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "biceps",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3034,15 +3034,15 @@
       "Baja de vuelta al colgado completo."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps"
+      "back",
+      "biceps"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3060,16 +3060,16 @@
       "Vuelve a subir y repite."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos"
+      "back",
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3088,14 +3088,14 @@
     ],
     "muscleGroups": [
       "core",
-      "antebrazos"
+      "forearms"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -3115,11 +3115,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -3136,16 +3136,16 @@
       "Mantén durante el tiempo indicado."
     ],
     "muscleGroups": [
-      "antebrazos",
-      "hombros",
-      "espalda"
+      "forearms",
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "antebrazos",
-    "difficulty": "principiante",
+    "primaryMuscle": "forearms",
+    "difficulty": "beginner",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -3162,16 +3162,16 @@
       "Alterna los lados en cada repetición."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
+      "back",
+      "biceps",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3189,18 +3189,18 @@
       "Extiende completamente los brazos en la parte superior y luego vuelve al colgado."
     ],
     "muscleGroups": [
-      "espalda",
-      "pecho",
-      "tríceps",
-      "hombros",
+      "back",
+      "chest",
+      "triceps",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
-      "barra_dominadas"
+      "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3219,16 +3219,16 @@
       "Empuja hacia arriba hasta la extensión completa de los brazos."
     ],
     "muscleGroups": [
-      "tríceps",
-      "hombros",
-      "pecho"
+      "triceps",
+      "shoulders",
+      "chest"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "triceps",
+    "difficulty": "beginner",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -3246,16 +3246,16 @@
       "Repite en ambos lados."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -3272,16 +3272,16 @@
       "Aprieta los glúteos en la parte superior y baja con control."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -3299,16 +3299,16 @@
       "Empuja de vuelta a la posición inicial."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -3326,16 +3326,16 @@
       "Impulsa a través del talón delantero para volver a la posición de pie."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -3354,15 +3354,15 @@
       "Vuelve lentamente a la posición inicial."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -3380,14 +3380,14 @@
       "Baja con control y repite."
     ],
     "muscleGroups": [
-      "bíceps"
+      "biceps"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "biceps",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -3405,15 +3405,15 @@
       "Da varios pasos en una dirección y luego invierte."
     ],
     "muscleGroups": [
-      "glúteos",
-      "cuádriceps"
+      "glutes",
+      "quads"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -3430,15 +3430,15 @@
       "Baja de vuelta a la altura de los hombros con control."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps"
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -3457,16 +3457,16 @@
       "Vuelve a ponerte de pie manteniendo la presión hacia afuera sobre la banda."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -3484,16 +3484,16 @@
       "Vuelve a la posición inicial con control."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps"
+      "chest",
+      "shoulders",
+      "triceps"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -3512,15 +3512,15 @@
       "Extiende los brazos de vuelta hacia adelante con control."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps"
+      "back",
+      "biceps"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -3538,14 +3538,14 @@
       "Mantén la parte superior de los brazos estática y vuelve con control."
     ],
     "muscleGroups": [
-      "tríceps"
+      "triceps"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "triceps",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "empuje",
@@ -3563,15 +3563,15 @@
       "Aprieta los omóplatos y vuelve con control."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -3589,14 +3589,14 @@
       "Baja con control y repite en ambas piernas."
     ],
     "muscleGroups": [
-      "isquiotibiales"
+      "hamstrings"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -3614,14 +3614,14 @@
       "Baja con control y completa todas las repeticiones antes de cambiar de lado."
     ],
     "muscleGroups": [
-      "glúteos"
+      "glutes"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
-      "banda_elástica"
+      "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -3638,15 +3638,15 @@
       "Vuelve a la posición inicial y repite en ambos lados."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
       "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -3663,14 +3663,14 @@
       "Baja de forma controlada y repite."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [
       "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -3690,11 +3690,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "resistance_bands"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -3712,10 +3712,10 @@
       "Mantén el core activado y la postura erguida."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3734,12 +3734,12 @@
       "Repite con la otra pierna y luego realiza balanceos laterales."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "cuádriceps",
-      "glúteos"
+      "hamstrings",
+      "quads",
+      "glutes"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3758,11 +3758,11 @@
       "Mantén el movimiento suave y controlado."
     ],
     "muscleGroups": [
-      "glúteos",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3784,7 +3784,7 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3804,10 +3804,10 @@
       "Muévete despacio y evita movimientos bruscos."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3826,10 +3826,10 @@
       "Repite con el otro pie."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "principiante",
+    "primaryMuscle": "calves",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3848,11 +3848,11 @@
       "Continúa a ritmo de marcha."
     ],
     "muscleGroups": [
-      "cuádriceps",
+      "quads",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": true,
@@ -3871,11 +3871,11 @@
       "Suelta y deja que vuelvan a bajar."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3894,13 +3894,13 @@
       "Da un paso al frente y repite en el otro lado."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
+      "hamstrings",
+      "glutes",
       "core",
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": true,
@@ -3920,11 +3920,11 @@
       "Fluye entre estas posiciones de forma lenta."
     ],
     "muscleGroups": [
-      "espalda",
+      "back",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3943,10 +3943,10 @@
       "Sacude las manos al terminar."
     ],
     "muscleGroups": [
-      "antebrazos"
+      "forearms"
     ],
-    "primaryMuscle": "antebrazos",
-    "difficulty": "principiante",
+    "primaryMuscle": "forearms",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -3965,12 +3965,12 @@
       "Mantén el pecho erguido y los pies ágiles."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos"
+      "quads",
+      "glutes",
+      "calves"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": true,
@@ -3989,12 +3989,12 @@
       "Bombea los brazos coordinados con las piernas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "gemelos",
+      "quads",
+      "calves",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": true,
@@ -4013,12 +4013,12 @@
       "Vuelve a la posición erguida impulsando las caderas hacia adelante."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
-      "espalda"
+      "hamstrings",
+      "glutes",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": true,
@@ -4038,11 +4038,11 @@
       "Repite de forma lenta y controlada."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "warmup",
     "isCompound": false,
@@ -4061,10 +4061,10 @@
       "Aguanta 20-30 segundos y cambia de pierna."
     ],
     "muscleGroups": [
-      "cuádriceps"
+      "quads"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4083,11 +4083,11 @@
       "Aguanta 20-30 segundos."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "espalda"
+      "hamstrings",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4106,11 +4106,11 @@
       "Repite en el otro lado."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros"
+      "chest",
+      "shoulders"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4129,10 +4129,10 @@
       "Mantén durante 20-30 segundos y cambia de brazo."
     ],
     "muscleGroups": [
-      "tríceps"
+      "triceps"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "triceps",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4151,10 +4151,10 @@
       "Mantén durante 20-30 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "principiante",
+    "primaryMuscle": "calves",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4173,11 +4173,11 @@
       "Mantén durante 30-60 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4196,11 +4196,11 @@
       "Mantén durante 30-60 segundos, respirando profundamente."
     ],
     "muscleGroups": [
-      "espalda",
-      "hombros"
+      "back",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4219,10 +4219,10 @@
       "Mantén durante 20-30 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "glúteos"
+      "glutes"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4241,10 +4241,10 @@
       "Mantén durante 20-30 segundos y cambia de brazo."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4264,10 +4264,10 @@
     ],
     "muscleGroups": [
       "core",
-      "espalda"
+      "back"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4288,10 +4288,10 @@
     ],
     "muscleGroups": [
       "core",
-      "pecho"
+      "chest"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4310,11 +4310,11 @@
       "Mantén durante 20-30 segundos."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "espalda"
+      "hamstrings",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4333,11 +4333,11 @@
       "Mantén durante 20-30 segundos."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4356,10 +4356,10 @@
       "Mantén durante 15-20 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4378,11 +4378,11 @@
       "Mantén durante 20-30 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos"
+      "quads",
+      "glutes"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cooldown",
     "isCompound": false,
@@ -4401,15 +4401,15 @@
       "Mantén durante 30-60 segundos, pedaleando los pies si es necesario."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "gemelos",
-      "hombros",
-      "espalda"
+      "hamstrings",
+      "calves",
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": true,
     "tags": [
       "cuerpo_completo"
@@ -4426,14 +4426,14 @@
       "Mantén durante 15-30 segundos."
     ],
     "muscleGroups": [
-      "pecho",
+      "chest",
       "core",
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -4450,14 +4450,14 @@
       "Mantén durante 30 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "hombros"
+      "quads",
+      "glutes",
+      "shoulders"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -4475,15 +4475,15 @@
       "Mira por encima de la mano delantera y mantén durante 30 segundos."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core",
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -4501,14 +4501,14 @@
       "Extiende el brazo contrario hacia el techo y mantén durante 30 segundos."
     ],
     "muscleGroups": [
-      "isquiotibiales",
+      "hamstrings",
       "core",
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "principiante",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": true,
     "tags": [
       "tren_inferior"
@@ -4526,12 +4526,12 @@
     ],
     "muscleGroups": [
       "core",
-      "espalda"
+      "back"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "core",
@@ -4549,13 +4549,13 @@
       "Balancea suavemente de lado a lado si lo deseas."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -4572,14 +4572,14 @@
       "Mantén durante 30-60 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales",
-      "cuádriceps"
+      "glutes",
+      "hamstrings",
+      "quads"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -4596,13 +4596,13 @@
       "Completa todas las repeticiones y cambia de lado."
     ],
     "muscleGroups": [
-      "espalda",
+      "back",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "core",
@@ -4620,12 +4620,12 @@
       "Estrecha el agarre gradualmente a medida que mejore la movilidad."
     ],
     "muscleGroups": [
-      "hombros"
+      "shoulders"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -4642,13 +4642,13 @@
       "Mantén durante 30 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -4665,13 +4665,13 @@
       "Mantén durante 30-60 segundos."
     ],
     "muscleGroups": [
-      "glúteos",
-      "isquiotibiales"
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "tren_inferior"
@@ -4688,14 +4688,14 @@
       "Vuelve al inicio y cambia de lado."
     ],
     "muscleGroups": [
-      "pecho",
+      "chest",
       "core",
-      "cuádriceps"
+      "quads"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "core",
@@ -4716,9 +4716,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": false,
     "tags": [
       "core"
@@ -4736,12 +4736,12 @@
     ],
     "muscleGroups": [
       "core",
-      "gemelos"
+      "calves"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "equilibrio",
+    "category": "balance",
     "isCompound": false,
     "tags": [
       "equilibrio",
@@ -4760,13 +4760,13 @@
     ],
     "muscleGroups": [
       "core",
-      "gemelos",
-      "cuádriceps"
+      "calves",
+      "quads"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "equilibrio",
+    "category": "balance",
     "isCompound": false,
     "tags": [
       "equilibrio",
@@ -4784,14 +4784,14 @@
       "Vuelve a la posición de pie impulsando las caderas hacia adelante."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
+      "hamstrings",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "isquiotibiales",
-    "difficulty": "intermedio",
+    "primaryMuscle": "hamstrings",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "equilibrio",
+    "category": "balance",
     "isCompound": true,
     "tags": [
       "bisagra",
@@ -4811,13 +4811,13 @@
     ],
     "muscleGroups": [
       "core",
-      "tríceps",
-      "hombros"
+      "triceps",
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -4837,13 +4837,13 @@
     ],
     "muscleGroups": [
       "core",
-      "glúteos",
-      "hombros"
+      "glutes",
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core"
@@ -4860,13 +4860,13 @@
       "Baja de forma controlada y repite."
     ],
     "muscleGroups": [
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_superior"
@@ -4883,16 +4883,16 @@
       "Empuja de vuelta a la posición inicial."
     ],
     "muscleGroups": [
-      "tríceps",
-      "pecho",
-      "hombros"
+      "triceps",
+      "chest",
+      "shoulders"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "triceps",
+    "difficulty": "beginner",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -4910,16 +4910,16 @@
       "Completa todas las repeticiones antes de cambiar de pierna."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
-      "banco"
+      "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -4938,16 +4938,16 @@
       "Baja de forma controlada y repite."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps"
+      "back",
+      "biceps"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
-      "banco",
-      "mancuernas"
+      "bench",
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -4965,18 +4965,18 @@
       "Baja la barra de nuevo al rack frontal y repite."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "hombros",
-      "tríceps",
+      "quads",
+      "glutes",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "avanzado",
+    "primaryMuscle": "full_body",
+    "difficulty": "advanced",
     "equipment": [
-      "barra"
+      "barbell"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "sentadilla",
@@ -4995,16 +4995,16 @@
       "Empuja con la pierna flexionada para volver a la posición de pie y alterna los lados."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "intermedio",
+    "primaryMuscle": "glutes",
+    "difficulty": "intermediate",
     "equipment": [
-      "mancuernas"
+      "dumbbells"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "zancada",
@@ -5022,14 +5022,14 @@
       "Mantén durante 20-30 segundos y cambia de lado."
     ],
     "muscleGroups": [
-      "isquiotibiales",
-      "glúteos",
+      "hamstrings",
+      "glutes",
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "equilibrio",
+    "category": "balance",
     "isCompound": true,
     "tags": [
       "equilibrio",
@@ -5048,13 +5048,13 @@
     ],
     "muscleGroups": [
       "core",
-      "cuádriceps",
-      "glúteos"
+      "quads",
+      "glutes"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "equilibrio",
+    "category": "balance",
     "isCompound": true,
     "tags": [
       "equilibrio",
@@ -5073,17 +5073,17 @@
       "Cuanto más alta la superficie, más fácil el ejercicio. Ve bajando progresivamente."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [
       "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5105,17 +5105,17 @@
       "Mantén el core activado durante todo el movimiento."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5137,15 +5137,15 @@
       "No dejes caer la cabeza; mira ligeramente hacia adelante."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "principiante",
+    "primaryMuscle": "chest",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5167,17 +5167,17 @@
       "Empuja hacia arriba con fuerza. Cuanto más alta la superficie, mayor dificultad."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [
       "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5200,15 +5200,15 @@
       "Alterna ambos brazos por igual."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "avanzado",
+    "primaryMuscle": "chest",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5231,15 +5231,15 @@
       "Sentirás más trabajo en la zona externa del pecho."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5260,15 +5260,15 @@
       "Empuja hacia arriba hasta estirar los brazos completamente."
     ],
     "muscleGroups": [
-      "pecho",
-      "tríceps",
-      "hombros",
+      "chest",
+      "triceps",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5289,15 +5289,15 @@
       "Alterna el lado en cada repetición."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5320,16 +5320,16 @@
       "Empuja hacia arriba manteniendo el equilibrio."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core",
-      "antebrazos"
+      "forearms"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5351,15 +5351,15 @@
       "Continúa alternando."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5381,15 +5381,15 @@
       "Aterriza suavemente en posición de flexión y repite."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "avanzado",
+    "primaryMuscle": "chest",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5411,15 +5411,15 @@
       "Aterriza suavemente con las manos en posición de flexión y repite."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "avanzado",
+    "primaryMuscle": "chest",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5441,15 +5441,15 @@
       "Mantén el core activado para evitar la rotación del torso."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "avanzado",
+    "primaryMuscle": "chest",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5471,14 +5471,14 @@
       "Evita balancear el cuerpo durante el movimiento."
     ],
     "muscleGroups": [
-      "pecho",
-      "tríceps",
-      "hombros"
+      "chest",
+      "triceps",
+      "shoulders"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5499,15 +5499,15 @@
       "Empuja hacia arriba hasta la posición inicial."
     ],
     "muscleGroups": [
-      "pecho",
-      "hombros",
-      "tríceps",
+      "chest",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "pecho",
-    "difficulty": "intermedio",
+    "primaryMuscle": "chest",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5529,15 +5529,15 @@
       "Mantén el core activado y el cuerpo recto."
     ],
     "muscleGroups": [
-      "tríceps",
-      "pecho",
-      "hombros",
+      "triceps",
+      "chest",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "tríceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "triceps",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "empuje",
@@ -5559,14 +5559,14 @@
       "Para bajar, camina con las manos alejándote de la pared."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "principiante",
+    "primaryMuscle": "shoulders",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5589,14 +5589,14 @@
       "Para bajar, deja caer las piernas controladamente hacia un lado."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5619,14 +5619,14 @@
       "Progresa aumentando el rango de movimiento gradualmente."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5648,14 +5648,14 @@
       "Evita dejarte caer; el movimiento debe ser controlado."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "avanzado",
+    "primaryMuscle": "shoulders",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5677,14 +5677,14 @@
       "Este rango extra incrementa enormemente la dificultad y la ganancia muscular."
     ],
     "muscleGroups": [
-      "hombros",
-      "tríceps",
+      "shoulders",
+      "triceps",
       "core"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "avanzado",
+    "primaryMuscle": "shoulders",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5707,16 +5707,16 @@
       "El movimiento es fluido y circular, no recto como en una flexión normal."
     ],
     "muscleGroups": [
-      "hombros",
-      "pecho",
-      "tríceps",
+      "shoulders",
+      "chest",
+      "triceps",
       "core",
-      "espalda"
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "intermedio",
+    "primaryMuscle": "shoulders",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5738,16 +5738,16 @@
       "A diferencia de la flexión hindú, aquí el regreso también es a ras de suelo."
     ],
     "muscleGroups": [
-      "hombros",
-      "pecho",
-      "tríceps",
+      "shoulders",
+      "chest",
+      "triceps",
       "core",
-      "espalda"
+      "back"
     ],
-    "primaryMuscle": "hombros",
-    "difficulty": "avanzado",
+    "primaryMuscle": "shoulders",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "empuje",
@@ -5769,16 +5769,16 @@
       "Progresa incrementando el tiempo de colgado."
     ],
     "muscleGroups": [
-      "espalda",
-      "antebrazos",
-      "hombros"
+      "back",
+      "forearms",
+      "shoulders"
     ],
-    "primaryMuscle": "antebrazos",
-    "difficulty": "principiante",
+    "primaryMuscle": "forearms",
+    "difficulty": "beginner",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tirón",
@@ -5802,17 +5802,17 @@
       "Ve reduciendo progresivamente la ayuda de las piernas."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos",
-      "hombros"
+      "back",
+      "biceps",
+      "forearms",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -5834,17 +5834,17 @@
       "Evita balancear el cuerpo o usar impulso."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos",
-      "hombros"
+      "back",
+      "biceps",
+      "forearms",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -5866,17 +5866,17 @@
       "La mano que agarra la muñeca ayuda menos; ve bajando el punto de agarre (muñeca → antebrazo) para progresar."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos",
-      "hombros"
+      "back",
+      "biceps",
+      "forearms",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -5900,18 +5900,18 @@
       "Alterna ambos brazos."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos",
-      "hombros",
+      "back",
+      "biceps",
+      "forearms",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -5934,16 +5934,16 @@
       "El agarre estrecho activa más los bíceps que el agarre estándar."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos"
+      "back",
+      "biceps",
+      "forearms"
     ],
-    "primaryMuscle": "bíceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "biceps",
+    "difficulty": "intermediate",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -5964,17 +5964,17 @@
       "Baja controladamente hasta estirar los brazos."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "hombros",
+      "back",
+      "biceps",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -5996,17 +5996,17 @@
       "Baja controladamente hasta estirar los brazos."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "hombros",
+      "back",
+      "biceps",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "intermedio",
+    "primaryMuscle": "back",
+    "difficulty": "intermediate",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -6028,17 +6028,17 @@
       "Alterna lados en cada repetición."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos",
+      "back",
+      "biceps",
+      "forearms",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -6059,19 +6059,19 @@
       "Baja controladamente invirtiendo el movimiento."
     ],
     "muscleGroups": [
-      "espalda",
-      "pecho",
-      "tríceps",
-      "bíceps",
-      "hombros",
+      "back",
+      "chest",
+      "triceps",
+      "biceps",
+      "shoulders",
       "core"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "avanzado",
+    "primaryMuscle": "back",
+    "difficulty": "advanced",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -6094,17 +6094,17 @@
       "Excelente para construir la fuerza necesaria para dominadas completas."
     ],
     "muscleGroups": [
-      "espalda",
-      "bíceps",
-      "antebrazos",
-      "hombros"
+      "back",
+      "biceps",
+      "forearms",
+      "shoulders"
     ],
-    "primaryMuscle": "espalda",
-    "difficulty": "principiante",
+    "primaryMuscle": "back",
+    "difficulty": "beginner",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tirón",
@@ -6126,14 +6126,14 @@
       "Sube a la posición inicial y repite."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6154,14 +6154,14 @@
       "Sube a la posición inicial usando mínimamente los brazos como ayuda."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6182,15 +6182,15 @@
       "Sube empujando desde los talones hasta la posición inicial."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6211,15 +6211,15 @@
       "Sube empujando con la pierna de apoyo. Alterna piernas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6242,15 +6242,15 @@
       "Alterna ambas piernas."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "avanzado",
+    "primaryMuscle": "quads",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6273,17 +6273,17 @@
       "Empieza con alturas bajas e incrementa progresivamente."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
+      "quads",
+      "glutes",
+      "calves",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
       "bench"
     ],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6304,15 +6304,15 @@
       "Mantén el core activado y la espalda recta durante todo el movimiento."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
+      "quads",
+      "glutes",
+      "calves",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6333,15 +6333,15 @@
       "Repite inmediatamente para mantener la intensidad."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
+      "quads",
+      "glutes",
       "core",
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6362,15 +6362,15 @@
       "Alterna piernas en cada repetición."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6391,14 +6391,14 @@
       "Empuja con la pierna flexionada para volver a la posición inicial. Alterna lados."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales"
+      "quads",
+      "glutes",
+      "hamstrings"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "principiante",
+    "primaryMuscle": "quads",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6419,15 +6419,15 @@
       "Aterriza suavemente en posición de desplante con la otra pierna adelante."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "gemelos",
+      "quads",
+      "glutes",
+      "calves",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "pliométrico",
+    "category": "plyometric",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6449,12 +6449,12 @@
       "Para mayor dificultad, hazlo con una sola pierna."
     ],
     "muscleGroups": [
-      "gemelos"
+      "calves"
     ],
-    "primaryMuscle": "gemelos",
-    "difficulty": "principiante",
+    "primaryMuscle": "calves",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "tren_inferior",
@@ -6475,17 +6475,17 @@
       "Empuja hacia arriba con la pierna delantera. Completa las repeticiones y cambia de pierna."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "glúteos",
-      "isquiotibiales",
+      "quads",
+      "glutes",
+      "hamstrings",
       "core"
     ],
-    "primaryMuscle": "cuádriceps",
-    "difficulty": "intermedio",
+    "primaryMuscle": "quads",
+    "difficulty": "intermediate",
     "equipment": [
       "bench"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "tren_inferior",
@@ -6509,9 +6509,9 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6535,11 +6535,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6563,11 +6563,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6589,14 +6589,14 @@
     ],
     "muscleGroups": [
       "core",
-      "antebrazos"
+      "forearms"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6618,14 +6618,14 @@
     ],
     "muscleGroups": [
       "core",
-      "antebrazos"
+      "forearms"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6647,14 +6647,14 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros"
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6676,14 +6676,14 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros"
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6706,15 +6706,15 @@
     ],
     "muscleGroups": [
       "core",
-      "tríceps",
-      "hombros"
+      "triceps",
+      "shoulders"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -6738,11 +6738,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6763,16 +6763,16 @@
       "Baja controladamente y repite."
     ],
     "muscleGroups": [
-      "glúteos",
+      "glutes",
       "core",
-      "isquiotibiales"
+      "hamstrings"
     ],
-    "primaryMuscle": "glúteos",
-    "difficulty": "principiante",
+    "primaryMuscle": "glutes",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -6794,14 +6794,14 @@
     ],
     "muscleGroups": [
       "core",
-      "espalda"
+      "back"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6825,11 +6825,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6849,17 +6849,17 @@
       "El movimiento es continuo y fluido."
     ],
     "muscleGroups": [
-      "pecho",
+      "chest",
       "core",
-      "hombros",
-      "tríceps"
+      "shoulders",
+      "triceps"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -6884,11 +6884,11 @@
       "core"
     ],
     "primaryMuscle": "core",
-    "difficulty": "principiante",
+    "difficulty": "beginner",
     "equipment": [
       "yoga_mat"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6910,14 +6910,14 @@
     ],
     "muscleGroups": [
       "core",
-      "antebrazos"
+      "forearms"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [
       "pull_up_bar"
     ],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": false,
     "tags": [
       "core",
@@ -6938,13 +6938,13 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
     "primaryMuscle": "core",
-    "difficulty": "avanzado",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -6968,13 +6968,13 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "espalda"
+      "shoulders",
+      "back"
     ],
     "primaryMuscle": "core",
-    "difficulty": "intermedio",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "core",
@@ -6996,15 +6996,15 @@
       "Aterriza y repite inmediatamente."
     ],
     "muscleGroups": [
-      "pecho",
-      "cuádriceps",
-      "glúteos",
-      "hombros",
+      "chest",
+      "quads",
+      "glutes",
+      "shoulders",
       "core",
-      "tríceps"
+      "triceps"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -7029,12 +7029,12 @@
     ],
     "muscleGroups": [
       "core",
-      "cuádriceps",
-      "glúteos",
-      "hombros"
+      "quads",
+      "glutes",
+      "shoulders"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -7059,13 +7059,13 @@
     ],
     "muscleGroups": [
       "core",
-      "cuádriceps",
-      "glúteos",
-      "hombros",
-      "espalda"
+      "quads",
+      "glutes",
+      "shoulders",
+      "back"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -7090,12 +7090,12 @@
       "Mantén un ritmo constante y fluido."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "gemelos",
-      "hombros"
+      "quads",
+      "calves",
+      "shoulders"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "principiante",
+    "primaryMuscle": "full_body",
+    "difficulty": "beginner",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -7120,14 +7120,14 @@
     ],
     "muscleGroups": [
       "core",
-      "hombros",
-      "tríceps",
-      "pecho"
+      "shoulders",
+      "triceps",
+      "chest"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "cuerpo_completo",
@@ -7149,14 +7149,14 @@
     ],
     "muscleGroups": [
       "core",
-      "cuádriceps",
-      "hombros",
-      "glúteos"
+      "quads",
+      "shoulders",
+      "glutes"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "avanzado",
+    "primaryMuscle": "full_body",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "fuerza",
+    "category": "strength",
     "isCompound": true,
     "tags": [
       "cuerpo_completo",
@@ -7177,13 +7177,13 @@
       "Usa los brazos de forma coordinada con las piernas para mantener el ritmo."
     ],
     "muscleGroups": [
-      "cuádriceps",
+      "quads",
       "core",
-      "gemelos",
-      "glúteos"
+      "calves",
+      "glutes"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
@@ -7206,16 +7206,16 @@
       "El objetivo final es levantarte del suelo sin apoyo hasta la posición de puente completo."
     ],
     "muscleGroups": [
-      "espalda",
-      "glúteos",
-      "hombros",
-      "cuádriceps",
+      "back",
+      "glutes",
+      "shoulders",
+      "quads",
       "core"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "avanzado",
+    "primaryMuscle": "full_body",
+    "difficulty": "advanced",
     "equipment": [],
-    "category": "flexibilidad",
+    "category": "flexibility",
     "isCompound": true,
     "tags": [
       "cuerpo_completo",
@@ -7237,14 +7237,14 @@
       "Lo importante es el esfuerzo máximo, no la velocidad absoluta."
     ],
     "muscleGroups": [
-      "cuádriceps",
-      "isquiotibiales",
-      "glúteos",
-      "gemelos",
+      "quads",
+      "hamstrings",
+      "glutes",
+      "calves",
       "core"
     ],
-    "primaryMuscle": "cuerpo_completo",
-    "difficulty": "intermedio",
+    "primaryMuscle": "full_body",
+    "difficulty": "intermediate",
     "equipment": [],
     "category": "cardio",
     "isCompound": true,
