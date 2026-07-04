@@ -3,6 +3,8 @@ import type { UserProfile } from '../types/user'
 import type { TrainingPlan, CompletedSession } from '../types/plan'
 import type { UnlockedAchievement } from '../types/achievement'
 import type { BodyMeasurement } from '../types/measurement'
+import type { ManualActivity } from '../types/activity'
+import type { AcceptedChallenge } from '../types/challenge'
 
 export interface ExerciseVideoRecord {
   exerciseId: string
@@ -17,6 +19,8 @@ class PersonalTrainerDB extends Dexie {
   unlockedAchievements!: Table<UnlockedAchievement>
   bodyMeasurements!: Table<BodyMeasurement>
   exerciseVideos!: Table<ExerciseVideoRecord>
+  manualActivities!: Table<ManualActivity>
+  acceptedChallenges!: Table<AcceptedChallenge>
 
   constructor() {
     super('PersonalTrainerDB')
@@ -69,6 +73,18 @@ class PersonalTrainerDB extends Dexie {
       unlockedAchievements: '++id, achievementId, userId, [achievementId+userId], unlockedAt',
       bodyMeasurements: 'id, userId, date',
       exerciseVideos: 'exerciseId',
+    })
+
+    // v4: manual activity log + accepted challenges (additive, no data migration)
+    this.version(4).stores({
+      userProfiles: 'id, createdAt',
+      trainingPlans: 'id, userId, status, startDate',
+      completedSessions: 'id, planId, [weekNumber+dayNumber], startedAt',
+      unlockedAchievements: '++id, achievementId, userId, [achievementId+userId], unlockedAt',
+      bodyMeasurements: 'id, userId, date',
+      exerciseVideos: 'exerciseId',
+      manualActivities: '++id, userId, date, type',
+      acceptedChallenges: '++id, userId, challengeId, [challengeId+userId], status, windowEnd',
     })
   }
 }

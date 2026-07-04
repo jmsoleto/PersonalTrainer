@@ -73,6 +73,16 @@ const router = createRouter({
       meta: { title: 'Logros' },
     },
     {
+      path: '/challenges',
+      component: () => import('../pages/ChallengesPage.vue'),
+      meta: { title: 'Retos' },
+    },
+    {
+      path: '/activity',
+      component: () => import('../pages/ActivityLogPage.vue'),
+      meta: { title: 'Mi Actividad' },
+    },
+    {
       path: '/profile',
       component: () => import('../pages/ProfilePage.vue'),
       meta: { title: 'Mi Perfil' },

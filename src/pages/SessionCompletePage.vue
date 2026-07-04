@@ -104,7 +104,9 @@ import PageShell from '../components/layout/PageShell.vue'
 import { useSessionStore } from '../stores/session'
 import { usePlanStore } from '../stores/plan'
 import { useAchievementsStore } from '../stores/achievements'
+import { useChallengesStore } from '../stores/challenges'
 import { checkAchievements } from '../composables/useAchievementChecker'
+import { checkChallenges } from '../composables/useChallengeChecker'
 import { SessionDifficulty } from '../types/enums'
 import { db } from '../db'
 
@@ -113,6 +115,7 @@ const router           = useRouter()
 const sessionStore     = useSessionStore()
 const planStore        = usePlanStore()
 const achievementsStore = useAchievementsStore()
+const challengesStore   = useChallengesStore()
 const loading          = ref(false)
 const saving           = ref(false)
 const difficulty       = ref<SessionDifficulty | null>(null)
@@ -153,12 +156,22 @@ async function save() {
   saving.value = true
   try {
     await sessionStore.completeSession(difficulty.value, feedback.value || undefined)
+
+    // Resolve challenges first, so challenge-derived achievements unlock in the same pass
+    await challengesStore.loadAccepted()
+    const completedChallenges = await checkChallenges()
+    for (const c of completedChallenges) {
+      const def = challengesStore.getDefinition(c.challengeId)
+      if (def) $q.notify({ type: 'positive', icon: def.icon, message: `Reto completado: ${def.name}`, caption: def.description, timeout: 4000 })
+    }
+
     await achievementsStore.loadUnlocked()
     const newAchievements = await checkAchievements()
     for (const a of newAchievements) {
       const def = achievementsStore.getDefinition(a.achievementId)
       if (def) $q.notify({ type: 'positive', icon: def.icon, message: `Logro desbloqueado: ${def.name}`, caption: def.description, timeout: 4000 })
     }
+
     await checkDifficultyTrend()
     router.push('/plan')
   } catch (e) {

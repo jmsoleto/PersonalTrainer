@@ -12,4 +12,6 @@ beforeEach(async () => {
   await db.completedSessions.clear()
   await db.unlockedAchievements.clear()
   await db.bodyMeasurements.clear()
+  await db.manualActivities.clear()
+  await db.acceptedChallenges.clear()
 })

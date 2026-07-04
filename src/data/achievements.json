@@ -166,5 +166,53 @@
     "icon": "straighten",
     "category": "consistency",
     "condition": { "type": "measurements_logged", "threshold": 5 }
+  },
+  {
+    "id": "ach_first_challenge",
+    "name": "Reto Superado",
+    "description": "Completa tu primer reto",
+    "icon": "military_tech",
+    "category": "milestone",
+    "condition": { "type": "challenges_completed", "threshold": 1 }
+  },
+  {
+    "id": "ach_5_challenges",
+    "name": "Cazador de Retos",
+    "description": "Completa 5 retos",
+    "icon": "workspace_premium",
+    "category": "milestone",
+    "condition": { "type": "challenges_completed", "threshold": 5 }
+  },
+  {
+    "id": "ach_10_challenges",
+    "name": "Coleccionista de Retos",
+    "description": "Completa 10 retos",
+    "icon": "emoji_events",
+    "category": "milestone",
+    "condition": { "type": "challenges_completed", "threshold": 10 }
+  },
+  {
+    "id": "ach_challenge_200_days",
+    "name": "Año Imparable",
+    "description": "Completa el reto de 200 días de deporte en un año",
+    "icon": "calendar_month",
+    "category": "milestone",
+    "condition": { "type": "challenge_specific", "threshold": 1, "challengeId": "chl_200_days_year" }
+  },
+  {
+    "id": "ach_challenge_streak_30",
+    "name": "Fuego Sagrado",
+    "description": "Completa el reto de 30 días seguidos de deporte",
+    "icon": "local_fire_department",
+    "category": "streak",
+    "condition": { "type": "challenge_specific", "threshold": 1, "challengeId": "chl_streak_30" }
+  },
+  {
+    "id": "ach_challenge_squat_100",
+    "name": "Sentadilla de Hierro",
+    "description": "Completa el reto de sentadilla con 100 kg",
+    "icon": "sports_gymnastics",
+    "category": "milestone",
+    "condition": { "type": "challenge_specific", "threshold": 1, "challengeId": "chl_squat_100kg" }
   }
 ]

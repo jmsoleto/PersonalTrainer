@@ -169,11 +169,47 @@
 
     </template>
 
+    <!-- ── Retos activos ───────────────────────────────────────── -->
+    <template v-if="activeChallenges.length > 0">
+      <div class="db-quick-label db-challenges-label">
+        <span class="db-overline">Mis retos</span>
+        <router-link to="/challenges" class="db-challenges-link">
+          Ver todos <q-icon name="chevron_right" size="16px" />
+        </router-link>
+      </div>
+      <router-link
+        v-for="p in activeChallenges"
+        :key="p.accepted.id"
+        to="/challenges"
+        class="db-card db-challenge-card"
+      >
+        <div class="db-challenge-icon"><q-icon :name="p.def.icon" size="20px" /></div>
+        <div class="db-challenge-main">
+          <div class="db-challenge-top">
+            <span class="db-challenge-name">{{ p.def.name }}</span>
+            <span class="db-challenge-count">{{ formatChallengeNum(p.current) }}/{{ formatChallengeNum(p.target) }}</span>
+          </div>
+          <div class="db-challenge-bar">
+            <div class="db-challenge-fill" :style="{ width: `${Math.round(p.ratio * 100)}%` }" />
+          </div>
+          <span class="db-challenge-remaining">{{ challengeRemaining(p.accepted.windowEnd) }}</span>
+        </div>
+      </router-link>
+    </template>
+
     <!-- ── Acciones rápidas (siempre visibles) ─────────────────── -->
     <div class="db-quick-label">
       <span class="db-overline">Acceso rápido</span>
     </div>
     <div class="db-quick-grid">
+      <button class="db-quick-tile" @click="$router.push('/challenges')">
+        <q-icon name="military_tech" size="26px" class="db-quick-icon" style="color: #ffd166" />
+        <span class="db-quick-name">Retos</span>
+      </button>
+      <button class="db-quick-tile" @click="$router.push('/activity')">
+        <q-icon name="directions_run" size="26px" class="db-quick-icon" style="color: var(--k-tertiary)" />
+        <span class="db-quick-name">Actividad</span>
+      </button>
       <button class="db-quick-tile" @click="$router.push('/measurements')">
         <q-icon name="straighten" size="26px" class="db-quick-icon" style="color: var(--k-tertiary)" />
         <span class="db-quick-name">Medidas</span>
@@ -208,19 +244,54 @@ import { useUserStore } from '../stores/user'
 import { usePlanStore } from '../stores/plan'
 import { useSettingsStore } from '../stores/settings'
 import { useSessionStore } from '../stores/session'
+import { useChallengesStore } from '../stores/challenges'
+import { useAchievementsStore } from '../stores/achievements'
+import { checkChallenges, getActiveProgress, type ChallengeProgress } from '../composables/useChallengeChecker'
+import { checkAchievements } from '../composables/useAchievementChecker'
 import { Notify } from 'quasar'
 
 const userStore     = useUserStore()
 const planStore     = usePlanStore()
 const settingsStore = useSettingsStore()
 const sessionStore  = useSessionStore()
+const challengesStore = useChallengesStore()
+const achievementsStore = useAchievementsStore()
 const loading       = ref(true)
+
+const activeChallenges = ref<ChallengeProgress[]>([])
 
 onMounted(async () => {
   await Promise.all([userStore.loadUser(), planStore.loadActivePlan()])
   await loadWeekProgress()
+  await loadChallenges()
   loading.value = false
 })
+
+async function loadChallenges() {
+  await challengesStore.loadAccepted()
+  const completed = await checkChallenges()   // resolve completed / silent deadlines
+  if (completed.length > 0) {
+    // Persist any challenge-derived achievement unlock (shown in the gallery)
+    await achievementsStore.loadUnlocked()
+    await checkAchievements()
+  }
+  activeChallenges.value = await getActiveProgress()
+}
+
+function challengeRemaining(windowEnd: string): string {
+  const end = new Date(windowEnd + 'T00:00:00')
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  const days = Math.round((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  if (days < 0) return 'Finalizado'
+  if (days === 0) return 'Último día'
+  if (days === 1) return 'Queda 1 día'
+  return `Quedan ${days} días`
+}
+
+function formatChallengeNum(n: number): string {
+  return Number.isInteger(n) ? String(n) : n.toFixed(1)
+}
 
 const userName = computed(() => userStore.currentUser?.name ?? '')
 
@@ -618,6 +689,40 @@ async function handleGenerateConfirm(params: {
   color: var(--k-secondary);
   margin: 0;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   RETOS ACTIVOS
+══════════════════════════════════════════════════════════════ */
+.db-challenges-label {
+  display: flex; align-items: baseline; justify-content: space-between;
+}
+.db-challenges-link {
+  display: inline-flex; align-items: center; gap: 0.1rem;
+  font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 500;
+  color: var(--k-primary-container); text-decoration: none;
+}
+.db-challenge-card {
+  display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+}
+.db-challenge-icon {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-high); color: #ffd166;
+  display: flex; align-items: center; justify-content: center;
+}
+.db-challenge-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.db-challenge-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.db-challenge-name {
+  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.db-challenge-count {
+  flex-shrink: 0; font-family: var(--k-font-headline); font-size: var(--k-label-md); font-weight: 600;
+  color: var(--k-primary-container);
+}
+.db-challenge-bar { height: 6px; border-radius: 3px; background-color: var(--k-surface-high); overflow: hidden; }
+.db-challenge-fill { height: 100%; border-radius: 3px; background: var(--k-gradient-cta); transition: width 0.3s ease; }
+.db-challenge-remaining { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
 
 /* ══════════════════════════════════════════════════════════════
    ACCIONES RÁPIDAS

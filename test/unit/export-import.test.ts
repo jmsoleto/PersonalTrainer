@@ -6,13 +6,15 @@ import type { ExportData } from '../../src/db/export-import'
 describe('export/import', () => {
   it('exports empty database', async () => {
     const data = await exportAllData()
-    expect(data.version).toBe(1)
+    expect(data.version).toBe(2)
     expect(data.exportedAt).toBeTruthy()
     expect(data.userProfiles).toEqual([])
     expect(data.trainingPlans).toEqual([])
     expect(data.completedSessions).toEqual([])
     expect(data.unlockedAchievements).toEqual([])
     expect(data.bodyMeasurements).toEqual([])
+    expect(data.manualActivities).toEqual([])
+    expect(data.acceptedChallenges).toEqual([])
   })
 
   it('exports and imports data round-trip', async () => {

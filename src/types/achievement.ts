@@ -10,12 +10,15 @@ export type AchievementConditionType =
   | 'exercise_specific'
   | 'weeks_completed'
   | 'measurements_logged'
+  | 'challenges_completed'
+  | 'challenge_specific'
 
 export interface AchievementCondition {
   type: AchievementConditionType
   threshold: number
   exerciseId?: string
   muscleGroup?: MuscleGroup
+  challengeId?: string
 }
 
 export interface AchievementDefinition {

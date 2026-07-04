@@ -99,6 +99,8 @@ export const useUserStore = defineStore('user', () => {
     await db.trainingPlans.where('userId').equals(userId).delete()
     await db.bodyMeasurements.where('userId').equals(userId).delete()
     await db.unlockedAchievements.where('userId').equals(userId).delete()
+    await db.manualActivities.where('userId').equals(userId).delete()
+    await db.acceptedChallenges.where('userId').equals(userId).delete()
 
     if (currentUser.value?.id === userId) {
       currentUser.value = null

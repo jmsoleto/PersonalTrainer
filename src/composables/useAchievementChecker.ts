@@ -2,6 +2,7 @@ import { useAchievementsStore } from '../stores/achievements'
 import { useMeasurementsStore } from '../stores/measurements'
 import { useUserStore } from '../stores/user'
 import { db } from '../db'
+import { isoToDay, longestStreak } from './useExerciseDays'
 import type { UnlockedAchievement } from '../types/achievement'
 import type { CompletedSession } from '../types/plan'
 
@@ -11,32 +12,6 @@ interface SessionStats {
   totalWeight: number
   maxStreak: number
   weeksCompleted: Set<number>
-}
-
-function computeStreak(sessions: CompletedSession[]): number {
-  if (sessions.length === 0) return 0
-
-  const dates = [...new Set(
-    sessions.map(s => s.completedAt.slice(0, 10)),
-  )].sort()
-
-  let maxStreak = 1
-  let currentStreak = 1
-
-  for (let i = 1; i < dates.length; i++) {
-    const prev = new Date(dates[i - 1])
-    const curr = new Date(dates[i])
-    const diff = (curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24)
-
-    if (diff === 1) {
-      currentStreak++
-      maxStreak = Math.max(maxStreak, currentStreak)
-    } else {
-      currentStreak = 1
-    }
-  }
-
-  return maxStreak
 }
 
 function computeStats(sessions: CompletedSession[]): SessionStats {
@@ -60,7 +35,7 @@ function computeStats(sessions: CompletedSession[]): SessionStats {
     totalSessions: sessions.length,
     totalReps,
     totalWeight,
-    maxStreak: computeStreak(sessions),
+    maxStreak: longestStreak(sessions.map(s => isoToDay(s.completedAt))),
     weeksCompleted,
   }
 }
@@ -84,6 +59,13 @@ export async function checkAchievements(): Promise<UnlockedAchievement[]> {
   const stats = computeStats(sessions)
   const measurementCount = measurementsStore.measurements.length
     || (await db.bodyMeasurements.where('userId').equals(userStore.currentUser.id).count())
+
+  // Completed challenges for this user (for challenge-derived achievements)
+  const completedChallenges = await db.acceptedChallenges
+    .where('userId').equals(userStore.currentUser.id)
+    .filter(c => c.status === 'completed')
+    .toArray()
+  const completedChallengeIds = new Set(completedChallenges.map(c => c.challengeId))
 
   const newlyUnlocked: UnlockedAchievement[] = []
 
@@ -109,6 +91,14 @@ export async function checkAchievements(): Promise<UnlockedAchievement[]> {
         break
       case 'measurements_logged':
         met = measurementCount >= def.condition.threshold
+        break
+      case 'challenges_completed':
+        met = completedChallengeIds.size >= def.condition.threshold
+        break
+      case 'challenge_specific':
+        met = def.condition.challengeId
+          ? completedChallengeIds.has(def.condition.challengeId)
+          : false
         break
     }
 
