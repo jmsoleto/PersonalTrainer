@@ -7,6 +7,31 @@
       <h1 class="ch-title">Retos</h1>
     </header>
 
+    <!-- ── Hero: reto más cerca de la meta ───────────────────────── -->
+    <section v-if="heroChallenge" class="ch-hero">
+      <span class="ch-hero-label">Más cerca de la meta</span>
+      <div class="ch-hero-head">
+        <q-icon v-if="heroChallenge.def.metric === 'streak_days'" name="local_fire_department" size="22px" class="hud-fire" />
+        <span class="ch-hero-name">{{ heroChallenge.def.name }}</span>
+      </div>
+      <div class="ch-hero-number">
+        {{ formatNum(heroChallenge.current) }}<span class="hud-sep"> / {{ formatNum(heroChallenge.target) }} {{ heroChallenge.def.unit ?? '' }}</span>
+      </div>
+      <div class="hud-bar hud-bar--lg" :class="{ 'hud-bar--streak': heroChallenge.def.metric === 'streak_days' }">
+        <div class="hud-fill" :style="{ width: `${Math.round(heroChallenge.ratio * 100)}%` }"><span class="hud-shimmer" /></div>
+        <span class="hud-tick" style="left: 25%" /><span class="hud-tick" style="left: 50%" /><span class="hud-tick" style="left: 75%" />
+      </div>
+      <div class="ch-hero-foot">
+        <span class="ch-hero-pct">{{ Math.round(heroChallenge.ratio * 100) }}% completado</span>
+        <span
+          v-if="isUrgent(daysRemaining(heroChallenge.accepted.windowEnd), heroChallenge.ratio)"
+          class="hud-chip"
+        >
+          <q-icon name="bolt" size="14px" /> {{ remainingLabel(heroChallenge.accepted.windowEnd) }}
+        </span>
+      </div>
+    </section>
+
     <!-- ── Registrar actividad ───────────────────────────────────── -->
     <router-link to="/activity" class="ch-log-btn">
       <q-icon name="add" size="18px" />
@@ -17,25 +42,35 @@
     </p>
 
     <!-- ── Activos ───────────────────────────────────────────────── -->
-    <template v-if="activeProgress.length > 0">
+    <template v-if="restActive.length > 0">
       <span class="ch-section-label">En curso</span>
-      <div v-for="p in activeProgress" :key="p.accepted.id" class="ch-active-card">
+      <div v-for="p in restActive" :key="p.accepted.id" class="ch-active-card">
         <div class="ch-active-top">
-          <div class="ch-active-icon"><q-icon :name="p.def.icon" size="20px" /></div>
-          <div class="ch-active-info">
-            <span class="ch-active-name">{{ p.def.name }}</span>
-            <span class="ch-active-remaining">{{ remainingLabel(p.accepted.windowEnd) }}</span>
-          </div>
+          <q-icon v-if="p.def.metric === 'streak_days'" name="local_fire_department" size="18px" class="hud-fire" />
+          <span class="ch-active-name">{{ p.def.name }}</span>
+          <span
+            v-if="isUrgent(daysRemaining(p.accepted.windowEnd), p.ratio)"
+            class="hud-chip"
+          >
+            <q-icon name="bolt" size="14px" /> {{ remainingLabel(p.accepted.windowEnd) }}
+          </span>
           <button class="ch-abandon-btn" title="Abandonar reto" @click="confirmAbandon(p.accepted.id!)">
             <q-icon name="close" size="16px" />
           </button>
         </div>
-        <div class="ch-progress-bar">
-          <div class="ch-progress-fill" :style="{ width: `${Math.round(p.ratio * 100)}%` }" />
+        <div class="ch-active-number">
+          {{ formatNum(p.current) }}<span class="hud-sep"> / {{ formatNum(p.target) }} {{ p.def.unit ?? '' }}</span>
         </div>
-        <div class="ch-progress-legend">
-          <span class="ch-progress-value">{{ formatNum(p.current) }} / {{ formatNum(p.target) }} {{ p.def.unit ?? '' }}</span>
-          <span class="ch-progress-pct">{{ Math.round(p.ratio * 100) }}%</span>
+        <div class="hud-bar" :class="{ 'hud-bar--streak': p.def.metric === 'streak_days' }">
+          <div class="hud-fill" :style="{ width: `${Math.round(p.ratio * 100)}%` }"><span class="hud-shimmer" /></div>
+          <span class="hud-tick" style="left: 25%" /><span class="hud-tick" style="left: 50%" /><span class="hud-tick" style="left: 75%" />
+        </div>
+        <div class="ch-active-legend">
+          <span v-if="!isUrgent(daysRemaining(p.accepted.windowEnd), p.ratio)" class="ch-active-remaining">
+            {{ remainingLabel(p.accepted.windowEnd) }}
+          </span>
+          <span v-else />
+          <span class="ch-active-pct">{{ Math.round(p.ratio * 100) }}%</span>
         </div>
       </div>
     </template>
@@ -104,12 +139,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useQuasar } from 'quasar'
 import PageShell from '../components/layout/PageShell.vue'
 import { useChallengesStore } from '../stores/challenges'
 import { useAchievementsStore } from '../stores/achievements'
-import { checkChallenges, getActiveProgress, type ChallengeProgress } from '../composables/useChallengeChecker'
+import { checkChallenges, getActiveProgress, daysRemaining, isUrgent, type ChallengeProgress } from '../composables/useChallengeChecker'
 import { checkAchievements } from '../composables/useAchievementChecker'
 import type { ChallengeStatus, ChallengeWindow } from '../types/challenge'
 
@@ -118,6 +153,23 @@ const store = useChallengesStore()
 const achievementsStore = useAchievementsStore()
 
 const activeProgress = ref<ChallengeProgress[]>([])
+
+/**
+ * The active challenge closest to its target (highest ratio). `activeProgress`
+ * is already sorted by nearest deadline, so the strict `>` reduce keeps the
+ * earliest-deadline challenge when ratios tie. Drives the hero panel.
+ */
+const heroChallenge = computed<ChallengeProgress | null>(() =>
+  activeProgress.value.reduce<ChallengeProgress | null>(
+    (best, p) => (best === null || p.ratio > best.ratio ? p : best),
+    null,
+  ),
+)
+
+/** Active challenges except the one featured in the hero, to avoid showing it twice. */
+const restActive = computed<ChallengeProgress[]>(() =>
+  activeProgress.value.filter(p => p.accepted.id !== heroChallenge.value?.accepted.id),
+)
 
 const showAccept = ref(false)
 const pendingId = ref<string | null>(null)
@@ -193,10 +245,7 @@ function windowLabel(w: ChallengeWindow): string {
 }
 
 function remainingLabel(windowEnd: string): string {
-  const end = new Date(windowEnd + 'T00:00:00')
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
-  const days = Math.round((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  const days = daysRemaining(windowEnd)
   if (days < 0) return 'Finalizado'
   if (days === 0) return 'Último día'
   if (days === 1) return 'Queda 1 día'
@@ -246,35 +295,103 @@ onMounted(refresh)
   margin: 0.5rem 0 0; text-align: center; line-height: 1.4;
 }
 
-/* Active cards */
-.ch-active-card {
-  background-color: var(--k-surface-container); border-radius: var(--k-radius-md);
-  padding: 1rem; margin-bottom: 0.625rem; display: flex; flex-direction: column; gap: 0.75rem;
+/* Hero — reto más cerca de la meta */
+.ch-hero {
+  background: linear-gradient(160deg, #241f1a, #1a1a1a);
+  border-radius: var(--k-radius-xl); padding: 1.25rem;
+  box-shadow: 0 0 0 1px rgba(255, 138, 101, 0.18);
+  display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem;
 }
-.ch-active-top { display: flex; align-items: center; gap: 0.75rem; }
-.ch-active-icon {
-  width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--k-radius-md);
-  background-color: var(--k-surface-high); color: var(--k-primary-container);
-  display: flex; align-items: center; justify-content: center;
+.ch-hero-label {
+  font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 600;
+  letter-spacing: var(--k-tracking-label); text-transform: uppercase; color: var(--k-urgent);
 }
-.ch-active-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; }
-.ch-active-name {
+.ch-hero-head { display: flex; align-items: center; gap: 0.4rem; }
+.ch-hero-name {
   font-family: var(--k-font-headline); font-size: var(--k-body-lg); font-weight: 600;
   letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
 }
+.ch-hero-number {
+  font-family: var(--k-font-headline); font-size: 4rem; font-weight: 700; line-height: 1;
+  letter-spacing: -0.03em; color: var(--k-on-surface);
+}
+.ch-hero-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.ch-hero-pct {
+  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 700; color: var(--k-urgent);
+}
+
+/* Active cards — HUD */
+.ch-active-card {
+  background-color: var(--k-surface-container); border-radius: 14px;
+  padding: 1rem; margin-bottom: 0.625rem; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.ch-active-top { display: flex; align-items: center; gap: 0.5rem; }
+.ch-active-name {
+  flex: 1; min-width: 0; font-family: var(--k-font-headline); font-size: var(--k-body-lg); font-weight: 600;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ch-active-number {
+  font-family: var(--k-font-headline); font-size: 2.75rem; font-weight: 700; line-height: 1;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+}
+.ch-active-legend { display: flex; align-items: baseline; justify-content: space-between; }
 .ch-active-remaining { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
+.ch-active-pct {
+  font-family: var(--k-font-headline); font-size: var(--k-label-md); font-weight: 600; color: var(--k-primary-container);
+}
 .ch-abandon-btn {
   width: 30px; height: 30px; flex-shrink: 0; border-radius: var(--k-radius-sm);
   background-color: var(--k-surface-high); border: none; cursor: pointer; color: var(--k-secondary);
   display: flex; align-items: center; justify-content: center;
 }
-.ch-progress-bar { height: 8px; border-radius: 4px; background-color: var(--k-surface-high); overflow: hidden; }
-.ch-progress-fill { height: 100%; border-radius: 4px; background: var(--k-gradient-cta); transition: width 0.3s ease; }
-.ch-progress-legend { display: flex; align-items: baseline; justify-content: space-between; }
-.ch-progress-value {
-  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600; color: var(--k-on-surface);
+
+/* HUD shared pieces (scoped) */
+.hud-sep { color: var(--k-secondary); font-size: var(--k-body-md); font-weight: 600; letter-spacing: 0; }
+.ch-hero-number .hud-sep { font-size: 1rem; }
+.hud-fire { color: #ffd166; transform-origin: center bottom; animation: flicker 1.8s ease-in-out infinite; }
+.hud-bar {
+  position: relative; height: 14px; border-radius: 7px;
+  background-color: var(--k-surface-high); overflow: hidden;
 }
-.ch-progress-pct { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-primary-container); }
+.hud-bar--lg { height: 16px; border-radius: 8px; }
+.hud-fill {
+  position: relative; height: 100%; border-radius: inherit;
+  background: var(--k-gradient-cta); overflow: hidden; transition: width 0.4s ease;
+}
+.hud-bar--streak .hud-fill { background: linear-gradient(90deg, #ffb4a2, #ffd166); }
+.hud-shimmer {
+  position: absolute; top: 0; left: 0; height: 100%; width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmerSweep 2.4s linear infinite;
+}
+.hud-tick { position: absolute; top: 0; height: 100%; width: 1px; background: rgba(0, 0, 0, 0.4); z-index: 2; }
+.hud-chip {
+  display: inline-flex; align-items: center; gap: 0.2rem; flex-shrink: 0;
+  padding: 0.15rem 0.5rem; border-radius: 999px;
+  background: var(--k-urgent-bg); color: var(--k-urgent);
+  font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 600;
+  animation: urgentPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmerSweep {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(320%); }
+}
+@keyframes urgentPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25%      { transform: scale(1.08) rotate(-4deg); }
+  50%      { transform: scale(0.96) rotate(3deg); }
+  75%      { transform: scale(1.05) rotate(-2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud-chip, .hud-fire { animation: none; }
+  .hud-shimmer { display: none; }
+}
 
 /* Catalog cards */
 .ch-cat-card {

@@ -13,6 +13,27 @@ function today(): string {
 }
 
 /**
+ * Whole calendar days remaining until `windowEnd` (YYYY-MM-DD), relative to
+ * local today. Negative when the window has already closed. Pure: no store,
+ * network, or state. Shared by the Home and challenges views so their
+ * "time remaining" labels don't duplicate this math.
+ */
+export function daysRemaining(windowEnd: string): number {
+  const end = new Date(windowEnd + 'T00:00:00')
+  const now = new Date()
+  now.setHours(0, 0, 0, 0)
+  return Math.round((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+}
+
+/**
+ * A challenge is "urgent" when its window is about to close (≤ 3 days left) or
+ * it is nearly complete (ratio ≥ 0.85). Drives the urgency chip in the UI.
+ */
+export function isUrgent(days: number, ratio: number): boolean {
+  return days <= 3 || ratio >= 0.85
+}
+
+/**
  * Compute the raw progress of an accepted challenge, excluding the baseline.
  * All events are restricted to [max(windowStart, acceptedAt), windowEnd] so
  * that history before acceptance never double-counts against the baseline.

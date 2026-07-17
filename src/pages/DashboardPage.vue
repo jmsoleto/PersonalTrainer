@@ -183,17 +183,26 @@
         to="/challenges"
         class="db-card db-challenge-card"
       >
-        <div class="db-challenge-icon"><q-icon :name="p.def.icon" size="20px" /></div>
-        <div class="db-challenge-main">
-          <div class="db-challenge-top">
-            <span class="db-challenge-name">{{ p.def.name }}</span>
-            <span class="db-challenge-count">{{ formatChallengeNum(p.current) }}/{{ formatChallengeNum(p.target) }}</span>
-          </div>
-          <div class="db-challenge-bar">
-            <div class="db-challenge-fill" :style="{ width: `${Math.round(p.ratio * 100)}%` }" />
-          </div>
-          <span class="db-challenge-remaining">{{ challengeRemaining(p.accepted.windowEnd) }}</span>
+        <div class="db-challenge-top">
+          <q-icon v-if="p.def.metric === 'streak_days'" name="local_fire_department" size="18px" class="hud-fire" />
+          <span class="db-challenge-name">{{ p.def.name }}</span>
+          <span
+            v-if="isUrgent(daysRemaining(p.accepted.windowEnd), p.ratio)"
+            class="hud-chip"
+          >
+            <q-icon name="bolt" size="14px" /> {{ challengeRemaining(p.accepted.windowEnd) }}
+          </span>
         </div>
+        <div class="db-challenge-number">
+          {{ formatChallengeNum(p.current) }}<span class="hud-sep"> / {{ formatChallengeNum(p.target) }} {{ p.def.unit ?? '' }}</span>
+        </div>
+        <div class="hud-bar" :class="{ 'hud-bar--streak': p.def.metric === 'streak_days' }">
+          <div class="hud-fill" :style="{ width: `${Math.round(p.ratio * 100)}%` }"><span class="hud-shimmer" /></div>
+          <span class="hud-tick" style="left: 25%" /><span class="hud-tick" style="left: 50%" /><span class="hud-tick" style="left: 75%" />
+        </div>
+        <span v-if="!isUrgent(daysRemaining(p.accepted.windowEnd), p.ratio)" class="db-challenge-remaining">
+          {{ challengeRemaining(p.accepted.windowEnd) }}
+        </span>
       </router-link>
     </template>
 
@@ -246,7 +255,7 @@ import { useSettingsStore } from '../stores/settings'
 import { useSessionStore } from '../stores/session'
 import { useChallengesStore } from '../stores/challenges'
 import { useAchievementsStore } from '../stores/achievements'
-import { checkChallenges, getActiveProgress, type ChallengeProgress } from '../composables/useChallengeChecker'
+import { checkChallenges, getActiveProgress, daysRemaining, isUrgent, type ChallengeProgress } from '../composables/useChallengeChecker'
 import { checkAchievements } from '../composables/useAchievementChecker'
 import { Notify } from 'quasar'
 
@@ -279,10 +288,7 @@ async function loadChallenges() {
 }
 
 function challengeRemaining(windowEnd: string): string {
-  const end = new Date(windowEnd + 'T00:00:00')
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
-  const days = Math.round((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+  const days = daysRemaining(windowEnd)
   if (days < 0) return 'Finalizado'
   if (days === 0) return 'Último día'
   if (days === 1) return 'Queda 1 día'
@@ -702,27 +708,64 @@ async function handleGenerateConfirm(params: {
   color: var(--k-primary-container); text-decoration: none;
 }
 .db-challenge-card {
-  display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+  display: flex; flex-direction: column; gap: 0.5rem; text-decoration: none; border-radius: 14px;
 }
-.db-challenge-icon {
-  width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--k-radius-md);
-  background-color: var(--k-surface-high); color: #ffd166;
-  display: flex; align-items: center; justify-content: center;
-}
-.db-challenge-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.4rem; }
-.db-challenge-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.db-challenge-top { display: flex; align-items: center; gap: 0.5rem; }
 .db-challenge-name {
-  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
+  flex: 1; min-width: 0; font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
   letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.db-challenge-count {
-  flex-shrink: 0; font-family: var(--k-font-headline); font-size: var(--k-label-md); font-weight: 600;
-  color: var(--k-primary-container);
+.db-challenge-number {
+  font-family: var(--k-font-headline); font-size: 2.75rem; font-weight: 700; line-height: 1;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
 }
-.db-challenge-bar { height: 6px; border-radius: 3px; background-color: var(--k-surface-high); overflow: hidden; }
-.db-challenge-fill { height: 100%; border-radius: 3px; background: var(--k-gradient-cta); transition: width 0.3s ease; }
 .db-challenge-remaining { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
+
+/* HUD shared pieces (scoped) */
+.hud-sep { color: var(--k-secondary); font-size: var(--k-body-md); font-weight: 600; letter-spacing: 0; }
+.hud-fire { color: #ffd166; transform-origin: center bottom; animation: flicker 1.8s ease-in-out infinite; }
+.hud-bar {
+  position: relative; height: 14px; border-radius: 7px;
+  background-color: var(--k-surface-high); overflow: hidden;
+}
+.hud-fill {
+  position: relative; height: 100%; border-radius: inherit;
+  background: var(--k-gradient-cta); overflow: hidden; transition: width 0.4s ease;
+}
+.hud-bar--streak .hud-fill { background: linear-gradient(90deg, #ffb4a2, #ffd166); }
+.hud-shimmer {
+  position: absolute; top: 0; left: 0; height: 100%; width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shimmerSweep 2.4s linear infinite;
+}
+.hud-tick { position: absolute; top: 0; height: 100%; width: 1px; background: rgba(0, 0, 0, 0.4); z-index: 2; }
+.hud-chip {
+  display: inline-flex; align-items: center; gap: 0.2rem; flex-shrink: 0;
+  padding: 0.15rem 0.5rem; border-radius: 999px;
+  background: var(--k-urgent-bg); color: var(--k-urgent);
+  font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 600;
+  animation: urgentPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmerSweep {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(320%); }
+}
+@keyframes urgentPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25%      { transform: scale(1.08) rotate(-4deg); }
+  50%      { transform: scale(0.96) rotate(3deg); }
+  75%      { transform: scale(1.05) rotate(-2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hud-chip, .hud-fire { animation: none; }
+  .hud-shimmer { display: none; }
+}
 
 /* ══════════════════════════════════════════════════════════════
    ACCIONES RÁPIDAS
