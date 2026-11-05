@@ -64,6 +64,11 @@
               Importar Plan
             </template>
           </button>
+
+          <router-link to="/plan/editor" class="db-btn db-btn--ghost">
+            <q-icon name="edit_note" size="18px" />
+            Crear mi plan
+          </router-link>
         </div>
 
         <!-- Progreso de generación -->
@@ -95,8 +100,11 @@
       <!-- Semana actual -->
       <section class="db-card db-week-card">
         <div class="db-week-info">
-          <span class="db-overline">
+          <span v-if="planStore.hasStarted" class="db-overline">
             Semana {{ planStore.getCurrentWeekNumber() }} de {{ planStore.activePlan?.totalWeeks ?? 12 }}
+          </span>
+          <span v-else class="db-overline">
+            Empieza el {{ planStartLabel }}
           </span>
           <h2 class="db-week-theme">
             {{ planStore.currentWeek?.theme || 'Plan activo' }}
@@ -121,6 +129,10 @@
         </router-link>
         <router-link :to="`/plan/week/${planStore.getCurrentWeekNumber()}`" class="db-link-btn">
           Semana actual
+          <q-icon name="chevron_right" size="18px" />
+        </router-link>
+        <router-link to="/plan/editor" class="db-link-btn">
+          Mis entrenamientos
           <q-icon name="chevron_right" size="18px" />
         </router-link>
       </div>
@@ -305,8 +317,15 @@ const todayDate = computed(() =>
   new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })
 )
 
+const planStartLabel = computed(() =>
+  planStore.activePlan
+    ? new Date(planStore.activePlan.startDate).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })
+    : '',
+)
+
 const todaySession = computed(() => {
-  if (!planStore.currentWeek) return null
+  // A plan activated for "next Monday" has no session until it starts.
+  if (!planStore.currentWeek || !planStore.hasStarted) return null
   const dayOfWeek = new Date().getDay() || 7
   return planStore.currentWeek.days.find(d => d.dayNumber === dayOfWeek)?.session ?? null
 })

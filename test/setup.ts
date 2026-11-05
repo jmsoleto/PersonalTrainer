@@ -14,4 +14,7 @@ beforeEach(async () => {
   await db.bodyMeasurements.clear()
   await db.manualActivities.clear()
   await db.acceptedChallenges.clear()
+  await db.dayTemplates.clear()
+  await db.weekTemplates.clear()
+  await db.planTemplates.clear()
 })

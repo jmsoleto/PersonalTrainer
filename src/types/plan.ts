@@ -40,7 +40,13 @@ export interface TrainingPlan {
   generatedAt: string
   basedOn: PlanContext
   weeks: Week[]
+  /** Origin of the plan. Missing = legacy AI/import plan. */
+  source?: PlanSource
+  /** Plan template a custom plan was activated from (traceability only). */
+  planTemplateId?: string
 }
+
+export type PlanSource = 'ai' | 'import' | 'custom'
 
 export interface Week {
   weekNumber: number

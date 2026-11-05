@@ -5,6 +5,7 @@ import type { UnlockedAchievement } from '../types/achievement'
 import type { BodyMeasurement } from '../types/measurement'
 import type { ManualActivity } from '../types/activity'
 import type { AcceptedChallenge } from '../types/challenge'
+import type { DayTemplate, WeekTemplate, PlanTemplate } from '../types/workout-template'
 
 export interface ExerciseVideoRecord {
   exerciseId: string
@@ -21,6 +22,9 @@ class PersonalTrainerDB extends Dexie {
   exerciseVideos!: Table<ExerciseVideoRecord>
   manualActivities!: Table<ManualActivity>
   acceptedChallenges!: Table<AcceptedChallenge>
+  dayTemplates!: Table<DayTemplate>
+  weekTemplates!: Table<WeekTemplate>
+  planTemplates!: Table<PlanTemplate>
 
   constructor() {
     super('PersonalTrainerDB')
@@ -85,6 +89,21 @@ class PersonalTrainerDB extends Dexie {
       exerciseVideos: 'exerciseId',
       manualActivities: '++id, userId, date, type',
       acceptedChallenges: '++id, userId, challengeId, [challengeId+userId], status, windowEnd',
+    })
+
+    // v5: workout editor templates (additive, no data migration)
+    this.version(5).stores({
+      userProfiles: 'id, createdAt',
+      trainingPlans: 'id, userId, status, startDate',
+      completedSessions: 'id, planId, [weekNumber+dayNumber], startedAt',
+      unlockedAchievements: '++id, achievementId, userId, [achievementId+userId], unlockedAt',
+      bodyMeasurements: 'id, userId, date',
+      exerciseVideos: 'exerciseId',
+      manualActivities: '++id, userId, date, type',
+      acceptedChallenges: '++id, userId, challengeId, [challengeId+userId], status, windowEnd',
+      dayTemplates: 'id, userId, updatedAt',
+      weekTemplates: 'id, userId, updatedAt',
+      planTemplates: 'id, userId, updatedAt',
     })
   }
 }

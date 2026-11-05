@@ -28,6 +28,31 @@ const router = createRouter({
       meta: { title: 'Mi Plan' },
     },
     {
+      path: '/plan/editor',
+      component: () => import('../pages/WorkoutLibraryPage.vue'),
+      meta: { title: 'Mis entrenamientos' },
+    },
+    {
+      path: '/plan/editor/presets',
+      component: () => import('../pages/WorkoutPresetsPage.vue'),
+      meta: { title: 'Presets' },
+    },
+    {
+      path: '/plan/editor/day/:id',
+      component: () => import('../pages/DayEditorPage.vue'),
+      meta: { title: 'Editar día' },
+    },
+    {
+      path: '/plan/editor/week/:id',
+      component: () => import('../pages/WeekEditorPage.vue'),
+      meta: { title: 'Editar semana' },
+    },
+    {
+      path: '/plan/editor/plan/:id',
+      component: () => import('../pages/PlanEditorPage.vue'),
+      meta: { title: 'Editar plan' },
+    },
+    {
       path: '/plan/week/:weekNumber',
       component: () => import('../pages/WeekViewPage.vue'),
       meta: { title: 'Semana' },

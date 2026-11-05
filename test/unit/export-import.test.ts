@@ -6,7 +6,7 @@ import type { ExportData } from '../../src/db/export-import'
 describe('export/import', () => {
   it('exports empty database', async () => {
     const data = await exportAllData()
-    expect(data.version).toBe(2)
+    expect(data.version).toBe(3)
     expect(data.exportedAt).toBeTruthy()
     expect(data.userProfiles).toEqual([])
     expect(data.trainingPlans).toEqual([])
@@ -15,6 +15,9 @@ describe('export/import', () => {
     expect(data.bodyMeasurements).toEqual([])
     expect(data.manualActivities).toEqual([])
     expect(data.acceptedChallenges).toEqual([])
+    expect(data.dayTemplates).toEqual([])
+    expect(data.weekTemplates).toEqual([])
+    expect(data.planTemplates).toEqual([])
   })
 
   it('exports and imports data round-trip', async () => {
@@ -114,5 +117,56 @@ describe('export/import', () => {
     const measurements = await db.bodyMeasurements.toArray()
     expect(measurements).toHaveLength(1)
     expect(measurements[0].id).toBe('new-1')
+  })
+
+  it('round-trips workout templates with their references (v3)', async () => {
+    const now = '2026-11-03T00:00:00Z'
+    const day = {
+      id: 'day-1', userId: 'user-1', name: 'Pierna A',
+      warmup: [],
+      main: [{ id: 'b1', kind: 'straight', items: [{ exerciseId: 'ex_bodyweight_squat', mode: 'reps', sets: [{ reps: 10, weightKg: 40, restSeconds: 90 }] }] }],
+      cooldown: [],
+      createdAt: now, updatedAt: now,
+    }
+    const week = {
+      id: 'week-1', userId: 'user-1', name: 'Base',
+      slots: [{ kind: 'training', dayTemplateId: 'day-1' }, { kind: 'rest' }, { kind: 'rest' }, { kind: 'rest' }, { kind: 'rest' }, { kind: 'rest' }, { kind: 'rest' }],
+      createdAt: now, updatedAt: now,
+    }
+    const plan = { id: 'plan-1', userId: 'user-1', name: 'Mi plan', weekTemplateIds: ['week-1', 'week-1'], createdAt: now, updatedAt: now }
+    await db.dayTemplates.add(day as never)
+    await db.weekTemplates.add(week as never)
+    await db.planTemplates.add(plan as never)
+
+    const exported = JSON.parse(JSON.stringify(await exportAllData())) as ExportData
+    await db.dayTemplates.clear()
+    await db.weekTemplates.clear()
+    await db.planTemplates.clear()
+
+    await importAllData(exported)
+
+    expect(await db.dayTemplates.get('day-1')).toEqual(day)
+    expect(await db.weekTemplates.get('week-1')).toEqual(week)
+    expect(await db.planTemplates.get('plan-1')).toEqual(plan)
+  })
+
+  it('imports a v2 backup (no templates) leaving an empty library', async () => {
+    await db.dayTemplates.add({ id: 'stale', userId: 'u', name: 'x', warmup: [], main: [], cooldown: [], createdAt: '', updatedAt: '' } as never)
+    const v2: ExportData = {
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      userProfiles: [],
+      trainingPlans: [],
+      completedSessions: [],
+      unlockedAchievements: [],
+      bodyMeasurements: [{ id: 'm1', userId: 'u', date: '2026-06-01', weightKg: 75 }],
+      manualActivities: [],
+      acceptedChallenges: [],
+    }
+    await importAllData(v2)
+    expect(await db.bodyMeasurements.count()).toBe(1)
+    expect(await db.dayTemplates.count()).toBe(0)
+    expect(await db.weekTemplates.count()).toBe(0)
+    expect(await db.planTemplates.count()).toBe(0)
   })
 })

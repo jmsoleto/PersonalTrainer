@@ -34,7 +34,7 @@
       </div>
 
       <!-- ── Warmup ─────────────────────────────────────────────────── -->
-      <div class="sp-section">
+      <div v-if="session.warmup.exercises.length" class="sp-section">
         <button class="sp-section-header" @click="warmupOpen = !warmupOpen">
           <div class="sp-section-icon sp-section-icon--warm">
             <q-icon name="wb_sunny" size="18px" />
@@ -153,7 +153,7 @@
       </div>
 
       <!-- ── Cooldown ─────────────────────────────────────────────── -->
-      <div class="sp-section">
+      <div v-if="session.cooldown.exercises.length" class="sp-section">
         <button class="sp-section-header" @click="cooldownOpen = !cooldownOpen">
           <div class="sp-section-icon sp-section-icon--cool">
             <q-icon name="ac_unit" size="18px" />

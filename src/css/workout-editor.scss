@@ -1,0 +1,176 @@
+// Shared styles for the workout editor pages (/plan/editor/*).
+// Prefixed with `we-` to avoid collisions; uses the app's --k-* tokens.
+
+.we-header { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.75rem; }
+.we-back {
+  display: inline-flex; align-items: center; gap: 0.25rem; align-self: flex-start;
+  background: none; border: none; padding: 0; cursor: pointer;
+  font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary);
+}
+.we-overline {
+  font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 500;
+  letter-spacing: var(--k-tracking-label); text-transform: uppercase; color: var(--k-primary-container);
+}
+.we-title {
+  font-family: var(--k-font-headline); font-size: 2rem; font-weight: 700; font-style: italic;
+  text-transform: uppercase; letter-spacing: var(--k-tracking-headline);
+  color: var(--k-on-surface); margin: 0; line-height: 1.05;
+}
+.we-intro {
+  font-family: var(--k-font-body); font-size: var(--k-body-md); color: var(--k-secondary);
+  margin: 0 0 1rem; line-height: 1.5;
+}
+.we-section-label {
+  display: block; font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 500;
+  letter-spacing: var(--k-tracking-label); text-transform: uppercase; color: var(--k-secondary);
+  margin: 1.25rem 0 0.5rem;
+}
+
+// ── Tabs ─────────────────────────────────────────────────────────
+.we-tabs {
+  display: flex; gap: 0.25rem; padding: 0.25rem; margin-bottom: 1rem;
+  background-color: var(--k-surface-container); border-radius: var(--k-radius-lg);
+}
+.we-tab {
+  flex: 1; padding: 0.55rem 0.5rem; border: none; border-radius: var(--k-radius-md);
+  background: transparent; color: var(--k-secondary); cursor: pointer;
+  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.we-tab--active { background-color: var(--k-surface-highest); color: var(--k-on-surface); }
+
+// ── Cards ────────────────────────────────────────────────────────
+.we-card {
+  background-color: var(--k-surface-container); border-radius: var(--k-radius-md);
+  padding: 0.875rem 1rem; margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.we-card--click { cursor: pointer; transition: background-color 0.15s ease; }
+.we-card--click:hover { background-color: var(--k-surface-high); }
+.we-card-icon {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-high); color: var(--k-primary-container);
+  display: flex; align-items: center; justify-content: center;
+}
+.we-card-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+.we-card-title {
+  font-family: var(--k-font-headline); font-size: var(--k-body-lg); font-weight: 600;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.we-card-sub { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
+.we-card-actions { display: flex; gap: 0.25rem; flex-shrink: 0; }
+
+.we-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.we-chip {
+  font-family: var(--k-font-body); font-size: 0.7rem; color: var(--k-secondary);
+  background-color: var(--k-surface-high); border-radius: var(--k-radius-sm); padding: 0.15rem 0.45rem;
+}
+.we-chip--warn { background-color: var(--k-urgent-bg); color: var(--k-urgent); }
+.we-chip--accent { background-color: rgba(255, 86, 44, 0.15); color: var(--k-primary-container); }
+
+// ── Week strip (L M X J V S D) ───────────────────────────────────
+.we-week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.2rem; margin-top: 0.25rem; }
+.we-week-cell {
+  height: 22px; border-radius: var(--k-radius-sm); background-color: var(--k-surface-high);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--k-font-body); font-size: 0.65rem; color: var(--k-outline);
+}
+.we-week-cell--training { background-color: rgba(255, 86, 44, 0.22); color: var(--k-primary); }
+.we-week-cell--active_rest { background-color: rgba(45, 145, 255, 0.18); color: var(--k-tertiary); }
+
+// ── Buttons ──────────────────────────────────────────────────────
+.we-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.75rem 1rem; border: none; border-radius: var(--k-radius-md); cursor: pointer;
+  font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
+  letter-spacing: var(--k-tracking-headline); transition: opacity 0.15s ease;
+  text-decoration: none;
+}
+.we-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.we-btn--cta { background: var(--k-gradient-cta); color: var(--k-on-primary-container); }
+.we-btn--cta:hover:not(:disabled) { opacity: 0.9; }
+.we-btn--ghost { background-color: transparent; color: var(--k-secondary); border: 1px solid var(--k-outline-variant); }
+.we-btn--soft { background-color: var(--k-surface-high); color: var(--k-on-surface); }
+.we-btn--block { width: 100%; }
+.we-btn-row { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.we-btn-row > .we-btn { flex: 1; }
+
+.we-icon-btn {
+  width: 32px; height: 32px; border-radius: var(--k-radius-sm); flex-shrink: 0;
+  background-color: var(--k-surface-high); border: none; cursor: pointer;
+  color: var(--k-secondary); display: flex; align-items: center; justify-content: center;
+  transition: background-color 0.15s ease;
+}
+.we-icon-btn:hover:not(:disabled) { background-color: var(--k-surface-highest); }
+.we-icon-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.we-icon-btn--del { color: rgba(255, 86, 44, 0.75); }
+
+// ── Forms ────────────────────────────────────────────────────────
+.we-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.we-field-label {
+  font-family: var(--k-font-body); font-size: var(--k-label-md); font-weight: 500;
+  letter-spacing: var(--k-tracking-label); text-transform: uppercase; color: var(--k-secondary);
+}
+.we-input, .we-select {
+  width: 100%; padding: 0.625rem 0.75rem; border: none; border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-highest); color: var(--k-on-surface);
+  font-family: var(--k-font-body); font-size: var(--k-body-md); outline: none; box-sizing: border-box;
+}
+.we-input:focus, .we-select:focus { background-color: var(--k-surface-bright); box-shadow: 0 0 0 1px rgba(255, 86, 44, 0.4); }
+.we-input::placeholder { color: var(--k-outline); }
+.we-input--name { font-family: var(--k-font-headline); font-size: var(--k-title-lg); font-weight: 600; }
+
+// ── Empty state ──────────────────────────────────────────────────
+.we-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  padding: 2rem 1rem; text-align: center;
+  font-family: var(--k-font-body); font-size: var(--k-body-md); color: var(--k-secondary);
+}
+.we-empty-icon {
+  width: 52px; height: 52px; border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-container); color: var(--k-secondary);
+  display: flex; align-items: center; justify-content: center;
+}
+
+// ── Notices ──────────────────────────────────────────────────────
+.we-notice {
+  display: flex; gap: 0.5rem; align-items: flex-start;
+  padding: 0.75rem 0.875rem; border-radius: var(--k-radius-md); margin-bottom: 0.75rem;
+  background-color: var(--k-urgent-bg); color: var(--k-urgent);
+  font-family: var(--k-font-body); font-size: var(--k-body-md); line-height: 1.4;
+}
+.we-notice--info { background-color: rgba(45, 145, 255, 0.12); color: var(--k-tertiary); }
+
+// ── Sticky footer for editors ────────────────────────────────────
+.we-footer {
+  // Sit just above the fixed bottom nav (~56px + safe area)
+  position: sticky; bottom: calc(56px + env(safe-area-inset-bottom, 0px)); z-index: 2;
+  display: flex; gap: 0.5rem; padding: 0.75rem 0 0.5rem; margin-top: 1rem;
+  background: linear-gradient(to top, var(--k-surface) 70%, transparent);
+}
+.we-footer > .we-btn { flex: 1; }
+
+// ── Dialogs ──────────────────────────────────────────────────────
+.we-dialog {
+  width: min(460px, calc(100vw - 2rem));
+  background-color: var(--k-surface-low); border-radius: var(--k-radius-lg);
+  display: flex; flex-direction: column; max-height: 88vh;
+}
+.we-dialog-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1rem 0.5rem; }
+.we-dialog-title {
+  font-family: var(--k-font-headline); font-size: var(--k-title-lg); font-weight: 700;
+  letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+}
+.we-dialog-body { padding: 0 1rem 0.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.we-dialog-footer { display: flex; gap: 0.5rem; padding: 0.75rem 1rem 1rem; border-top: 1px solid var(--k-surface-highest); }
+.we-dialog-footer > .we-btn { flex: 1; }
+
+.we-option {
+  display: flex; align-items: center; gap: 0.75rem; width: 100%; text-align: left;
+  padding: 0.75rem; border: 1px solid transparent; border-radius: var(--k-radius-md);
+  background-color: var(--k-surface-container); color: var(--k-on-surface); cursor: pointer;
+  font-family: var(--k-font-body); font-size: var(--k-body-md);
+}
+.we-option--active { border-color: var(--k-primary-container); background-color: rgba(255, 86, 44, 0.1); }
+.we-option-sub { display: block; font-size: var(--k-label-md); color: var(--k-secondary); margin-top: 0.15rem; }

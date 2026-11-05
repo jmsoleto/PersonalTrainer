@@ -92,7 +92,7 @@ async function save() {
     const previous = await userStore.updateEquipment([...selected.value])
     originalEquipment.value = [...selected.value]
     $q.notify({ type: 'positive', message: 'Equipamiento actualizado' })
-    if (planStore.activePlan && previous) {
+    if (planStore.canRecalculate && previous) {
       const added   = selected.value.filter(e => !previous.includes(e))
       const removed = previous.filter(e => !selected.value.includes(e))
       if (added.length > 0 || removed.length > 0) {

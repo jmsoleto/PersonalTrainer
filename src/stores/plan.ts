@@ -13,8 +13,12 @@ import type { ExternalPlanRoot } from '../import/external-plan-types'
 import { useUserStore } from './user'
 import { useExercisesStore } from './exercises'
 import { useSettingsStore } from './settings'
-import type { TrainingPlan, Week, CompletedSession, PlannedSession, PlannedExercise } from '../types/plan'
+import type { TrainingPlan, Week, CompletedSession, PlannedSession, PlannedExercise, PlanContext } from '../types/plan'
 import { FitnessGoal, FitnessLevel, type PlanStatus } from '../types/enums'
+import type { DayTemplate, WeekTemplate } from '../types/workout-template'
+import { compilePlanTemplate } from '../workout-editor/compiler'
+import { resolvePlanStart, type PlanStartOption } from '../workout-editor/dates'
+import { TemplateValidationError } from '../workout-editor/validation'
 
 const GOAL_PLAN_NAMES: Record<FitnessGoal, string> = {
   [FitnessGoal.Strength]: 'Ruta de fuerza',
@@ -45,6 +49,9 @@ export const usePlanStore = defineStore('plan', () => {
 
   async function loadActivePlan(): Promise<void> {
     const userStore = useUserStore()
+    // On a page reload the user may not be loaded yet (pages call this in
+    // parallel with loadUser), which used to leave the active plan empty.
+    if (!userStore.currentUser) await userStore.loadUser()
     if (!userStore.currentUser) {
       activePlan.value = null
       return
@@ -122,6 +129,7 @@ export const usePlanStore = defineStore('plan', () => {
           feedbackHistory: [],
         },
         weeks,
+        source: 'ai',
       }
 
       // Deactivate any existing active plans
@@ -143,11 +151,15 @@ export const usePlanStore = defineStore('plan', () => {
     }
   }
 
+  /** AI recalculation would overwrite a user-designed plan, so it is off for custom plans. */
+  const canRecalculate = computed(() => !!activePlan.value && activePlan.value.source !== 'custom')
+
   async function recalculatePlan(reason: string): Promise<void> {
     const userStore = useUserStore()
     const exercisesStore = useExercisesStore()
 
     if (!activePlan.value || !userStore.currentUser) return
+    if (activePlan.value.source === 'custom') return
 
     generating.value = true
     error.value = null
@@ -245,7 +257,7 @@ export const usePlanStore = defineStore('plan', () => {
     const now = new Date()
     const diffMs = now.getTime() - start.getTime()
     const week = Math.floor(diffMs / (7 * 24 * 60 * 60 * 1000)) + 1
-    return Math.min(Math.max(week, 1), 12)
+    return Math.min(Math.max(week, 1), Math.max(activePlan.value.totalWeeks, 1))
   }
 
   function getWeek(weekNumber: number): Week | undefined {
@@ -286,13 +298,80 @@ export const usePlanStore = defineStore('plan', () => {
 
   const currentWeek = computed(() => getWeek(getCurrentWeekNumber()))
 
+  /** False while a plan activated for "next Monday" has not begun yet. */
+  const hasStarted = computed(() =>
+    !!activePlan.value && new Date(activePlan.value.startDate).getTime() <= Date.now(),
+  )
+
+  /**
+   * Activate a user plan template: load the plan, its weeks and days, compile
+   * them into a self-contained TrainingPlan snapshot and make it the active plan.
+   * Throws TemplateValidationError when something referenced is missing/invalid.
+   */
+  async function activateCustomPlan(planTemplateId: string, startOption: PlanStartOption): Promise<TrainingPlan> {
+    const userStore = useUserStore()
+    const exercisesStore = useExercisesStore()
+    const user = userStore.currentUser
+    if (!user) throw new Error('No user profile found')
+
+    await exercisesStore.loadExercises()
+
+    const planTemplate = await db.planTemplates.get(planTemplateId)
+    if (!planTemplate || planTemplate.userId !== user.id) {
+      throw new TemplateValidationError([{
+        templateType: 'plan', templateId: planTemplateId, code: 'missing_plan', message: 'El plan no existe',
+      }])
+    }
+    const weekList = await db.weekTemplates.where('userId').equals(user.id).toArray()
+    const dayList = await db.dayTemplates.where('userId').equals(user.id).toArray()
+
+    const basedOn: PlanContext = {
+      profile: {
+        gender: user.gender,
+        age: user.age,
+        weightKg: user.weightKg,
+        heightCm: user.heightCm,
+        fitnessLevel: user.fitnessLevel,
+      },
+      goals: [...user.goals],
+      equipment: [...user.equipment],
+      injuries: [...user.injuries],
+      feedbackHistory: [],
+    }
+
+    const plan = compilePlanTemplate(
+      {
+        plan: planTemplate,
+        weeks: new Map(weekList.map((w): [string, WeekTemplate] => [w.id, w])),
+        days: new Map(dayList.map((d): [string, DayTemplate] => [d.id, d])),
+      },
+      {
+        userId: user.id,
+        startDate: resolvePlanStart(startOption),
+        basedOn,
+        getExercise: id => exercisesStore.getById(id),
+      },
+    )
+
+    const existing = await db.trainingPlans.where('userId').equals(user.id).filter(p => p.status === 'active').toArray()
+    for (const p of existing) {
+      await db.trainingPlans.update(p.id, { status: 'abandoned' })
+    }
+    await db.trainingPlans.add(plan)
+    activePlan.value = plan
+    return plan
+  }
+
   return {
     activePlan,
     generating,
     error,
     generationProgress,
     currentWeek,
+    canRecalculate,
+    hasStarted,
     loadActivePlan,
+    activateCustomPlan,
     generatePlan,
     importExternalPlan,
     recalculatePlan,

@@ -1,0 +1,2016 @@
+{
+  "dayPresets": [
+    {
+      "id": "preset_day_chest_triceps",
+      "name": "Pecho y tríceps",
+      "group": "muscle",
+      "description": "Empuje sin material: pecho, hombro anterior y tríceps.",
+      "icon": "favorite",
+      "targetMuscleGroups": [
+        "chest",
+        "triceps",
+        "shoulders"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_chest_triceps_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_arm_circles",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_chest_triceps_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_scapular_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_chest_triceps_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_standard_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_chest_triceps_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_wide_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_chest_triceps_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_diamond_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_chest_triceps_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_bodyweight_dip",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_chest_triceps_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_chest_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_chest_triceps_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_tricep_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_back_biceps",
+      "name": "Espalda y bíceps",
+      "group": "muscle",
+      "description": "Tirón con mancuernas: dorsales, espalda media y bíceps.",
+      "icon": "fitness_center",
+      "targetMuscleGroups": [
+        "back",
+        "biceps"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_back_biceps_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_cat_cow",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_back_biceps_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_arm_circles",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_back_biceps_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_bent_over_row",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_back_biceps_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_single_arm_row",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_back_biceps_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_superman",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_back_biceps_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_bicep_curl",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_back_biceps_m_5",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_hammer_curl",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_back_biceps_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_child_pose",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_back_biceps_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_spinal_twist",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_legs",
+      "name": "Pierna",
+      "group": "muscle",
+      "description": "Cuádriceps, glúteos y gemelos con el peso corporal.",
+      "icon": "directions_walk",
+      "targetMuscleGroups": [
+        "quads",
+        "glutes",
+        "hamstrings",
+        "calves"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_legs_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_leg_swing",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_hip_circle",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_w_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_high_knee_march",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_legs_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_bodyweight_squat",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_forward_lunge",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_glute_bridge",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_wall_sit",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 45
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 45
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_m_5",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_calf_raise",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 20,
+                  "restSeconds": 30
+                },
+                {
+                  "reps": 20,
+                  "restSeconds": 30
+                },
+                {
+                  "reps": 20,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_legs_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_standing_quad_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_hamstring_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_legs_c_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_pigeon_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_shoulders",
+      "name": "Hombros",
+      "group": "muscle",
+      "description": "Deltoides completos con mancuernas.",
+      "icon": "person",
+      "targetMuscleGroups": [
+        "shoulders"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_shoulders_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_arm_circles",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_shoulders_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_shoulder_shrug",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_shoulders_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_pike_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_shoulders_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_shoulder_press",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_shoulders_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_lateral_raise",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_shoulders_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_rear_delt_fly",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_shoulders_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_shoulder_cross_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_shoulders_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_neck_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_core_express",
+      "name": "Core exprés",
+      "group": "muscle",
+      "description": "Sesión corta de abdomen y estabilidad.",
+      "icon": "shield",
+      "targetMuscleGroups": [
+        "core"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_core_express_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_torso_twist",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_core_express_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_plank",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_core_express_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_side_plank",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_core_express_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_bicycle_crunch",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 20,
+                  "restSeconds": 30
+                },
+                {
+                  "reps": 20,
+                  "restSeconds": 30
+                },
+                {
+                  "reps": 20,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_core_express_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_plank_shoulder_tap",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 16,
+                  "restSeconds": 30
+                },
+                {
+                  "reps": 16,
+                  "restSeconds": 30
+                },
+                {
+                  "reps": 16,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_core_express_m_5",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_mountain_climber",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_core_express_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_cobra_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_full_body",
+      "name": "Cuerpo completo",
+      "group": "muscle",
+      "description": "Todo el cuerpo en una sesión, sin material.",
+      "icon": "accessibility_new",
+      "targetMuscleGroups": [
+        "full_body"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_full_body_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_world_greatest_stretch",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_arm_circles",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_full_body_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_bodyweight_squat",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_standard_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_reverse_lunge",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_superman",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_m_5",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_plank",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_m_6",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_burpee",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_full_body_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_child_pose",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_full_body_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_hamstring_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_hiit",
+      "name": "Cardio HIIT",
+      "group": "category",
+      "description": "Intervalos de alta intensidad: 40 s de trabajo, 20 s de descanso.",
+      "icon": "bolt",
+      "targetMuscleGroups": [
+        "full_body"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_hiit_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_high_knee_march",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_hiit_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_a_skip",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_hiit_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_jumping_jack",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_hiit_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_high_knees",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_hiit_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_burpee",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_hiit_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_mountain_climber",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_hiit_m_5",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_butt_kick",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 40,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_hiit_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_hamstring_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_hiit_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_standing_quad_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_plyo",
+      "name": "Pliometría",
+      "group": "category",
+      "description": "Saltos explosivos para potencia de piernas.",
+      "icon": "rocket_launch",
+      "targetMuscleGroups": [
+        "quads",
+        "glutes"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_plyo_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_leg_swing",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_plyo_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_lateral_shuffle",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_plyo_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_jump_squat",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_plyo_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_skater_jump",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_plyo_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_broad_jump",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 8,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_plyo_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_jump_lunge",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_plyo_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_calf_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_plyo_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_figure_four_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_mobility",
+      "name": "Movilidad y flexibilidad",
+      "group": "category",
+      "description": "Sesión suave para días de descanso activo.",
+      "icon": "self_improvement",
+      "targetMuscleGroups": [
+        "full_body"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_mobility_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_cat_cow",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_mobility_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_downward_dog",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_mobility_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_warrior_one",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_mobility_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_warrior_two",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_mobility_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_thoracic_rotation",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_mobility_m_5",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_90_90_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_mobility_m_6",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_happy_baby",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_mobility_m_7",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_flexibility_seated_twist",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 15
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_mobility_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_butterfly_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_balance",
+      "name": "Equilibrio",
+      "group": "category",
+      "description": "Estabilidad y control sobre una pierna.",
+      "icon": "balance",
+      "targetMuscleGroups": [
+        "core",
+        "glutes"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_balance_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_ankle_circle",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_balance_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_hip_circle",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_balance_m_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_balance_single_leg_stand",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_balance_m_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_balance_tree_pose",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_balance_m_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_balance_warrior_three",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 20,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 20,
+                  "restSeconds": 20
+                },
+                {
+                  "durationSeconds": 20,
+                  "restSeconds": 20
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_balance_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_balance_single_leg_deadlift",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 45
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 45
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_balance_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_hamstring_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "weekPresets": [
+    {
+      "id": "preset_week_full_body_3",
+      "name": "Full body 3 días",
+      "description": "Cuerpo completo lunes, miércoles y viernes, con movilidad el sábado.",
+      "slots": [
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_full_body"
+        },
+        {
+          "kind": "rest"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_full_body"
+        },
+        {
+          "kind": "rest"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_full_body"
+        },
+        {
+          "kind": "active_rest",
+          "dayPresetId": "preset_day_mobility"
+        },
+        {
+          "kind": "rest"
+        }
+      ]
+    },
+    {
+      "id": "preset_week_split_4",
+      "name": "Split 4 días",
+      "description": "Un grupo muscular por sesión, movilidad a mitad de semana y core el sábado.",
+      "slots": [
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_chest_triceps"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_legs"
+        },
+        {
+          "kind": "active_rest",
+          "dayPresetId": "preset_day_mobility"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_back_biceps"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_shoulders"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_core_express"
+        },
+        {
+          "kind": "rest"
+        }
+      ]
+    },
+    {
+      "id": "preset_week_conditioning_4",
+      "name": "Acondicionamiento 4 días",
+      "description": "Cardio, potencia y core para mejorar la condición física.",
+      "slots": [
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_hiit"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_core_express"
+        },
+        {
+          "kind": "rest"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_plyo"
+        },
+        {
+          "kind": "training",
+          "dayPresetId": "preset_day_full_body"
+        },
+        {
+          "kind": "active_rest",
+          "dayPresetId": "preset_day_balance"
+        },
+        {
+          "kind": "rest"
+        }
+      ]
+    }
+  ]
+}

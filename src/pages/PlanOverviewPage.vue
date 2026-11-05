@@ -8,10 +8,14 @@
         <span class="material-symbols-outlined po-empty-icon">calendar_month</span>
       </div>
       <h2 class="po-empty-title">Sin plan activo</h2>
-      <p class="po-empty-desc">Genera o importa un plan desde el dashboard para empezar.</p>
+      <p class="po-empty-desc">Genera o importa un plan desde el dashboard, o crea el tuyo propio.</p>
       <router-link to="/dashboard" class="po-btn po-btn--cta">
         <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>
         Ir al dashboard
+      </router-link>
+      <router-link to="/plan/editor" class="po-btn po-editor-btn">
+        <span class="material-symbols-outlined" style="font-size:18px">edit_note</span>
+        Crear mi plan
       </router-link>
     </div>
 
@@ -83,6 +87,16 @@
 
         </template>
       </div>
+
+      <!-- Editor de entrenamientos -->
+      <router-link to="/plan/editor" class="po-editor-link">
+        <span class="material-symbols-outlined" style="font-size:20px">edit_note</span>
+        <span class="po-editor-text">
+          <strong>{{ planStore.activePlan.source === 'custom' ? 'Editar mis entrenamientos' : 'Crear mi propio plan' }}</strong>
+          <span>Días, semanas y planes a tu medida</span>
+        </span>
+        <span class="material-symbols-outlined po-chevron">chevron_right</span>
+      </router-link>
 
       <!-- Enlace de depuración -->
       <div class="po-debug-link">
@@ -353,4 +367,13 @@ onMounted(async () => {
   transition: opacity 0.15s ease;
 }
 .po-debug-btn:hover { opacity: 1; }
+.po-editor-btn { margin-top: 0.5rem; background-color: var(--k-surface-high); color: var(--k-on-surface); }
+.po-editor-link {
+  display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0 0.5rem; padding: 0.875rem 1rem;
+  background-color: var(--k-surface-container); border-radius: var(--k-radius-md);
+  color: var(--k-primary-container); text-decoration: none;
+}
+.po-editor-text { flex: 1; display: flex; flex-direction: column; gap: 0.15rem; font-family: var(--k-font-body); }
+.po-editor-text strong { font-family: var(--k-font-headline); font-size: var(--k-body-md); color: var(--k-on-surface); }
+.po-editor-text span { font-size: var(--k-label-md); color: var(--k-secondary); }
 </style>

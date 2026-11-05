@@ -156,7 +156,7 @@ async function save() {
     const newGroups  = injuries.value.map(i => i.muscleGroup)
     originalInjuries.value = JSON.parse(JSON.stringify(injuries.value))
     $q.notify({ type: 'positive', message: 'Lesiones actualizadas' })
-    if (planStore.activePlan) {
+    if (planStore.canRecalculate) {
       const added   = newGroups.filter(g => !prevGroups.includes(g))
       const removed = prevGroups.filter(g => !newGroups.includes(g))
       if (added.length > 0 || removed.length > 0) {

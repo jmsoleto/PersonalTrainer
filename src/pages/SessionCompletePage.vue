@@ -182,7 +182,7 @@ async function save() {
 }
 
 async function checkDifficultyTrend() {
-  if (!planStore.activePlan) return
+  if (!planStore.activePlan || !planStore.canRecalculate) return
   const sessions = await db.completedSessions.where('planId').equals(planStore.activePlan.id).toArray()
   if (sessions.length < 3) return
   const recent = sessions.sort((a, b) => b.completedAt.localeCompare(a.completedAt)).slice(0, 3)

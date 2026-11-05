@@ -141,6 +141,7 @@ export function transformExternalPlan(
     generatedAt: new Date().toISOString(),
     basedOn,
     weeks,
+    source: 'import',
   }
 }
 
