@@ -78,12 +78,9 @@
         <div class="sp-ex-header">
           <div class="sp-ex-info">
             <span class="sp-ex-name">{{ exercise.exerciseName }}</span>
-            <span class="sp-ex-plan">
-              {{ getPlannedExercise(exercise.exerciseId)?.sets }} series
-              <template v-if="getPlannedExercise(exercise.exerciseId)?.reps"> × {{ getPlannedExercise(exercise.exerciseId)?.reps }} reps</template>
-              <template v-if="getPlannedExercise(exercise.exerciseId)?.durationSeconds"> × {{ getPlannedExercise(exercise.exerciseId)?.durationSeconds }}s</template>
-              <template v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg"> · {{ getPlannedExercise(exercise.exerciseId)?.targetWeightKg }} kg</template>
-              <template v-if="getPlannedExercise(exercise.exerciseId)?.restSeconds"> · Descanso {{ getPlannedExercise(exercise.exerciseId)?.restSeconds }}s</template>
+            <span v-if="pyramidLabel(exercise.exerciseId)" class="sp-ex-technique">{{ pyramidLabel(exercise.exerciseId) }}</span>
+            <span v-if="getPlannedExercise(exercise.exerciseId)" class="sp-ex-plan">
+              {{ formatPlannedPrescription(getPlannedExercise(exercise.exerciseId)!) }}
             </span>
             <span v-if="getPlannedExercise(exercise.exerciseId)?.notes" class="sp-ex-notes">
               {{ getPlannedExercise(exercise.exerciseId)?.notes }}
@@ -110,7 +107,7 @@
           <div class="sp-set-cols">
             <span class="sp-set-col-set" />
             <span v-if="getPlannedExercise(exercise.exerciseId)?.reps" class="sp-set-col-label">REPS</span>
-            <span v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg !== undefined" class="sp-set-col-label">KG</span>
+            <span v-if="hasWeight(exercise.exerciseId)" class="sp-set-col-label">KG</span>
             <span v-if="getPlannedExercise(exercise.exerciseId)?.durationSeconds" class="sp-set-col-label">SEG</span>
             <span class="sp-set-col-check" />
           </div>
@@ -130,7 +127,7 @@
               class="sp-set-input"
             />
             <input
-              v-if="getPlannedExercise(exercise.exerciseId)?.targetWeightKg !== undefined"
+              v-if="hasWeight(exercise.exerciseId)"
               v-model.number="set.weightKg"
               type="number"
               class="sp-set-input"
@@ -148,6 +145,7 @@
             >
               <q-icon :name="set.completed ? 'check' : ''" size="14px" />
             </button>
+            <span v-if="isNoRestStage(exercise.exerciseId, set.setNumber)" class="sp-set-norest">sin descanso</span>
           </div>
         </template>
       </div>
@@ -250,6 +248,7 @@ import { useUserStore } from '../stores/user'
 import { Equipment } from '../types/enums'
 import type { Exercise } from '../types/exercise'
 import type { PlannedSession, PlannedExercise, CompletedSet } from '../types/plan'
+import { formatPlannedPrescription, TECHNIQUE_LABELS } from '../workout-editor/labels'
 
 const route = useRoute()
 const router = useRouter()
@@ -280,6 +279,25 @@ function openExerciseInfo(exerciseId: string): void {
 
 function getPlannedExercise(exerciseId: string): PlannedExercise | undefined {
   return session.value?.mainWorkout.find(e => e.exerciseId === exerciseId)
+}
+
+/** Weight column shows if any set of the exercise has a target weight. */
+function hasWeight(exerciseId: string): boolean {
+  const p = getPlannedExercise(exerciseId)
+  if (!p) return false
+  return p.targetWeightKg !== undefined || !!p.setDetails?.some(d => d.targetWeightKg !== undefined)
+}
+
+/** Drop-set stage followed by no rest (all but the last stage). */
+function isNoRestStage(exerciseId: string, setNumber: number): boolean {
+  const p = getPlannedExercise(exerciseId)
+  return p?.technique === 'drop_set' && p.setDetails?.[setNumber - 1]?.restSeconds === 0
+}
+
+/** Pyramid label above the prescription (drop sets already say "Drop set"). */
+function pyramidLabel(exerciseId: string): string | null {
+  const t = getPlannedExercise(exerciseId)?.technique
+  return t && t !== 'drop_set' ? TECHNIQUE_LABELS[t] : null
 }
 
 function isSkipped(exerciseId: string): boolean {
@@ -341,6 +359,15 @@ function buildReplacement(original: PlannedExercise, alt: Exercise): PlannedExer
   const altWeighted = alt.equipment.some(e => WEIGHTED_EQUIPMENT.has(e))
   if (altWeighted && original.targetWeightKg !== undefined) {
     replacement.targetWeightKg = original.targetWeightKg
+  }
+  // Pyramids: keep each set's target; weights only for weighted alternatives.
+  if (original.technique) replacement.technique = original.technique
+  if (original.setDetails) {
+    replacement.setDetails = original.setDetails.map(d => {
+      const copy = { ...d }
+      if (!altWeighted) delete copy.targetWeightKg
+      return copy
+    })
   }
   return replacement
 }
@@ -491,6 +518,13 @@ onMounted(async () => {
 .sp-ex-name {
   font-family: var(--k-font-headline); font-size: var(--k-body-md); font-weight: 600;
   letter-spacing: var(--k-tracking-headline); color: var(--k-on-surface);
+}
+.sp-ex-technique {
+  font-family: var(--k-font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: var(--k-tracking-label);
+  text-transform: uppercase; color: var(--k-primary-container);
+}
+.sp-set-norest {
+  font-family: var(--k-font-body); font-size: 0.7rem; color: var(--k-primary-container); white-space: nowrap;
 }
 .sp-ex-plan { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
 .sp-ex-notes { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-outline); font-style: italic; }

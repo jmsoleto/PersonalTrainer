@@ -8,6 +8,7 @@ import type {
   SectionKey,
 } from '../types/workout-template'
 import { WEEK_LENGTH, MAX_PLAN_WEEKS } from '../types/workout-template'
+import { PYRAMID_MIN_SETS, PYRAMID_MAX_SETS, WEIGHT_STEP_KG } from './pyramid'
 
 export type TemplateType = 'day' | 'week' | 'plan'
 
@@ -16,6 +17,11 @@ export type IssueCode =
   | 'empty_main'
   | 'empty_block'
   | 'unsupported_block'
+  | 'pyramid_outside_main'
+  | 'pyramid_set_count'
+  | 'pyramid_missing_config'
+  | 'drop_requires_weight'
+  | 'drop_not_decreasing'
   | 'no_sets'
   | 'invalid_value'
   | 'unknown_exercise'
@@ -42,8 +48,6 @@ export interface TemplateIssue {
 export interface ValidationOptions {
   /** When provided, exercise ids are checked against the catalog. */
   exerciseExists?: (id: string) => boolean
-  /** v1 only supports straight blocks. Default: true. */
-  straightOnly?: boolean
 }
 
 const SECTION_LABEL: Record<SectionKey, string> = {
@@ -74,12 +78,17 @@ function validateBlocks(
   opts: ValidationOptions,
 ): TemplateIssue[] {
   const issues: TemplateIssue[] = []
-  const straightOnly = opts.straightOnly ?? true
   const seen = new Set<string>()
 
   for (const block of blocks) {
-    if (straightOnly && block.kind !== 'straight') {
+    // Straight everywhere; pyramids in the main workout only; supersets not yet.
+    if (block.kind === 'superset') {
       issues.push({ ...base, section, code: 'unsupported_block', message: `Tipo de bloque no soportado todavía: ${block.kind}` })
+    }
+    if (block.kind === 'pyramid') {
+      issues.push(...validatePyramid(block, section, base))
+    } else if (block.pyramid) {
+      issues.push({ ...base, section, code: 'pyramid_missing_config', message: 'Configuración de pirámide en un bloque que no es pirámide' })
     }
     if (block.items.length === 0) {
       issues.push({ ...base, section, code: 'empty_block', message: `Hay un bloque vacío en ${SECTION_LABEL[section]}` })
@@ -108,6 +117,38 @@ function validateBlocks(
       if (bad) {
         issues.push({ ...base, section, exerciseId: item.exerciseId, code: 'invalid_value', message: 'Repeticiones, tiempo y peso deben ser mayores que 0' })
       }
+    }
+  }
+  return issues
+}
+
+function validatePyramid(
+  block: TemplateBlock,
+  section: SectionKey,
+  base: Pick<TemplateIssue, 'templateType' | 'templateId' | 'templateName'>,
+): TemplateIssue[] {
+  const issues: TemplateIssue[] = []
+  if (section !== 'main') {
+    issues.push({ ...base, section, code: 'pyramid_outside_main', message: `Las pirámides solo se permiten en el entrenamiento principal, no en ${SECTION_LABEL[section]}` })
+  }
+  if (!block.pyramid) {
+    issues.push({ ...base, section, code: 'pyramid_missing_config', message: 'A la pirámide le falta su configuración' })
+    return issues
+  }
+  for (const item of block.items) {
+    const n = item.sets.length
+    if (n < PYRAMID_MIN_SETS || n > PYRAMID_MAX_SETS) {
+      issues.push({ ...base, section, exerciseId: item.exerciseId, code: 'pyramid_set_count', message: `Una pirámide necesita entre ${PYRAMID_MIN_SETS} y ${PYRAMID_MAX_SETS} series` })
+    }
+    if (block.pyramid.variant !== 'drop') continue
+    if (item.mode !== 'reps' || item.sets.some(set => set.weightKg === undefined)) {
+      issues.push({ ...base, section, exerciseId: item.exerciseId, code: 'drop_requires_weight', message: 'Un drop set necesita peso y repeticiones' })
+      continue
+    }
+    const decreasing = item.sets.every((set, i) =>
+      set.weightKg! >= WEIGHT_STEP_KG && (i === 0 || set.weightKg! < item.sets[i - 1].weightKg!))
+    if (!decreasing) {
+      issues.push({ ...base, section, exerciseId: item.exerciseId, code: 'drop_not_decreasing', message: 'Cada tramo del drop set debe pesar menos que el anterior y al menos 2,5 kg' })
     }
   }
   return issues

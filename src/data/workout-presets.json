@@ -1910,6 +1910,540 @@
           ]
         }
       ]
+    },
+    {
+      "id": "preset_day_pyramid_barbell",
+      "name": "Fuerza en pirámide",
+      "group": "category",
+      "description": "Fuerza con barra en pirámides: sentadilla en triángulo, press ascendente y remo descendente.",
+      "icon": "signal_cellular_alt",
+      "targetMuscleGroups": [
+        "quads",
+        "glutes",
+        "chest",
+        "back",
+        "hamstrings"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_pyramid_barbell_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_world_greatest_stretch",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_barbell_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_arm_circles",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_barbell_w_3",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_hip_circle",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_pyramid_barbell_m_1",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "triangle",
+            "manual": false,
+            "params": {
+              "steps": 3,
+              "base": {
+                "value": 12
+              },
+              "peak": {
+                "value": 8
+              },
+              "restSeconds": 120
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_barbell_back_squat",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 120
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_barbell_m_2",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "ascending",
+            "manual": false,
+            "params": {
+              "setCount": 4,
+              "first": {
+                "value": 12
+              },
+              "last": {
+                "value": 6
+              },
+              "restSeconds": 120
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_barbell_bench_press",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 120
+                },
+                {
+                  "reps": 6,
+                  "restSeconds": 120
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_barbell_m_3",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "descending",
+            "manual": false,
+            "params": {
+              "setCount": 4,
+              "first": {
+                "value": 6
+              },
+              "last": {
+                "value": 12
+              },
+              "restSeconds": 90
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_barbell_bent_over_row",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 6,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_barbell_m_4",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_barbell_romanian_deadlift",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_pyramid_barbell_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_hamstring_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_barbell_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_chest_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preset_day_pyramid_dumbbell",
+      "name": "Pirámide con mancuernas",
+      "group": "category",
+      "description": "Pirámides con mancuernas, flexiones descendentes y plancha de tiempo creciente.",
+      "icon": "stacked_bar_chart",
+      "targetMuscleGroups": [
+        "quads",
+        "chest",
+        "back",
+        "core"
+      ],
+      "warmup": [
+        {
+          "id": "preset_day_pyramid_dumbbell_w_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_world_greatest_stretch",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_dumbbell_w_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_warmup_arm_circles",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "main": [
+        {
+          "id": "preset_day_pyramid_dumbbell_m_1",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "triangle",
+            "manual": false,
+            "params": {
+              "steps": 3,
+              "base": {
+                "value": 15
+              },
+              "peak": {
+                "value": 9
+              },
+              "restSeconds": 90
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_goblet_squat",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 9,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 15,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_dumbbell_m_2",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "ascending",
+            "manual": false,
+            "params": {
+              "setCount": 4,
+              "first": {
+                "value": 12
+              },
+              "last": {
+                "value": 6
+              },
+              "restSeconds": 90
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_bench_press",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 12,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 90
+                },
+                {
+                  "reps": 6,
+                  "restSeconds": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_dumbbell_m_3",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "descending",
+            "manual": false,
+            "params": {
+              "setCount": 3,
+              "first": {
+                "value": 8
+              },
+              "last": {
+                "value": 12
+              },
+              "restSeconds": 75
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_dumbbell_bent_over_row",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 8,
+                  "restSeconds": 75
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 75
+                },
+                {
+                  "reps": 12,
+                  "restSeconds": 75
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_dumbbell_m_4",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "descending",
+            "manual": false,
+            "params": {
+              "setCount": 4,
+              "first": {
+                "value": 15
+              },
+              "last": {
+                "value": 8
+              },
+              "restSeconds": 60
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_standard_push_up",
+              "mode": "reps",
+              "sets": [
+                {
+                  "reps": 15,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 13,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 10,
+                  "restSeconds": 60
+                },
+                {
+                  "reps": 8,
+                  "restSeconds": 60
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_dumbbell_m_5",
+          "kind": "pyramid",
+          "pyramid": {
+            "variant": "ascending",
+            "manual": false,
+            "params": {
+              "setCount": 3,
+              "first": {
+                "value": 30
+              },
+              "last": {
+                "value": 60
+              },
+              "restSeconds": 30
+            }
+          },
+          "items": [
+            {
+              "exerciseId": "ex_plank",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 45,
+                  "restSeconds": 30
+                },
+                {
+                  "durationSeconds": 60,
+                  "restSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "cooldown": [
+        {
+          "id": "preset_day_pyramid_dumbbell_c_1",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_child_pose",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "preset_day_pyramid_dumbbell_c_2",
+          "kind": "straight",
+          "items": [
+            {
+              "exerciseId": "ex_cooldown_chest_stretch",
+              "mode": "time",
+              "sets": [
+                {
+                  "durationSeconds": 30
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "weekPresets": [

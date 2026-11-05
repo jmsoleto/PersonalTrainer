@@ -10,6 +10,24 @@ import type {
 } from '../types/plan'
 import { SessionDifficulty } from '../types/enums'
 
+/**
+ * Logged-set skeleton for a planned exercise. Uses each set's own target when
+ * the plan has per-set details (pyramids); otherwise repeats the summary.
+ */
+export function buildSetSkeleton(planned: PlannedExercise): CompletedSet[] {
+  return Array.from({ length: planned.sets }, (_, i) => {
+    const detail = planned.setDetails?.[i]
+    return {
+      setNumber: i + 1,
+      reps: detail ? detail.reps : planned.reps,
+      weightKg: detail ? detail.targetWeightKg : planned.targetWeightKg,
+      durationSeconds: detail ? detail.durationSeconds : planned.durationSeconds,
+      completed: false,
+      rpe: undefined,
+    }
+  })
+}
+
 export const useSessionStore = defineStore('session', () => {
   const currentSession = ref<{
     planId: string
@@ -36,14 +54,7 @@ export const useSessionStore = defineStore('session', () => {
       exercises: planned.mainWorkout.map(ex => ({
         exerciseId: ex.exerciseId,
         exerciseName: ex.exerciseName,
-        sets: Array.from({ length: ex.sets }, (_, i) => ({
-          setNumber: i + 1,
-          reps: ex.reps,
-          weightKg: ex.targetWeightKg,
-          durationSeconds: ex.durationSeconds,
-          completed: false,
-          rpe: undefined,
-        })),
+        sets: buildSetSkeleton(ex),
       })),
       skippedExercises: [],
     }
@@ -77,14 +88,7 @@ export const useSessionStore = defineStore('session', () => {
     const skeleton: CompletedExercise = {
       exerciseId: replacement.exerciseId,
       exerciseName: replacement.exerciseName,
-      sets: Array.from({ length: replacement.sets }, (_, i) => ({
-        setNumber: i + 1,
-        reps: replacement.reps,
-        weightKg: replacement.targetWeightKg,
-        durationSeconds: replacement.durationSeconds,
-        completed: false,
-        rpe: undefined,
-      })),
+      sets: buildSetSkeleton(replacement),
     }
     const idx = currentSession.value.exercises.findIndex(
       e => e.exerciseId === originalExerciseId,

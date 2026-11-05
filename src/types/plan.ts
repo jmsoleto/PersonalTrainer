@@ -75,15 +75,33 @@ export interface SessionSegment {
   durationMinutes: number
 }
 
+/** Target of one set, used when the sets of an exercise differ (pyramids). */
+export interface PlannedSet {
+  reps?: number
+  durationSeconds?: number
+  targetWeightKg?: number
+  restSeconds: number
+}
+
+export type PlannedTechnique =
+  | 'pyramid_ascending'
+  | 'pyramid_descending'
+  | 'pyramid_triangle'
+  | 'drop_set'
+
 export interface PlannedExercise {
   exerciseId: string
   exerciseName: string
   sets: number
+  /** Summary prescription; equals the first set when `setDetails` is present. */
   reps?: number
   durationSeconds?: number
   restSeconds: number
   notes?: string
   targetWeightKg?: number
+  /** Per-set targets (length === sets). Absent = every set uses the summary. */
+  setDetails?: PlannedSet[]
+  technique?: PlannedTechnique
 }
 
 export interface CompletedSession {

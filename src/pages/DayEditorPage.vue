@@ -65,6 +65,7 @@
                 <span class="de-item-name">{{ exerciseOf(block)?.name ?? block.items[0].exerciseId }}</span>
                 <span v-if="!exerciseOf(block)" class="we-chip we-chip--warn">No disponible</span>
                 <span v-else class="de-item-muscle">{{ muscleLabel(exerciseOf(block)!.primaryMuscle) }}</span>
+                <span v-if="block.kind === 'pyramid' && block.pyramid" class="we-chip we-chip--accent">{{ PYRAMID_VARIANT_LABELS[block.pyramid.variant] }}</span>
               </div>
               <div class="we-card-actions">
                 <button class="we-icon-btn" :disabled="bi === 0" aria-label="Subir" @click="move(key, bi, -1)"><q-icon name="arrow_upward" size="16px" /></button>
@@ -73,7 +74,14 @@
               </div>
             </div>
 
-            <div class="de-presc">
+            <div v-if="key === 'main'" class="de-kind" role="radiogroup" aria-label="Tipo de bloque">
+              <button type="button" role="radio" :aria-checked="block.kind === 'straight'" :class="{ on: block.kind === 'straight' }" @click="toStraight(block)">Series iguales</button>
+              <button type="button" role="radio" :aria-checked="block.kind === 'pyramid'" :class="{ on: block.kind === 'pyramid' }" @click="toPyramid(block)">Pirámide</button>
+            </div>
+
+            <PyramidBlockEditor v-if="block.kind === 'pyramid' && block.pyramid" :block="block" />
+
+            <div v-else class="de-presc">
               <div class="de-field de-field--sets">
                 <span class="de-field-label">Series</span>
                 <div class="de-stepper">
@@ -167,13 +175,15 @@ import { useRoute, useRouter, onBeforeRouteLeave } from 'vue-router'
 import { useQuasar } from 'quasar'
 import PageShell from '../components/layout/PageShell.vue'
 import ExercisePickerDialog from '../components/workout-editor/ExercisePickerDialog.vue'
+import PyramidBlockEditor from '../components/workout-editor/PyramidBlockEditor.vue'
 import { useExercisesStore } from '../stores/exercises'
 import { useWorkoutTemplatesStore } from '../stores/workoutTemplates'
 import type { DayContent, SectionKey, TemplateBlock, BlockItem, SetSpec, ExerciseMode } from '../types/workout-template'
 import type { Exercise } from '../types/exercise'
 import { TemplateValidationError, isValidSetValue } from '../workout-editor/validation'
 import { estimateBlocksMinutes, estimateDayMinutes } from '../workout-editor/duration'
-import { SECTION_META, muscleLabel } from '../workout-editor/labels'
+import { SECTION_META, muscleLabel, PYRAMID_VARIANT_LABELS } from '../workout-editor/labels'
+import { defaultPyramidConfig, generatePyramidSets } from '../workout-editor/pyramid'
 import '../css/workout-editor.scss'
 
 const SECTIONS: SectionKey[] = ['warmup', 'main', 'cooldown']
@@ -298,6 +308,33 @@ function onField(block: TemplateBlock, field: Field, event: Event) {
   it.sets = it.sets.map(s => ({ ...s, [field]: value }))
 }
 
+// ── Block kind: straight ↔ pyramid (main workout only) ─────────
+function toPyramid(block: TemplateBlock) {
+  if (block.kind === 'pyramid') return
+  const it = item(block)
+  // Start from the current values: same count, first = last = current set.
+  const config = defaultPyramidConfig('ascending', it.mode, it.sets)
+  block.kind = 'pyramid'
+  block.pyramid = config
+  it.sets = generatePyramidSets(it.mode, config)
+}
+
+function toStraight(block: TemplateBlock) {
+  if (block.kind === 'straight') return
+  $q.dialog({
+    title: 'Pasar a series iguales',
+    message: 'Se perderán los valores distintos de cada serie. Todas las series quedarán como la primera.',
+    cancel: { label: 'Cancelar', flat: true },
+    ok: { label: 'Cambiar', color: 'primary' },
+  }).onOk(() => {
+    const it = item(block)
+    const firstSet = { ...(it.sets[0] ?? {}) }
+    it.sets = it.sets.map(() => ({ ...firstSet }))
+    block.kind = 'straight'
+    delete block.pyramid
+  })
+}
+
 // ── Adding / moving / removing ─────────────────────────────────
 const pickerOpen = ref(false)
 const pickerSection = ref<SectionKey>('main')
@@ -389,6 +426,13 @@ async function save() {
 .de-item-name-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; align-items: flex-start; }
 .de-item-name { font-family: var(--k-font-body); font-size: var(--k-body-md); font-weight: 600; color: var(--k-on-surface); }
 .de-item-muscle { font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
+
+.de-kind { display: flex; background-color: var(--k-surface-highest); border-radius: var(--k-radius-sm); padding: 2px; margin-bottom: 0.6rem; }
+.de-kind button {
+  flex: 1; border: none; background: none; cursor: pointer; border-radius: 3px; padding: 0.3rem 0;
+  font-family: var(--k-font-body); font-size: 0.7rem; font-weight: 600; color: var(--k-secondary);
+}
+.de-kind button.on { background-color: var(--k-surface-bright); color: var(--k-on-surface); }
 
 .de-presc { display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 0.45rem; align-items: end; }
 @media (max-width: 380px) { .de-presc { grid-template-columns: 1fr 1fr; } }

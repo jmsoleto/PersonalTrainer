@@ -11,6 +11,7 @@ import {
   dayPresetsOfWeek,
 } from '../../src/workout-editor/presets'
 import { validateDay } from '../../src/workout-editor/validation'
+import { generatePyramidSets } from '../../src/workout-editor/pyramid'
 
 const catalog = new Map((exercisesJson as Exercise[]).map(e => [e.id, e]))
 const getExercise = (id: string) => catalog.get(id)
@@ -19,8 +20,8 @@ const allItems = (blocks: { items: { exerciseId: string; sets: { weightKg?: numb
   blocks.flatMap(b => b.items)
 
 describe('workout presets catalog integrity', () => {
-  it('ships the 10 day presets and 3 week presets with unique ids', () => {
-    expect(dayPresets).toHaveLength(10)
+  it('ships the 12 day presets and 3 week presets with unique ids', () => {
+    expect(dayPresets).toHaveLength(12)
     expect(weekPresets).toHaveLength(3)
     const ids = [...dayPresets, ...weekPresets].map(p => p.id)
     expect(new Set(ids).size).toBe(ids.length)
@@ -29,6 +30,7 @@ describe('workout presets catalog integrity', () => {
     ])
     expect(dayPresets.filter(p => p.group === 'category').map(p => p.name)).toEqual([
       'Cardio HIIT', 'Pliometría', 'Movilidad y flexibilidad', 'Equilibrio',
+      'Fuerza en pirámide', 'Pirámide con mancuernas',
     ])
   })
 
@@ -58,6 +60,17 @@ describe('workout presets catalog integrity', () => {
         const weighted = allItems([...preset.warmup, ...preset.main, ...preset.cooldown])
           .filter(i => i.sets.some(s => s.weightKg !== undefined))
         expect(weighted).toEqual([])
+      })
+
+      it('pyramid blocks match their generator config and include no drop sets', () => {
+        for (const block of [...preset.warmup, ...preset.main, ...preset.cooldown]) {
+          if (block.kind !== 'pyramid') continue
+          expect(block.pyramid, block.id).toBeDefined()
+          expect(block.pyramid!.variant, block.id).not.toBe('drop')
+          expect(block.pyramid!.manual, block.id).toBe(false)
+          const it0 = block.items[0]
+          expect(it0.sets, block.id).toEqual(generatePyramidSets(it0.mode, block.pyramid!))
+        }
       })
 
       it('passes template validation', () => {
@@ -96,5 +109,28 @@ describe('preset equipment', () => {
   it('lists the distinct day presets of a week', () => {
     const split = weekPresets.find(w => w.id === 'preset_week_split_4')!
     expect(dayPresetsOfWeek(split)).toHaveLength(6)
+  })
+})
+
+describe('pyramid presets', () => {
+  const barbell = getDayPreset('preset_day_pyramid_barbell')!
+  const dumbbell = getDayPreset('preset_day_pyramid_dumbbell')!
+
+  it('use triangle, ascending and descending pyramids in the main workout', () => {
+    for (const preset of [barbell, dumbbell]) {
+      const variants = preset.main.filter(b => b.kind === 'pyramid').map(b => b.pyramid!.variant)
+      expect(variants).toEqual(expect.arrayContaining(['triangle', 'ascending', 'descending']))
+    }
+  })
+
+  it('the dumbbell preset includes a bodyweight reps pyramid and a time pyramid', () => {
+    const pyramids = dumbbell.main.filter(b => b.kind === 'pyramid')
+    expect(pyramids.some(b => b.items[0].mode === 'reps' && getExercise(b.items[0].exerciseId)!.equipment.length === 0)).toBe(true)
+    expect(pyramids.some(b => b.items[0].mode === 'time')).toBe(true)
+  })
+
+  it('the barbell preset requires a barbell', () => {
+    expect(requiredEquipment(barbell, getExercise)).toContain(Equipment.Barbell)
+    expect(missingEquipment(barbell, [], getExercise)).toContain(Equipment.Barbell)
   })
 })

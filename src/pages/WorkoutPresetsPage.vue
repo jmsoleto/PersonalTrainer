@@ -42,7 +42,7 @@
               <ul class="wp-items">
                 <li v-for="b in p[key]" :key="b.id">
                   <span>{{ exerciseName(b.items[0].exerciseId) }}</span>
-                  <span class="wp-presc">{{ formatPrescription(b.items[0].mode, b.items[0].sets) }}</span>
+                  <span class="wp-presc">{{ formatPrescription(b.items[0].mode, b.items[0].sets, b.kind === 'pyramid' ? b.pyramid?.variant : undefined) }}</span>
                 </li>
               </ul>
             </template>

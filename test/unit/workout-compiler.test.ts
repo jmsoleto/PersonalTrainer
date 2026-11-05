@@ -121,8 +121,8 @@ describe('validateDay', () => {
     expect(issues.map(i => i.code)).toContain('duplicate_exercise')
   })
 
-  it('rejects non-straight blocks in v1', () => {
-    const block: TemplateBlock = { ...straight('ex_plank', 3, { durationSeconds: 30 }), kind: 'pyramid' }
+  it('rejects superset blocks', () => {
+    const block: TemplateBlock = { ...straight('ex_plank', 3, { durationSeconds: 30 }), kind: 'superset' }
     expect(validateDay(day('d1', { main: [block] })).map(i => i.code)).toContain('unsupported_block')
   })
 })
@@ -289,6 +289,44 @@ describe('compilePlanTemplate', () => {
     } catch (e) {
       expect((e as TemplateValidationError).issues.map(i => i.code)).toContain('missing_day')
     }
+  })
+
+  it('compiles a pyramid into per-set targets with a first-set summary', () => {
+    const sets = [
+      { reps: 12, weightKg: 40, restSeconds: 90 },
+      { reps: 10, weightKg: 45, restSeconds: 90 },
+      { reps: 8, weightKg: 50, restSeconds: 90 },
+      { reps: 6, weightKg: 55, restSeconds: 90 },
+    ]
+    const press: TemplateBlock = {
+      id: 'b-press',
+      kind: 'pyramid',
+      pyramid: { variant: 'ascending', manual: false, params: { setCount: 4, first: { value: 12, weightKg: 40 }, last: { value: 6, weightKg: 55 }, restSeconds: 90 } },
+      items: [{ exerciseId: 'ex_barbell_bench_press', mode: 'reps', sets }],
+    }
+    const t = tree(['deload'])
+    t.days.set('core', day('core', { name: 'Core', main: [press] }))
+    const ex = compilePlanTemplate(t, opts()).weeks[0].days[0].session!.mainWorkout[0]
+    expect(ex).toMatchObject({ sets: 4, reps: 12, targetWeightKg: 40, restSeconds: 90, technique: 'pyramid_ascending' })
+    expect(ex.setDetails).toEqual([
+      { reps: 12, targetWeightKg: 40, restSeconds: 90 },
+      { reps: 10, targetWeightKg: 45, restSeconds: 90 },
+      { reps: 8, targetWeightKg: 50, restSeconds: 90 },
+      { reps: 6, targetWeightKg: 55, restSeconds: 90 },
+    ])
+  })
+
+  it('straight blocks carry no per-set details', () => {
+    const ex = compilePlanTemplate(tree(), opts()).weeks[0].days[0].session!.mainWorkout[0]
+    expect(ex.setDetails).toBeUndefined()
+    expect(ex.technique).toBeUndefined()
+  })
+
+  it('still refuses to activate a superset', () => {
+    const superset: TemplateBlock = { ...straight('ex_plank', 3, { durationSeconds: 30 }), kind: 'superset' }
+    const t = tree(['deload'])
+    t.days.set('core', day('core', { main: [superset] }))
+    expect(() => compilePlanTemplate(t, opts())).toThrow(TemplateValidationError)
   })
 })
 

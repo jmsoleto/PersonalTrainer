@@ -4,6 +4,7 @@ import type {
   DayPlan,
   PlannedSession,
   PlannedExercise,
+  PlannedSet,
   PlanContext,
 } from '../types/plan'
 import type { Exercise } from '../types/exercise'
@@ -12,6 +13,7 @@ import { DayType } from '../types/enums'
 import type { DayTemplate, TemplateBlock, WeekSlot } from '../types/workout-template'
 import { validatePlanTree, TemplateValidationError, type PlanTree } from './validation'
 import { estimateBlocksMinutes, estimateDayMinutes } from './duration'
+import { TECHNIQUE_BY_VARIANT } from './pyramid'
 
 export interface CompileOptions {
   userId: string
@@ -26,7 +28,7 @@ export interface CompileOptions {
 function compileBlocks(blocks: TemplateBlock[], getExercise: CompileOptions['getExercise']): PlannedExercise[] {
   const out: PlannedExercise[] = []
   for (const block of blocks) {
-    if (block.kind !== 'straight') {
+    if (block.kind === 'superset') {
       // Guarded by validation; kept so a partial rollout never drops data silently.
       throw new TemplateValidationError([{
         templateType: 'day', templateId: block.id, code: 'unsupported_block',
@@ -45,6 +47,16 @@ function compileBlocks(blocks: TemplateBlock[], getExercise: CompileOptions['get
       else planned.durationSeconds = first.durationSeconds
       if (first.weightKg !== undefined) planned.targetWeightKg = first.weightKg
       if (item.notes) planned.notes = item.notes
+      if (block.kind === 'pyramid' && block.pyramid) {
+        planned.technique = TECHNIQUE_BY_VARIANT[block.pyramid.variant]
+        planned.setDetails = item.sets.map(set => {
+          const detail: PlannedSet = { restSeconds: set.restSeconds ?? 0 }
+          if (item.mode === 'reps') detail.reps = set.reps
+          else detail.durationSeconds = set.durationSeconds
+          if (set.weightKg !== undefined) detail.targetWeightKg = set.weightKg
+          return detail
+        })
+      }
       out.push(planned)
     }
   }

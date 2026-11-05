@@ -4,8 +4,8 @@ import type { MuscleGroup } from './enums'
  * User-built workout templates (device-local, per user).
  *
  * Stored shape is per-set so pyramids (sets that differ) and supersets
- * (several items in one block) fit without a data migration. The v1 editor
- * only creates `straight` blocks.
+ * (several items in one block) fit without a data migration. The editor
+ * creates `straight` blocks and, in the main workout, `pyramid` blocks.
  */
 
 export type BlockKind = 'straight' | 'pyramid' | 'superset'
@@ -26,11 +26,55 @@ export interface BlockItem {
   notes?: string
 }
 
+export type PyramidVariant = 'ascending' | 'descending' | 'triangle' | 'drop'
+
+/** One end of a generated range. `value` is reps or seconds, by the item's mode. */
+export interface PyramidPoint {
+  value: number
+  weightKg?: number
+}
+
+/** Ascending / descending: values spread evenly from `first` to `last`. */
+export interface LinearPyramidParams {
+  setCount: number
+  first: PyramidPoint
+  last: PyramidPoint
+  restSeconds: number
+}
+
+/** Triangle: `steps` sets from base to peak, then mirrored back (2·steps − 1 sets). */
+export interface TrianglePyramidParams {
+  steps: number
+  base: PyramidPoint
+  peak: PyramidPoint
+  restSeconds: number
+}
+
+/** Drop set: start weight, then `drops` stages each `dropPercent` lighter, no rest between. */
+export interface DropSetParams {
+  startWeightKg: number
+  drops: number
+  dropPercent: number
+  reps: number
+  finalRestSeconds: number
+}
+
+/**
+ * Editor-only description of how a pyramid's sets were generated. The block's
+ * sets remain the source of truth; `manual` means the user retouched them.
+ */
+export type PyramidConfig =
+  | { variant: 'ascending' | 'descending'; params: LinearPyramidParams; manual: boolean }
+  | { variant: 'triangle'; params: TrianglePyramidParams; manual: boolean }
+  | { variant: 'drop'; params: DropSetParams; manual: boolean }
+
 export interface TemplateBlock {
   id: string
   kind: BlockKind
   items: BlockItem[]
   restAfterSeconds?: number
+  /** Present if and only if `kind === 'pyramid'`. */
+  pyramid?: PyramidConfig
 }
 
 /** Content of a day, shared by user templates and built-in presets. */
