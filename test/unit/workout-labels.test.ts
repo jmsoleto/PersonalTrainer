@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { formatPrescription, formatPlannedPrescription, formatKg } from '../../src/workout-editor/labels'
+import { formatPrescription, formatPlannedPrescription, formatKg, supersetHeader, supersetItemLine } from '../../src/workout-editor/labels'
 import type { PlannedExercise } from '../../src/types/plan'
 
 const base = { exerciseId: 'x', exerciseName: 'X', restSeconds: 90 }
@@ -59,5 +59,18 @@ describe('formatPrescription (templates)', () => {
 
   it('uses a comma decimal', () => {
     expect(formatKg(37.5)).toBe('37,5')
+  })
+})
+
+describe('superset labels', () => {
+  it('group header with rounds', () => {
+    expect(supersetHeader('A', 3)).toBe('Superserie A · 3 rondas')
+    expect(supersetHeader('B', 1)).toBe('Superserie B · 1 ronda')
+  })
+
+  it('preview line per exercise', () => {
+    expect(supersetItemLine('A1', 'Press de Banca con Barra', 'reps', [{ reps: 10 }])).toBe('A1 Press de Banca con Barra · 10 reps')
+    expect(supersetItemLine('A2', 'Plancha', 'time', [{ durationSeconds: 30 }])).toBe('A2 Plancha · 30 s')
+    expect(supersetItemLine('B1', 'Curl', 'reps', [{ reps: 12, weightKg: 12.5 }])).toBe('B1 Curl · 12 reps · 12,5 kg')
   })
 })

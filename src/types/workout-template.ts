@@ -3,9 +3,11 @@ import type { MuscleGroup } from './enums'
 /**
  * User-built workout templates (device-local, per user).
  *
- * Stored shape is per-set so pyramids (sets that differ) and supersets
- * (several items in one block) fit without a data migration. The editor
- * creates `straight` blocks and, in the main workout, `pyramid` blocks.
+ * Stored shape is per-set: pyramids are sets that differ, supersets are
+ * blocks with two items. The editor creates `straight` blocks everywhere and,
+ * in the main workout only, `pyramid` and `superset` blocks. In a superset,
+ * A1's set rest is the transition to A2 and A2's set rest is the rest between
+ * rounds; superset letters are derived from block order, never stored.
  */
 
 export type BlockKind = 'straight' | 'pyramid' | 'superset'

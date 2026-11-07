@@ -207,8 +207,11 @@ describe('pyramid validation', () => {
     expect(codes(dayWith({ main: [block] }))).toContain('drop_not_decreasing')
   })
 
-  it('still rejects supersets', () => {
-    const block: TemplateBlock = { id: 's', kind: 'superset', items: [{ exerciseId: 'ex_a', mode: 'reps', sets: [{ reps: 10 }] }] }
-    expect(codes(dayWith({ main: [block] }))).toContain('unsupported_block')
+  it('rejects a pyramid config on a superset', () => {
+    const block: TemplateBlock = {
+      id: 's', kind: 'superset', pyramid: linear('ascending', 3, { value: 10 }, { value: 6 }),
+      items: ['ex_a', 'ex_b'].map(exerciseId => ({ exerciseId, mode: 'reps' as const, sets: [{ reps: 10 }] })),
+    }
+    expect(codes(dayWith({ main: [block] }))).toEqual(['pyramid_missing_config'])
   })
 })

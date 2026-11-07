@@ -14,6 +14,7 @@ import type { DayTemplate, TemplateBlock, WeekSlot } from '../types/workout-temp
 import { validatePlanTree, TemplateValidationError, type PlanTree } from './validation'
 import { estimateBlocksMinutes, estimateDayMinutes } from './duration'
 import { TECHNIQUE_BY_VARIANT } from './pyramid'
+import { supersetLetters } from './superset'
 
 export interface CompileOptions {
   userId: string
@@ -27,15 +28,16 @@ export interface CompileOptions {
 
 function compileBlocks(blocks: TemplateBlock[], getExercise: CompileOptions['getExercise']): PlannedExercise[] {
   const out: PlannedExercise[] = []
+  const letters = supersetLetters(blocks)
   for (const block of blocks) {
-    if (block.kind === 'superset') {
-      // Guarded by validation; kept so a partial rollout never drops data silently.
+    if (block.kind !== 'straight' && block.kind !== 'pyramid' && block.kind !== 'superset') {
+      // Guarded by validation; kept so an unknown kind never drops data silently.
       throw new TemplateValidationError([{
         templateType: 'day', templateId: block.id, code: 'unsupported_block',
-        message: `Tipo de bloque no soportado todavía: ${block.kind}`,
+        message: `Tipo de bloque no soportado: ${String(block.kind)}`,
       }])
     }
-    for (const item of block.items) {
+    for (const [index, item] of block.items.entries()) {
       const first = item.sets[0] ?? {}
       const planned: PlannedExercise = {
         exerciseId: item.exerciseId,
@@ -56,6 +58,10 @@ function compileBlocks(blocks: TemplateBlock[], getExercise: CompileOptions['get
           if (set.weightKg !== undefined) detail.targetWeightKg = set.weightKg
           return detail
         })
+      }
+      const group = letters.get(block.id)
+      if (block.kind === 'superset' && group) {
+        planned.superset = { group, position: index === 0 ? 1 : 2 }
       }
       out.push(planned)
     }

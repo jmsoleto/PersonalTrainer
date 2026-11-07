@@ -9,6 +9,7 @@ import type {
 } from '../types/workout-template'
 import { WEEK_LENGTH, MAX_PLAN_WEEKS } from '../types/workout-template'
 import { PYRAMID_MIN_SETS, PYRAMID_MAX_SETS, WEIGHT_STEP_KG } from './pyramid'
+import { SUPERSET_ITEMS, SUPERSET_MIN_ROUNDS, SUPERSET_MAX_ROUNDS } from './superset'
 
 export type TemplateType = 'day' | 'week' | 'plan'
 
@@ -22,6 +23,10 @@ export type IssueCode =
   | 'pyramid_missing_config'
   | 'drop_requires_weight'
   | 'drop_not_decreasing'
+  | 'superset_outside_main'
+  | 'superset_item_count'
+  | 'superset_uneven_rounds'
+  | 'superset_round_count'
   | 'no_sets'
   | 'invalid_value'
   | 'unknown_exercise'
@@ -81,9 +86,11 @@ function validateBlocks(
   const seen = new Set<string>()
 
   for (const block of blocks) {
-    // Straight everywhere; pyramids in the main workout only; supersets not yet.
+    // Straight everywhere; pyramids and supersets in the main workout only.
     if (block.kind === 'superset') {
-      issues.push({ ...base, section, code: 'unsupported_block', message: `Tipo de bloque no soportado todavía: ${block.kind}` })
+      issues.push(...validateSuperset(block, section, base))
+    } else if (block.kind !== 'straight' && block.kind !== 'pyramid') {
+      issues.push({ ...base, section, code: 'unsupported_block', message: `Tipo de bloque no soportado: ${String(block.kind)}` })
     }
     if (block.kind === 'pyramid') {
       issues.push(...validatePyramid(block, section, base))
@@ -150,6 +157,30 @@ function validatePyramid(
     if (!decreasing) {
       issues.push({ ...base, section, exerciseId: item.exerciseId, code: 'drop_not_decreasing', message: 'Cada tramo del drop set debe pesar menos que el anterior y al menos 2,5 kg' })
     }
+  }
+  return issues
+}
+
+function validateSuperset(
+  block: TemplateBlock,
+  section: SectionKey,
+  base: Pick<TemplateIssue, 'templateType' | 'templateId' | 'templateName'>,
+): TemplateIssue[] {
+  const issues: TemplateIssue[] = []
+  if (section !== 'main') {
+    issues.push({ ...base, section, code: 'superset_outside_main', message: `Las superseries solo se permiten en el entrenamiento principal, no en ${SECTION_LABEL[section]}` })
+  }
+  if (block.items.length !== SUPERSET_ITEMS) {
+    issues.push({ ...base, section, code: 'superset_item_count', message: 'Una superserie debe tener exactamente 2 ejercicios' })
+    return issues
+  }
+  const [a, b] = block.items
+  if (a.sets.length !== b.sets.length) {
+    issues.push({ ...base, section, code: 'superset_uneven_rounds', message: 'Los dos ejercicios de una superserie deben tener las mismas rondas' })
+  }
+  const rounds = Math.max(a.sets.length, b.sets.length)
+  if (rounds < SUPERSET_MIN_ROUNDS || rounds > SUPERSET_MAX_ROUNDS) {
+    issues.push({ ...base, section, code: 'superset_round_count', message: `Una superserie necesita entre ${SUPERSET_MIN_ROUNDS} y ${SUPERSET_MAX_ROUNDS} rondas` })
   }
   return issues
 }

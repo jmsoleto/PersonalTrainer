@@ -139,3 +139,16 @@ export function formatPlannedPrescription(planned: PlannedExercise): string {
   if (rests.size === 1 && details[0].restSeconds > 0) parts.push(`Descanso ${details[0].restSeconds}s`)
   return parts.join(' · ')
 }
+
+/** Superset group header: "Superserie A · 3 rondas". */
+export function supersetHeader(letter: string, rounds: number): string {
+  return `Superserie ${letter} · ${rounds} ${rounds === 1 ? 'ronda' : 'rondas'}`
+}
+
+/** One exercise of a superset in a preview: "A1 Press de Banca con Barra · 10 reps · 40 kg". */
+export function supersetItemLine(tag: string, name: string, mode: 'reps' | 'time', sets: SetLike[]): string {
+  const first = sets[0] ?? {}
+  const parts = [`${tag} ${name}`, mode === 'reps' ? `${first.reps ?? '–'} reps` : `${first.durationSeconds ?? '–'} s`]
+  if (first.weightKg) parts.push(`${formatKg(first.weightKg)} kg`)
+  return parts.join(' · ')
+}

@@ -58,10 +58,14 @@
           <div
             v-for="(block, bi) in draft[key]"
             :key="block.id"
-            :class="['de-item', { 'de-item--missing': !exerciseOf(block) }]"
+            :class="['de-item', { 'de-item--missing': hasMissing(block) }]"
           >
             <div class="de-item-top">
-              <div class="de-item-name-wrap">
+              <div v-if="block.kind === 'superset'" class="de-item-name-wrap">
+                <span class="de-item-name">Superserie {{ letters.get(block.id) }}</span>
+                <span class="de-item-muscle">{{ roundsOf(block) }} {{ roundsOf(block) === 1 ? 'ronda' : 'rondas' }}</span>
+              </div>
+              <div v-else class="de-item-name-wrap">
                 <span class="de-item-name">{{ exerciseOf(block)?.name ?? block.items[0].exerciseId }}</span>
                 <span v-if="!exerciseOf(block)" class="we-chip we-chip--warn">No disponible</span>
                 <span v-else class="de-item-muscle">{{ muscleLabel(exerciseOf(block)!.primaryMuscle) }}</span>
@@ -76,10 +80,20 @@
 
             <div v-if="key === 'main'" class="de-kind" role="radiogroup" aria-label="Tipo de bloque">
               <button type="button" role="radio" :aria-checked="block.kind === 'straight'" :class="{ on: block.kind === 'straight' }" @click="toStraight(block)">Series iguales</button>
-              <button type="button" role="radio" :aria-checked="block.kind === 'pyramid'" :class="{ on: block.kind === 'pyramid' }" @click="toPyramid(block)">Pirámide</button>
+              <button type="button" role="radio" :aria-checked="block.kind === 'pyramid'" :class="{ on: block.kind === 'pyramid' }" :disabled="block.kind === 'superset'" @click="toPyramid(block)">Pirámide</button>
+              <button type="button" role="radio" :aria-checked="block.kind === 'superset'" :class="{ on: block.kind === 'superset' }" @click="startSuperset(block)">Superserie</button>
             </div>
 
             <PyramidBlockEditor v-if="block.kind === 'pyramid' && block.pyramid" :block="block" />
+
+            <SupersetBlockEditor
+              v-else-if="block.kind === 'superset'"
+              :block="block"
+              :letter="letters.get(block.id) ?? 'A'"
+              @change-exercise="index => changeSupersetExercise(block, index)"
+              @remove-item="index => removeSupersetExercise(bi, index)"
+              @separate="separateSuperset(bi)"
+            />
 
             <div v-else class="de-presc">
               <div class="de-field de-field--sets">
@@ -165,6 +179,15 @@
         :exclude-ids="pickerSection === 'main' ? draft.main.flatMap(b => b.items.map(i => i.exerciseId)) : []"
         @select="addExercises"
       />
+
+      <ExercisePickerDialog
+        v-model="singlePick.open"
+        section="main"
+        single
+        :title="singlePick.title"
+        :exclude-ids="draft.main.flatMap(b => b.items.map(i => i.exerciseId))"
+        @select="ids => singlePick.onPick?.(ids[0])"
+      />
     </template>
   </PageShell>
 </template>
@@ -176,6 +199,7 @@ import { useQuasar } from 'quasar'
 import PageShell from '../components/layout/PageShell.vue'
 import ExercisePickerDialog from '../components/workout-editor/ExercisePickerDialog.vue'
 import PyramidBlockEditor from '../components/workout-editor/PyramidBlockEditor.vue'
+import SupersetBlockEditor from '../components/workout-editor/SupersetBlockEditor.vue'
 import { useExercisesStore } from '../stores/exercises'
 import { useWorkoutTemplatesStore } from '../stores/workoutTemplates'
 import type { DayContent, SectionKey, TemplateBlock, BlockItem, SetSpec, ExerciseMode } from '../types/workout-template'
@@ -184,6 +208,7 @@ import { TemplateValidationError, isValidSetValue } from '../workout-editor/vali
 import { estimateBlocksMinutes, estimateDayMinutes } from '../workout-editor/duration'
 import { SECTION_META, muscleLabel, PYRAMID_VARIANT_LABELS } from '../workout-editor/labels'
 import { defaultPyramidConfig, generatePyramidSets } from '../workout-editor/pyramid'
+import { supersetLetters, roundsOf, toSuperset, splitSuperset, removeSupersetItem } from '../workout-editor/superset'
 import '../css/workout-editor.scss'
 
 const SECTIONS: SectionKey[] = ['warmup', 'main', 'cooldown']
@@ -243,7 +268,7 @@ const minutes = computed(() => estimateDayMinutes(draft))
 const mainCount = computed(() => draft.main.reduce((n, b) => n + b.items.length, 0))
 const usedBy = computed(() => (isNew.value ? [] : store.usagesOfDay(dayId.value)))
 const unavailableCount = computed(() =>
-  SECTIONS.flatMap(k => draft[k]).filter(b => !exerciseOf(b)).length,
+  SECTIONS.flatMap(k => draft[k]).filter(hasMissing).length,
 )
 const sectionMinutes = (key: SectionKey) => estimateBlocksMinutes(draft[key])
 
@@ -256,6 +281,10 @@ function first(block: TemplateBlock): SetSpec {
 function exerciseOf(block: TemplateBlock): Exercise | undefined {
   return exercisesStore.getById(block.items[0].exerciseId)
 }
+function hasMissing(block: TemplateBlock): boolean {
+  return block.items.some(it => !exercisesStore.getById(it.exerciseId))
+}
+const letters = computed(() => supersetLetters(draft.main))
 
 // ── Straight-set editing: every change applies to all sets ──────
 function setCount(block: TemplateBlock, n: number) {
@@ -319,8 +348,12 @@ function toPyramid(block: TemplateBlock) {
   it.sets = generatePyramidSets(it.mode, config)
 }
 
-function toStraight(block: TemplateBlock) {
+function toStraight(block: TemplateBlock, onDone?: () => void) {
   if (block.kind === 'straight') return
+  if (block.kind === 'superset') {
+    separateSuperset(draft.main.indexOf(block))
+    return
+  }
   $q.dialog({
     title: 'Pasar a series iguales',
     message: 'Se perderán los valores distintos de cada serie. Todas las series quedarán como la primera.',
@@ -332,7 +365,45 @@ function toStraight(block: TemplateBlock) {
     it.sets = it.sets.map(() => ({ ...firstSet }))
     block.kind = 'straight'
     delete block.pyramid
+    onDone?.()
   })
+}
+
+// ── Block kind: superset (main workout only) ───────────────────
+const singlePick = reactive<{ open: boolean; title: string; onPick?: (id: string) => void }>({ open: false, title: '' })
+
+function pickOne(title: string, onPick: (id: string) => void) {
+  singlePick.title = title
+  singlePick.onPick = onPick
+  singlePick.open = true
+}
+
+/** Straight (or pyramid, after its warning) → superset: the exercise becomes A1, then pick A2. */
+function startSuperset(block: TemplateBlock) {
+  if (block.kind === 'superset') return
+  const pick = () => pickOne('Elegir el segundo ejercicio', id => toSuperset(block, defaultItem(id, 'main')))
+  if (block.kind === 'pyramid') toStraight(block, pick)
+  else pick()
+}
+
+function changeSupersetExercise(block: TemplateBlock, index: number) {
+  const letter = letters.value.get(block.id) ?? 'A'
+  pickOne(`Cambiar ${letter}${index + 1}`, id => {
+    const it = block.items[index]
+    if (it) it.exerciseId = id
+  })
+}
+
+function separateSuperset(index: number) {
+  const block = draft.main[index]
+  if (!block) return
+  draft.main.splice(index, 1, ...splitSuperset(block, () => crypto.randomUUID()))
+}
+
+function removeSupersetExercise(blockIndex: number, itemIndex: number) {
+  const block = draft.main[blockIndex]
+  if (!block) return
+  draft.main.splice(blockIndex, 1, removeSupersetItem(block, itemIndex))
 }
 
 // ── Adding / moving / removing ─────────────────────────────────
@@ -433,6 +504,7 @@ async function save() {
   font-family: var(--k-font-body); font-size: 0.7rem; font-weight: 600; color: var(--k-secondary);
 }
 .de-kind button.on { background-color: var(--k-surface-bright); color: var(--k-on-surface); }
+.de-kind button:disabled { opacity: 0.35; cursor: not-allowed; }
 
 .de-presc { display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 0.45rem; align-items: end; }
 @media (max-width: 380px) { .de-presc { grid-template-columns: 1fr 1fr; } }

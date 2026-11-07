@@ -102,6 +102,13 @@ export interface PlannedExercise {
   /** Per-set targets (length === sets). Absent = every set uses the summary. */
   setDetails?: PlannedSet[]
   technique?: PlannedTechnique
+  /** Superset membership: group letter (A, B…) and position (A1 / A2). */
+  superset?: PlannedSuperset
+}
+
+export interface PlannedSuperset {
+  group: string
+  position: 1 | 2
 }
 
 export interface CompletedSession {

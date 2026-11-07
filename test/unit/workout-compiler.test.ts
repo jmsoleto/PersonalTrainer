@@ -121,9 +121,9 @@ describe('validateDay', () => {
     expect(issues.map(i => i.code)).toContain('duplicate_exercise')
   })
 
-  it('rejects superset blocks', () => {
+  it('rejects a superset with a single exercise', () => {
     const block: TemplateBlock = { ...straight('ex_plank', 3, { durationSeconds: 30 }), kind: 'superset' }
-    expect(validateDay(day('d1', { main: [block] })).map(i => i.code)).toContain('unsupported_block')
+    expect(validateDay(day('d1', { main: [block] })).map(i => i.code)).toContain('superset_item_count')
   })
 })
 
@@ -322,11 +322,48 @@ describe('compilePlanTemplate', () => {
     expect(ex.technique).toBeUndefined()
   })
 
-  it('still refuses to activate a superset', () => {
+  it('refuses to activate an invalid superset', () => {
     const superset: TemplateBlock = { ...straight('ex_plank', 3, { durationSeconds: 30 }), kind: 'superset' }
     const t = tree(['deload'])
     t.days.set('core', day('core', { main: [superset] }))
     expect(() => compilePlanTemplate(t, opts())).toThrow(TemplateValidationError)
+  })
+
+  function supersetBlock(id: string, a: string, b: string, rounds: number): TemplateBlock {
+    return {
+      id,
+      kind: 'superset',
+      items: [
+        { exerciseId: a, mode: 'reps', sets: Array.from({ length: rounds }, () => ({ reps: 10, weightKg: 40, restSeconds: 0 })) },
+        { exerciseId: b, mode: 'reps', sets: Array.from({ length: rounds }, () => ({ reps: 10, restSeconds: 90 })) },
+      ],
+    }
+  }
+
+  it('activates a superset as A1 then A2, consecutively, with their own prescription', () => {
+    const t = tree(['deload'])
+    t.days.set('core', day('core', { main: [supersetBlock('s1', 'ex_barbell_bench_press', 'ex_barbell_bent_over_row', 4)] }))
+    const main = compilePlanTemplate(t, opts()).weeks[0].days[0].session!.mainWorkout
+    expect(main.map(e => [e.exerciseId, e.superset, e.sets, e.restSeconds])).toEqual([
+      ['ex_barbell_bench_press', { group: 'A', position: 1 }, 4, 0],
+      ['ex_barbell_bent_over_row', { group: 'A', position: 2 }, 4, 90],
+    ])
+    expect(main[0].targetWeightKg).toBe(40)
+    expect(main[1].targetWeightKg).toBeUndefined()
+    expect(main[0].setDetails).toBeUndefined()
+  })
+
+  it('letters two supersets A and B around a straight block', () => {
+    const t = tree(['deload'])
+    t.days.set('core', day('core', {
+      main: [
+        supersetBlock('s1', 'ex_barbell_bench_press', 'ex_barbell_bent_over_row', 3),
+        straight('ex_barbell_curl', 3, { reps: 12, restSeconds: 60 }),
+        supersetBlock('s2', 'ex_barbell_overhead_press', 'ex_pull_up', 3),
+      ],
+    }))
+    const main = compilePlanTemplate(t, opts()).weeks[0].days[0].session!.mainWorkout
+    expect(main.map(e => e.superset ? `${e.superset.group}${e.superset.position}` : '-')).toEqual(['A1', 'A2', '-', 'B1', 'B2'])
   })
 })
 

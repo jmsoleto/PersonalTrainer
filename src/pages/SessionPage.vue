@@ -70,14 +70,23 @@
       <div class="sp-ex-label">Ejercicios principales</div>
 
       <div
-        v-for="exercise in sessionStore.currentSession?.exercises"
+        v-for="group in exerciseGroups"
+        :key="group.key"
+        :class="{ 'sp-ss': group.header }"
+      >
+      <div v-if="group.header" class="sp-ss-header">{{ group.header }}</div>
+      <div
+        v-for="exercise in group.exercises"
         :key="exercise.exerciseId"
         :class="['sp-ex-card', { 'sp-ex-card--skipped': isSkipped(exercise.exerciseId) }]"
       >
         <!-- Exercise header row -->
         <div class="sp-ex-header">
           <div class="sp-ex-info">
-            <span class="sp-ex-name">{{ exercise.exerciseName }}</span>
+            <span class="sp-ex-name">
+              <span v-if="supersetTag(exercise.exerciseId)" class="sp-ex-tag">{{ supersetTag(exercise.exerciseId) }}</span>
+              {{ exercise.exerciseName }}
+            </span>
             <span v-if="pyramidLabel(exercise.exerciseId)" class="sp-ex-technique">{{ pyramidLabel(exercise.exerciseId) }}</span>
             <span v-if="getPlannedExercise(exercise.exerciseId)" class="sp-ex-plan">
               {{ formatPlannedPrescription(getPlannedExercise(exercise.exerciseId)!) }}
@@ -148,6 +157,7 @@
             <span v-if="isNoRestStage(exercise.exerciseId, set.setNumber)" class="sp-set-norest">sin descanso</span>
           </div>
         </template>
+      </div>
       </div>
 
       <!-- ── Cooldown ─────────────────────────────────────────────── -->
@@ -235,7 +245,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import PageShell from '../components/layout/PageShell.vue'
@@ -247,8 +257,8 @@ import { useExercisesStore } from '../stores/exercises'
 import { useUserStore } from '../stores/user'
 import { Equipment } from '../types/enums'
 import type { Exercise } from '../types/exercise'
-import type { PlannedSession, PlannedExercise, CompletedSet } from '../types/plan'
-import { formatPlannedPrescription, TECHNIQUE_LABELS } from '../workout-editor/labels'
+import type { PlannedSession, PlannedExercise, CompletedSet, CompletedExercise } from '../types/plan'
+import { formatPlannedPrescription, TECHNIQUE_LABELS, supersetHeader } from '../workout-editor/labels'
 
 const route = useRoute()
 const router = useRouter()
@@ -288,11 +298,47 @@ function hasWeight(exerciseId: string): boolean {
   return p.targetWeightKg !== undefined || !!p.setDetails?.some(d => d.targetWeightKg !== undefined)
 }
 
-/** Drop-set stage followed by no rest (all but the last stage). */
+/**
+ * Set followed by no rest: a drop-set stage (all but the last), or A1 of a
+ * superset whose transition to A2 is 0 s.
+ */
 function isNoRestStage(exerciseId: string, setNumber: number): boolean {
   const p = getPlannedExercise(exerciseId)
-  return p?.technique === 'drop_set' && p.setDetails?.[setNumber - 1]?.restSeconds === 0
+  if (!p) return false
+  const rest = p.setDetails?.[setNumber - 1]?.restSeconds ?? p.restSeconds
+  if (p.superset?.position === 1) return rest === 0
+  return p.technique === 'drop_set' && rest === 0
 }
+
+/** "A1" / "A2" for exercises in a superset. */
+function supersetTag(exerciseId: string): string | null {
+  const s = getPlannedExercise(exerciseId)?.superset
+  return s ? `${s.group}${s.position}` : null
+}
+
+interface ExerciseGroup { key: string; header: string | null; exercises: CompletedExercise[] }
+
+/** Consecutive exercises of the same superset are grouped; every other exercise is its own group. */
+const exerciseGroups = computed<ExerciseGroup[]>(() => {
+  const groups: ExerciseGroup[] = []
+  let current: { letter: string; group: ExerciseGroup } | null = null
+  for (const exercise of sessionStore.currentSession?.exercises ?? []) {
+    const planned = getPlannedExercise(exercise.exerciseId)
+    const letter = planned?.superset?.group
+    if (letter && current?.letter === letter) {
+      current.group.exercises.push(exercise)
+      continue
+    }
+    const group: ExerciseGroup = {
+      key: letter ? `superset-${letter}` : exercise.exerciseId,
+      header: letter ? supersetHeader(letter, planned!.sets) : null,
+      exercises: [exercise],
+    }
+    groups.push(group)
+    current = letter ? { letter, group } : null
+  }
+  return groups
+})
 
 /** Pyramid label above the prescription (drop sets already say "Drop set"). */
 function pyramidLabel(exerciseId: string): string | null {
@@ -360,6 +406,8 @@ function buildReplacement(original: PlannedExercise, alt: Exercise): PlannedExer
   if (altWeighted && original.targetWeightKg !== undefined) {
     replacement.targetWeightKg = original.targetWeightKg
   }
+  // Supersets: the alternative keeps the letter and position.
+  if (original.superset) replacement.superset = { ...original.superset }
   // Pyramids: keep each set's target; weights only for weighted alternatives.
   if (original.technique) replacement.technique = original.technique
   if (original.setDetails) {
@@ -509,6 +557,20 @@ onMounted(async () => {
   margin-bottom: 0.5rem; overflow: hidden; transition: opacity 0.2s ease;
 }
 .sp-ex-card--skipped { opacity: 0.45; }
+
+.sp-ss {
+  border-left: 3px solid var(--k-primary-container); padding-left: 0.5rem; margin-bottom: 0.5rem;
+}
+.sp-ss .sp-ex-card:last-child { margin-bottom: 0; }
+.sp-ss-header {
+  font-family: var(--k-font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: var(--k-tracking-label);
+  text-transform: uppercase; color: var(--k-primary-container); margin: 0 0 0.4rem;
+}
+.sp-ex-tag {
+  display: inline-block; min-width: 1.7rem; text-align: center; margin-right: 0.3rem; padding: 0 0.25rem;
+  border-radius: var(--k-radius-sm); background-color: var(--k-primary-container); color: var(--k-on-primary-container);
+  font-size: var(--k-label-md); font-weight: 700;
+}
 
 .sp-ex-header {
   display: flex; align-items: flex-start; gap: 0.75rem;

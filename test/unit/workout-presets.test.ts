@@ -20,8 +20,8 @@ const allItems = (blocks: { items: { exerciseId: string; sets: { weightKg?: numb
   blocks.flatMap(b => b.items)
 
 describe('workout presets catalog integrity', () => {
-  it('ships the 12 day presets and 3 week presets with unique ids', () => {
-    expect(dayPresets).toHaveLength(12)
+  it('ships the 14 day presets and 3 week presets with unique ids', () => {
+    expect(dayPresets).toHaveLength(14)
     expect(weekPresets).toHaveLength(3)
     const ids = [...dayPresets, ...weekPresets].map(p => p.id)
     expect(new Set(ids).size).toBe(ids.length)
@@ -31,6 +31,7 @@ describe('workout presets catalog integrity', () => {
     expect(dayPresets.filter(p => p.group === 'category').map(p => p.name)).toEqual([
       'Cardio HIIT', 'Pliometría', 'Movilidad y flexibilidad', 'Equilibrio',
       'Fuerza en pirámide', 'Pirámide con mancuernas',
+      'Torso en superseries', 'Superseries con mancuernas',
     ])
   })
 
@@ -132,5 +133,41 @@ describe('pyramid presets', () => {
   it('the barbell preset requires a barbell', () => {
     expect(requiredEquipment(barbell, getExercise)).toContain(Equipment.Barbell)
     expect(missingEquipment(barbell, [], getExercise)).toContain(Equipment.Barbell)
+  })
+})
+
+describe('superset presets', () => {
+  const barbell = getDayPreset('preset_day_superset_barbell')!
+  const dumbbell = getDayPreset('preset_day_superset_dumbbell')!
+
+  it('have 2 and 3 valid supersets with a 0 s transition', () => {
+    expect(barbell.main.filter(b => b.kind === 'superset')).toHaveLength(2)
+    expect(dumbbell.main.filter(b => b.kind === 'superset')).toHaveLength(3)
+    for (const preset of [barbell, dumbbell]) {
+      expect(validateDay(preset, { exerciseExists: id => catalog.has(id) })).toEqual([])
+      for (const block of preset.main.filter(b => b.kind === 'superset')) {
+        expect(block.items).toHaveLength(2)
+        expect(block.items[0].sets.every(s => s.restSeconds === 0)).toBe(true)
+        expect(block.items[1].sets.every(s => (s.restSeconds ?? 0) > 0)).toBe(true)
+      }
+    }
+  })
+
+  it('pair the planned exercises', () => {
+    const pairs = (p: typeof barbell) => p.main.filter(b => b.kind === 'superset').map(b => b.items.map(i => i.exerciseId))
+    expect(pairs(barbell)).toEqual([
+      ['ex_barbell_bench_press', 'ex_barbell_bent_over_row'],
+      ['ex_barbell_overhead_press', 'ex_pull_up'],
+    ])
+    expect(pairs(dumbbell)).toEqual([
+      ['ex_dumbbell_bench_press', 'ex_dumbbell_single_arm_row'],
+      ['ex_dumbbell_lunge', 'ex_dumbbell_romanian_deadlift'],
+      ['ex_dumbbell_bicep_curl', 'ex_dumbbell_tricep_extension'],
+    ])
+  })
+
+  it('the barbell preset requires a pull-up bar', () => {
+    expect(requiredEquipment(barbell, getExercise)).toEqual(expect.arrayContaining([Equipment.Barbell, Equipment.PullUpBar]))
+    expect(missingEquipment(barbell, [Equipment.Barbell, Equipment.Bench], getExercise)).toEqual([Equipment.PullUpBar])
   })
 })

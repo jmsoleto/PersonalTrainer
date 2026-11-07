@@ -40,9 +40,17 @@
             <template v-if="p[key].length">
               <span class="wp-section">{{ SECTION_META[key].label }}</span>
               <ul class="wp-items">
-                <li v-for="b in p[key]" :key="b.id">
+                <li v-for="b in p[key]" :key="b.id" :class="{ 'wp-ss': b.kind === 'superset' }">
+                  <template v-if="b.kind === 'superset'">
+                    <span class="wp-ss-head">{{ supersetHeader(supersetLetters(p[key]).get(b.id) ?? 'A', b.items[0]?.sets.length ?? 0) }}</span>
+                    <span v-for="(it, i) in b.items" :key="it.exerciseId" class="wp-ss-item">
+                      {{ supersetItemLine(`${supersetLetters(p[key]).get(b.id) ?? 'A'}${i + 1}`, exerciseName(it.exerciseId), it.mode, it.sets) }}
+                    </span>
+                  </template>
+                  <template v-else>
                   <span>{{ exerciseName(b.items[0].exerciseId) }}</span>
                   <span class="wp-presc">{{ formatPrescription(b.items[0].mode, b.items[0].sets, b.kind === 'pyramid' ? b.pyramid?.variant : undefined) }}</span>
+                  </template>
                 </li>
               </ul>
             </template>
@@ -102,7 +110,8 @@ import type { DayPreset, WeekPreset, WeekPresetSlot, SectionKey } from '../types
 import type { Equipment } from '../types/enums'
 import { dayPresets, weekPresets, getDayPreset, missingEquipment, dayPresetsOfWeek } from '../workout-editor/presets'
 import { estimateDayMinutes } from '../workout-editor/duration'
-import { SECTION_META, WEEKDAYS, WEEKDAYS_SHORT, muscleLabel, equipmentLabel, formatPrescription } from '../workout-editor/labels'
+import { SECTION_META, WEEKDAYS, WEEKDAYS_SHORT, muscleLabel, equipmentLabel, formatPrescription, supersetHeader, supersetItemLine } from '../workout-editor/labels'
+import { supersetLetters } from '../workout-editor/superset'
 import '../css/workout-editor.scss'
 
 type Tab = 'muscle' | 'category' | 'weeks'
@@ -202,6 +211,9 @@ async function useWeek(id: string) {
   font-family: var(--k-font-body); font-size: var(--k-body-md); color: var(--k-on-surface);
 }
 .wp-presc { color: var(--k-secondary); white-space: nowrap; font-size: var(--k-label-md); }
+.wp-items li.wp-ss { flex-direction: column; gap: 0.15rem; border-left: 3px solid var(--k-primary-container); padding-left: 0.5rem; }
+.wp-ss-head { font-size: var(--k-label-md); font-weight: 600; text-transform: uppercase; letter-spacing: var(--k-tracking-label); color: var(--k-primary-container); }
+.wp-ss-item { font-size: var(--k-body-md); }
 .wp-weekday { font-weight: 600; }
 .wp-note { margin: 0; font-family: var(--k-font-body); font-size: var(--k-label-md); color: var(--k-secondary); }
 </style>

@@ -2,7 +2,7 @@
   <q-dialog :model-value="modelValue" @update:model-value="emit('update:modelValue', $event)" @before-show="reset">
     <div class="we-dialog xp-dialog">
       <div class="we-dialog-header">
-        <span class="we-dialog-title">Añadir a {{ meta.label.toLowerCase() }}</span>
+        <span class="we-dialog-title">{{ title ?? `Añadir a ${meta.label.toLowerCase()}` }}</span>
         <button class="we-icon-btn" aria-label="Cerrar" @click="close"><q-icon name="close" size="18px" /></button>
       </div>
 
@@ -50,7 +50,7 @@
               :disabled="isExcluded(ex.id)"
               @click="toggle(ex.id)"
             >
-              <q-icon :name="selected.includes(ex.id) ? 'check_circle' : 'radio_button_unchecked'" size="20px" class="xp-check" />
+              <q-icon :name="single ? 'add_circle_outline' : (selected.includes(ex.id) ? 'check_circle' : 'radio_button_unchecked')" size="20px" class="xp-check" />
               <span class="xp-item-main">
                 <span class="xp-item-name">{{ ex.name }}</span>
                 <span class="xp-item-sub">
@@ -67,7 +67,7 @@
 
       <div class="we-dialog-footer">
         <button class="we-btn we-btn--ghost" @click="close">Cancelar</button>
-        <button class="we-btn we-btn--cta" :disabled="selected.length === 0" @click="confirm">
+        <button v-if="!single" class="we-btn we-btn--cta" :disabled="selected.length === 0" @click="confirm">
           Añadir{{ selected.length ? ` (${selected.length})` : '' }}
         </button>
       </div>
@@ -95,6 +95,10 @@ const props = defineProps<{
   section: SectionKey
   /** Exercise ids that cannot be added again (e.g. already in the main workout). */
   excludeIds?: string[]
+  /** Single pick: choosing an exercise selects it and closes the dialog. */
+  single?: boolean
+  /** Overrides the default "Añadir a …" title. */
+  title?: string
 }>()
 
 const emit = defineEmits<{
@@ -143,6 +147,11 @@ function toggleCategory(c: ExerciseCategory) {
 }
 
 function toggle(id: string) {
+  if (props.single) {
+    emit('select', [id])
+    close()
+    return
+  }
   selected.value = selected.value.includes(id)
     ? selected.value.filter(x => x !== id)
     : [...selected.value, id]
